@@ -57,13 +57,14 @@ class IndexController extends AbstractActionController
      * Add a new entry given the POST "text" parameter
     * No validation happens for simplicity sake
     */
-    public function addAction()
+    public function addCarAction()
     {
         /* @var $car Car */
-        $car = $this->getServiceLocator()->get('OldtimersCar');
-        $car->text = $this->params()->fromPost('text');
-        $this->getCarMapper()->save($car);
-        return new JsonModel([$car]);
+//         $car = $this->getServiceLocator()->get('OldtimersCar');
+//         $car->text = $this->params()->fromPost('text');
+//         $this->getCarMapper()->save($car);
+//         return new JsonModel([$car]);
+        return new ViewModel();
     }
 
     private $carMapper = null;

@@ -17,7 +17,7 @@ return array(
      */
     'router' => array(
         'routes' => array(
-            'entry' => array(
+            'car' => array(
                 'type'    => 'Literal',
                 'options' => array(
                     'route'    => '/',

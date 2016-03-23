@@ -7,10 +7,9 @@
  */
 return array(
     'modules' => array(
-        'Application',
         'DoctrineModule',
         'DoctrineMongoODMModule',
-        'Demo',
+        'DoctrineORMModule',
         'Oldtimers',
     ),
     'module_listener_options' => array(

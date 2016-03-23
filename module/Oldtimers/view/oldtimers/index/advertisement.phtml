@@ -1,0 +1,82 @@
+<div class="row">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+			<a href="/" class="btn btn-default navbar-btn pull-right">Back to list</a>
+		</div>
+	</nav>
+</div>
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+          	<?php foreach($advertisement->photos as $photo):?>
+          		<div class="item<?php if($photo == 0){ echo ' active'; }?>">
+          			<img src="/uploads/<?php echo $advertisement->garageId; ?>/<?php echo $advertisement->_id; ?>/<?php echo $photo; ?>.jpg"/>
+          			<span class="price"><?php echo $advertisement->price; ?>€</span>
+          		</div>
+          	<?php endforeach; ?>
+          </div>
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+		<table class="table" style="margin-top:30px;">
+			<tr><td width="120">Marka</td><td><?=$advertisement->make?></td></tr>
+			<tr><td>Model</td><td><?=$advertisement->model?></td></tr>
+			<tr><td>Godište</td><td><?=$advertisement->year?></td></tr>
+			<tr><td>Mjenjač</td><td><?=$advertisement->transmission?></td></tr>
+			<tr><td>Strana volana</td><td><?=$advertisement->driverSide?></td></tr>
+			<tr><td>Pogon</td><td><?=$advertisement->wheelDrive?></td></tr>
+			<tr><td>Gorivo</td><td><?=$advertisement->fuelType?></td></tr>
+			<tr><td>Kubikaža</td><td><?=$advertisement->engineCapacity?>cm<sup>3</sup></td></tr>
+			<tr><td>Snaga</td><td><?=$advertisement->kW?> kW</td></tr>
+			<tr><td>Kilometraža</td><td><?=$advertisement->mileage?></td></tr>
+		</table>
+		<div id="features">
+			<div class="panel list-group">
+				<a href="#" class="list-group-item" data-toggle="collapse" data-target="#sm" data-parent="#features">
+					<span>Features</span>
+					<span class="glyphicon glyphicon-hand-down pull-right"></span>
+				</a>
+				<div id="sm" class="sublinks collapce">
+					<?php foreach($advertisement->features as $key => $info):?>
+						<a class="list-group-item small"><?php echo $info; ?></a>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+		<div>
+			<table class="table">
+				<tr><td width="120"><span>Grad:</span></td><td><?=$advertisement->owner[1]?></td></tr>
+                <tr><td><span>Telefon:</span></td><td><a href="tel:<?=$advertisement->owner[2]?>"><?=$advertisement->owner[2]?></a> <small><i>(click to call)</i></small></td></tr>
+                <tr><td><span>Prodavac:</span></td><td><?=$advertisement->owner[0]?></td></tr>
+                <tr><td><span>Datum:</span></td><td><?=$advertisement->date?></td></tr>
+			</table>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function(){
+	$('.carousel').carousel({
+		interval: false
+	});
+	
+	$(".carousel").swiperight(function() {  
+		$(this).carousel('prev');  
+	});  
+	            	
+	$(".carousel").swipeleft(function() {  
+		$(this).carousel('next');  
+	}); 
+});
+</script>

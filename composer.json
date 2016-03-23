@@ -12,6 +12,8 @@
         "zendframework/zendframework": "~2.5",
         "doctrine/mongodb-odm": "dev-master",
         "doctrine/doctrine-mongo-odm-module": "dev-master",
-        "zendframework/zftool": "dev-master"
+        "zendframework/zftool": "dev-master",
+        "kartik-v/bootstrap-fileinput": "dev-master",
+        "doctrine/doctrine-orm-module": "^0.9.2"
     }
 }

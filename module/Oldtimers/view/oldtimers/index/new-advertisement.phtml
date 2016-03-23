@@ -1,0 +1,196 @@
+<style>
+#advertisementBlock{
+    color: gray;
+}
+
+#header{
+    margin-top: 0px;
+}
+
+#header a{
+    margin-top:20px;
+}
+</style>
+<div class="row">
+	<div id="header" class="col-lg-8 col-lg-offset-2">
+		<h2 class="pull-left">Dodaj oglas</h2>
+    	<a href="/" class="btn btn-default pull-right">Naslovna</a>
+	</div>
+</div>
+<div class="row">
+    <div id="advertisementBlock" class="col-lg-8 col-lg-offset-2">
+        <form action="" method="post" role="form" class="form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="brand">Marka:</label>
+                <select id="make" name="make" class="form-control">
+                    <option value="" selected disabled>Izaberite Marku</option>
+                    <?php foreach ($make as $maker): ?>
+                        <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
+                    <?php endforeach;?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="model">Model:</label>
+                <select id="model" name="model" class="form-control">
+                    <option value="" selected disabled>Izaberite Model:</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="modification">Modification:</label>
+                <input type="text" name="modification" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="year">Godište:</label>
+                <input type="text" name="year" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="transmission">Mjenjač:</label>
+                <select id="transmission" name="transmission" class="form-control">
+                    <option value="">Izaberite Mjenjač</option>
+                    <option value="manual">Manuelni</option>
+                    <option value="automatic">Automatski</option>
+                    <option value="tiptronik">Tiptronik</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="driverSide">Strana volana:</label>
+                <select id="driverSide" name="driverSide" class="form-control">
+                    <option value="">Izaberite Stranu Volana</option>
+                    <option value="left">Lijeva</option>
+                    <option value="right">Desna</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="wheelDrive">Pogon:</label>
+                <select id="wheelDrive" name="wheelDrive" class="form-control">
+                    <option value="">Izaberite Pogon</option>
+                    <option value="front">Prednja vuča</option>
+                    <option value="rear">Zadnja vuča</option>
+                    <option value="all">4x4</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fuelType">Gorivo:</label>
+                <select id="fuelType" name="fuelType" class="form-control">
+                    <option value="">Izaberite Vrstu Goriva</option>
+                    <option value="diesel">Dizel</option>
+                    <option value="petrol">Benzin</option>
+                    <option value="gas">Metan</option>
+                    <option value="petrol_and_gas">Benzin + plin</option>
+                    <option value="hybrid">Hibridni pogon</option>
+                    <option value="electric">Električni pogon</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="engineType">Motor:</label>
+                <input type="text" name="engineType" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="engineCapacity">Kubikaža: (cm3)</label>
+                <input type="text" name="engineCapacity" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="engineCapacity">Snaga: (kW)</label>
+                <input type="text" name="enginePower" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="color">Boja:</label>
+                <input type="text" name="color" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="mileage">Kilometraža: (km)</label>
+                <input type="text" name="mileage" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="description">Opis:</label>
+                <textarea name="description" class="form-control"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="mileage">Cijena:</label>
+                <div class="input-group">
+                  <span class="input-group-addon">€</span>
+                  <input type="text" name="price" class="form-control">
+                </div>
+            </div>
+            <h3 class="text-center">Komponente</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[aac]">AC klima</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[abs]">ABS</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[esp]">ESP</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[audio]">Muzika</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[powerAssistedSteering]">Servo</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[sunroof]">Šiber</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[towHook]">Kuka</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[climatisation]">Digitalna klima</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[electricWindows]">El. podizači</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[electricHeatedSeats]">Grijači sedišta</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[centralLocking]">Centralna brava</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[metallicColor]">Metalik boja</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[parkingSensors]">Parking senzor</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[fogLamp]">Svijetla za maglu</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[leather]">Koža</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[airbags]">Air bag</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[alarm]">Alarm</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[alloyWheels]">Alu felne</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[immobilizer]">Kod ključ</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[navigationSystem]">Navigacija</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[cruiseControl]">Tempomat</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[remoteLock]">Daljinsko zaključavanje</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[panoramicRoof]">Panorama krov</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[CDchanger]">CD šaržer</label></li>
+                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[xenonHeadlights]">Xenon</label></li>
+            </ul>
+            
+            <div class="form-group">
+                <label for="phoneNumber">Telefon:</label>
+                <input type="text" name="owner[phoneNumber]" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" name="owner[email]" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="link">Grad:</label>
+                <input type="text" name="owner[city]" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="name">Ime:</label>
+                <input type="text" name="owner[name]" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input id="photos" name="photos[]" type="file" class="file" data-preview-file-type="image" multiple="true">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="form-control" value="Post"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+	$('#photos').fileinput({
+	    resizeImage: true,
+	    maxImageWidth: 200,
+	    maxImageHeight: 200,
+	    resizePreference: 'width',
+	    maxFileCount: 10
+	});
+
+	$('#make').change(function(){
+		$.ajax({
+		  url: "getModelByMakeIdJson",
+		  data: {'make' : $(this).val()}
+		}).done(function(responce) {
+			if(responce.success){
+				var model = $("#model").empty();
+				$.each(responce.models, function() {
+					model.append($("<option />").val(this.model).text(this.model));
+				});
+			}
+		});
+	});
+	
+});
+</script>

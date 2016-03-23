@@ -1,33 +1,26 @@
 body{
-    background-color: #3f4545;
+    background-color: white;
     text-shadow: none;
+    scroll-behavior: smooth;
 }
 
 .navbar{
-    background-image: url(/img/menu_grid_top.png);
-    background-repeat: repeat-x;
-    background-position: left top;
-    background-color: #3f4545;
+    background-color: white;
     border: none;
     height: 100%;
+    padding: 0px 10px;
+}
+
+.navbar-default{
+    box-shadow: none;
 }
 
 .navbar-brand{
-    background-color: #3f4545;
+    height: 50px;
     background-image: url(/img/logo.png);
     background-repeat: no-repeat;
-    background-position: 20% 38%;
-    width: 180px;
-}
-
-.navbar-brand:hover{
-    background-color: #3f4545 !important;
-}
-
-.navbar-toggle{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: #3f4545;
+    background-position: 30% 55%;
+    width: 185px;
 }
 
 .col-xs-12{
@@ -35,13 +28,24 @@ body{
     margin: auto;
 }
 
+.carousel{
+    cursor: pointer;
+    padding: 5px;
+}
+
 .carousel img{
     margin: auto;
     max-width:100%;
     max-height:100%;
     width: auto;
-    height: 400px;
+    height: 450px;
     max-height: 700px;
+    overflow:hidden;
+}
+
+
+.item{
+    /* float:left; width: 368px; height:235px; overflow:hidden; margin:10px; */
 }
 
 .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right{
@@ -51,13 +55,12 @@ body{
 
 .carousel .carousel-caption{
     width: 100%;
+    height: 30px;
     font-weight: bold;
-    display: block;
-    right: 1%;
     bottom: 0px;
     padding-bottom: 0px;
     padding-top: 0px;
-    top: 0px;
+    top: 88%;
     left: 0px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -66,50 +69,73 @@ body{
     -ms-user-select: none;
     user-select: none;
     cursor: pointer;
+    float: left;
 }
 
-.carousel .carousel-caption .data{
-    display: block;
-    width:100%;
+.carousel .data{
+    height: 25px; 
+    text-overflow: ellipsis;
     text-align: center;
-    font-size: 0.92em;
-    background-color: transparent;
-    padding-top: 10px;
-    padding-bottom: 5px;
+    font-family: Arial Narrow;
+    font-size: 1.1em;
+    font-weight: bold;
+    display:inline-block;
+    width:100%;
+    color: #797979;
+    text-shadow: none;
+    background-color: white;
+    padding-top: 8px;
+    padding-bottom: 6px;
     /* Fallback for web browsers that don't support RGBa */
-    background-color: rgb(0, 0, 0);
+    /*background-color: rgb(0, 0, 0);*/
     /* RGBa with 0.6 opacity */
-    background-color: rgba(0, 0, 0, 0.6);
+    /*background-color: rgba(0, 0, 0, 0.9);*/
     /* For IE 5.5 - 7*/
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    /*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);*/
     /* For IE 8*/
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";*/
 }
 
-.carousel .carousel-caption .price{
-    font-family: LilienthalGrotesk;
-    width: 25%;
-    height: 32px;
-    position: relative;
+.carousel .data .info{
     display: block;
-      background: -webkit-linear-gradient(#ed742f, #d9692a); /* For Safari 5.1 to 6.0 */
-      background: -o-linear-gradient(#ed742f, #d9692a); /* For Opera 11.1 to 12.0 */
-      background: -moz-linear-gradient(#ed742f, #d9692a); /* For Firefox 3.6 to 15 */
-      background: linear-gradient(#ed742f, #d9692a); /* Standard syntax */
-    border-width: 1px;
-    border-style: solid;
-    border-color: #d9692a;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    padding-top: 6px;
-    top: 0px;
-    float: right;
-    margin-top:48%;
-    z-index: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.carousel .data .info a{
+    color: #797979;
+}
+
+.carousel .data .info .cm{
+    text-transform: lowercase;
+}
+
+.carousel .data .info #make{
+     color: #f63e3e;
+}
+
+.carousel .data .info:hover{
+    text-decoration: underline;
+}
+
+.carousel .price{
+    position: absolute; 
+    top: 86%; 
+    left: 68%; 
+    width: 100%; 
+    color: white;
+    font-family: LilienthalGrotesk;
+    font-size: 1.5em;
+}
+
+#carModal .price{
+    position: absolute; 
+    top: 88%; 
+    left: 70%; 
+    width: 100%; 
+    color: white;
+    font-family: LilienthalGrotesk;
+    font-size: 1.5em;
 }
 
 .carousel-control.right, .carousel-control.left{
@@ -123,37 +149,29 @@ body{
 }
 
 .footer{
-    background-image: url(/img/menu_grid.png);
-    background-repeat: repeat-x;
-    background-position: bottom;
-    background-color: #3f4545;
+    background-color: white;
     border: none;
     height: 20px;
     margin-top: 50px;
 }
 
-#searchForm{
-    padding: 12px 0 0 2%;
-    min-width: 320px;
-    margin: auto;
-    float: left;
-}
-
-#searchForm .form-group{
-    margin-left: 5px;
-    text-align: center;
-}
-
-#search{
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
-    font-family: LilienthalGrotesk;
-    background-color: #d9692a;
-    border-color: #d9692a;
-}
-
 .navbar-collapse.in{
-    background-color: #3f4545;
     overflow-y: visible;
+}
+
+#generalInfo, #ownerInfo{
+    list-style-type: none;
+}
+
+#generalInfo span{
+    font-size: 0.8em;
+    font-family: LilienthalGrotesk;
+}
+
+#carInfo{
+    padding: 10px 20px;
+}
+
+.modal-title{
+    padding-left: 10px;
 }

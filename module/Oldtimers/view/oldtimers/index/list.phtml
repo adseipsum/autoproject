@@ -1,0 +1,382 @@
+<div class="row">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+        <a href="/new" class="btn btn-default navbar-btn pull-right">Dodaj oglas</a>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-left" role="search">
+            	<div class="form-group">
+	            	<select id="make" name="make" class="form-control">
+	                    <option value="" selected>Marka</option>
+	                    <?php foreach ($make as $maker): ?>
+	                        <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
+	                    <?php endforeach;?>
+                	</select>
+            	</div>
+            	<div class="form-group">
+	                <select id="model" name="model" class="form-control">
+	                    <option value="" selected disabled>Model</option>
+	                </select>
+            	</div>
+            	<div class="form-group">
+	                <select id="from" name="from" class="form-control">
+	                	<?php for ($i = 1968; $i <= 2016; $i++):?>
+	                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+	                    <?php endfor;?>
+	                </select>
+            	</div>
+            	<div class="form-group">
+	                <select id="to" name="to" class="form-control">
+	                	<?php for ($i = 2016; $i >= 1968; $i--):?>
+	                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+	                    <?php endfor;?>
+	                </select>
+            	</div>
+            	<div class="form-group">
+	                <select id="fuelType" name="fuelType" class="form-control">
+	                    <option value="">Gorivo</option>
+	                    <option value="Dizel">Dizel</option>
+	                    <option value="Benzin">Benzin</option>
+	                    <option value="Metan">Metan</option>
+	                    <option value="Benzin + plin">Benzin + plin</option>
+	                    <option value="Hibridni pogon">Hibridni pogon</option>
+	                    <option value="Električni pogon">Električni pogon</option>
+                	</select>
+            	</div>
+            	<div class="form-group">
+	                <select id="city" name="city" class="form-control">
+	                    <option value="">Bilo Koji Grad</option>
+	                    <option value="Tivat">Tivat</option>
+	                    <option value="Podgorica">Podgorica</option>
+	                    <option value="Kotor">Kotor</option>
+	                    <option value="Budva">Budva</option>
+	                    <option value="Bar">Bar</option>
+                	</select>
+            	</div>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+</div>
+
+<div id="carModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox" data-dismiss="modal">
+          </div>
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        &nbsp; &nbsp; &nbsp;
+        <div id="carInfo">
+            <div id="generalInfo">
+            </div>
+            <div id="features">
+            </div>
+            <div id="description">
+            </div>
+            <div id="ownerInfo">
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span id="delete" data-id="" style="width:30px; height:30px; float:left; display: block; color: white;"></span>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="dynamic-content" data-skip="0">
+			
+</div>
+
+        <div class="footer">
+            <p>&copy; 2005 - <?php echo date('Y') ?> by Adseipsum <?php echo $this->translate('All rights reserved.') ?></p>
+        </div>
+        
+<script>
+$(document).ready(function(){ 
+	var container = $('#dynamic-content');
+	var processing = false;
+
+	$('#make').on('change', function(){
+		enrichModelSelect();
+	});
+
+	function enrichModelSelect(){
+	    $.ajax({
+			  url: "index/getModelByMakeIdJson",
+			  data: {'make' : $('#make').val()}
+			}).done(function(responce) {
+				if(responce.success){
+					var model = $("#model").empty();
+					model.append($("<option />").val(0).text('Model'));
+					$.each(responce.models, function() {
+						model.append($("<option />").val(this.model).text(this.model));
+					});
+				}
+				container.attr('data-skip', 0).empty();
+				if(!processing){ loadPage(container) };
+			});
+	}
+
+	enrichModelSelect();
+
+	$('#from, #to, #fuelType, #city').change(function(){
+	    container.attr('data-skip', 0).empty();
+	    if(!processing){ loadPage(container) };
+	});
+           
+    	   $('body').on('click', '.openInfo', function(e){
+        	   $.ajax({
+        		   url: "index/carInfoJson?id=" + $(this).attr('id'),
+       		   }).done(function(responce) {
+           		   if(responce.carInfo){
+               		   var info = responce.carInfo;
+              		   $('#carModal').find('.modal-title').html(info.make + ' ' + info.model);
+                	   $('#carModal').find('.carousel-inner').html('');
+                	   $('#generalInfo').html('');
+                	   $('#features').html('');
+                	   $('#description').html('');
+                	   $('#ownerInfo').html('');
+
+              		   $.each(info.photos, function( key, value ) {
+                  		   
+             			   var div = $('#carModal').find('.carousel-inner').append(
+                     			   		$('<div>').addClass('item').html(
+                             			   		$('<img>')
+                     			   				.attr('src', 'uploads/' + info.garageId + '/' + info._id + '/' + value + '.jpg'))
+                     			   				.append($('<span>').addClass('price').html(info.price + '€')));
+             			   if(key == 0){
+                 			   $(div).find(':first').addClass('active');
+             			   }
+              		   });
+                	  $('#generalInfo').append($('<table>').addClass('infoTable table')
+             		  	  .append('<tr><td width="120"><span>Proizvođač:</span></td><td>' + info.make + '</td></tr>')
+             		   	  .append('<tr><td><span>Model:</span></td><td>' + info.model + '</td></tr>')
+	             		  .append('<tr><td><span>Godište:</span></td><td>' + info.year + '</td></tr>')
+	             		  .append('<tr><td><span>Mjenjač:</span></td><td>' + info.transmission + '</td></tr>')
+	             		  .append('<tr><td><span>Strana volana:</span></td><td>' + info.driverSide + '</td></tr>')
+	             		  .append('<tr><td><span>Pogon:</span></td><td>' + info.wheelDrive + '</td></tr>')
+	             		  .append('<tr><td><span>Gorivo:</span></td><td>' + info.fuelType + '</td></tr>')
+	             		  .append('<tr><td><span>Kubikaža:</span></td><td>' + info.engineCapacity + ' cm<sup>3</sup></td></tr>')
+	             		  .append('<tr><td><span>Snaga:</span></td><td>' + info.kW + ' kW</tr>')
+	             		  .append('<tr><td><span>Kilometraža:</span></td><td>' + info.mileage + ' km</td></tr>'));
+
+                	  $('#features').append(
+                        	  $('<div>')
+                        	  .addClass('panel list-group')
+                        	  .append(
+                            	      $('<a>')
+                            	      .attr('href', '#')
+                            	      .attr('data-toggle', 'collapse')
+                            	      .attr('data-target', '#sm')
+                            	      .attr('data-parent', '#menu')
+                            	      .addClass('list-group-item')
+                            	      .append($('<span>').html('Features'))
+                                      .append($('<span>').addClass('glyphicon glyphicon-hand-down pull-right'))
+                        	      )
+                        	  .append(
+                                	  $('<div>').attr('id', 'sm').addClass('sublinks collapse')
+                               )
+                      );
+                	  $.each(info.features, function( key, value ) {
+                	      $('#features .sublinks').append($('<a>').addClass('list-group-item small').html(value));
+                	  });
+
+                	  $('#description').append($('<table>').attr('id', 'description').addClass('table').append('<tr><td colspan="2">' + info.description + '</td></tr>'));
+                	  
+                	  $('#ownerInfo').append(
+                        	   $('<table>').attr('id', 'ownerInfoTable').addClass('table')
+                        	   .append('<tr><td width="120"><span>Grad:</span></td><td>' + info.owner[1] + '</td></tr>')
+                	   		   .append('<tr><td><span>Telefon:</span></td><td><a href="tel:' + info.owner[2] + '">' + info.owner[2] + '</a> <small><i>(click to call)</i></small></td></tr>')
+                	           .append('<tr><td><span>Prodavac:</span></td><td>' + info.owner[0] + '</td></tr>')
+                	           .append('<tr><td><span>Datum:</span></td><td>' + info.date + '</td></tr>')
+                	           );
+
+                	   $('#delete').html(info._id);
+           		   }
+   		       });
+
+               e.preventDefault();
+    	   });
+
+    	   $('body').on('click', '#delete', function(e){
+    		   $.ajax({
+        		   url: "http://vozila.me/index/remove-json?id=" + $(this).html(),
+       		   }).done(function(responce) {
+           		   
+       		   });
+    	   });
+
+    	   $('body').on('keydown', '#search', function(e){
+    		   $.ajax({
+        		   url: "http://vozila.me/index/searchTag?tag=" + $(this).val(),
+       		   }).done(function(responce) {
+           		   console.log(responce);
+       		   });
+    	   });
+
+    	   $('body').bind('slide.bs.carousel', '.carousel', function (e) {
+   		       if(e.direction == 'left'){
+	               var url = $(e.target).find('.item.active').next().find("img").attr('alt'); 
+	               $(e.target).find('.item.active').next().find("img").attr("src", url);
+   		       }else{
+      		       var url = $(e.target).find('.item.active').prev().find("img").attr('alt'); 
+        		   if(url != undefined){
+ 	               	   $(e.target).find('.item.active').prev().find("img").attr("src", url);
+        		   }else{
+        			   url = $(e.target).find(':last-child').find("img").attr('alt');
+        			   $(e.target).find(':last-child').find("img").attr("src", url);
+        		   }
+   		       }
+           });
+
+    	   if(!processing){ loadPage(container) };
+
+    	   
+    	   function loadPage(container){
+
+    	       processing = true;
+        	   $.ajax({
+        		   url: "http://vozila.me/index/getPage",
+        		   data: {
+            		   'skip' : container.attr('data-skip'),
+            		   'make' : $('#make').val(),
+            		   'model' : $('#model').val(),
+            		   'from' : $('#from').val(),
+				       'to' : $('#to').val(),
+				       'fuelType' : $('#fuelType').val(),
+				       'city' : $('#city').val()
+            		   }
+       		   }).done(function(responce) {
+           		   
+       			    if(Object.keys(responce.cars).length == 0){
+						return false;
+					}
+          			var firstFlag = true;
+           		    var row = $('<div>').addClass('row');
+           		    
+          			$.each(responce.cars, function( key, car ) {
+          				var colDiv = $('<div>').addClass('col-lg-4 col-md-6 col-sm-12 col-xs-12');
+          					
+          				var slide = $('<div>').attr('id', car._id).addClass('carousel slide').attr('data-ride', 'carousel');
+          				var carouselInner = $('<div>')
+						          				.addClass('carousel-inner')
+						          				.attr('role', 'listbox')
+						          				.attr('id', car._id)
+						      					.attr('data-toggle', 'modal')
+						      					.attr('data-target', '#carModal')
+						      					.addClass('openInfo');
+
+          				//photos
+          				$.each(car.photos, function( photo_id, photo ) {
+              				
+          					var item = $('<div>').addClass('item');
+              				var path = 'uploads/' + car.garageId + '/' + car._id + '/' + photo + '.jpg';
+          					if(photo_id == 0){
+          						item.addClass('active');
+          						item.append($('<img>').attr('src', path));
+          					}else{
+          						item.append($('<img>').attr('alt', path));
+          					}
+          					item.append($('<span>').addClass('price').html(car.price + '€'))
+          					
+          					carouselInner.append(item)
+          					;
+          				});
+          				slide.append(carouselInner);
+
+						//car info
+          				var info = $('<span>').addClass('data');
+          				info.append($('<span>').addClass('info').html(
+	                  				$('<a>').attr('href', '/advertisement/' + car._id).html(
+	                          			'<span id="make">' + car.make + '</span> ' + car.model + ' ' + car.engineCapacity + ' <span class="cm">cm<sup>3</sup></span> ' + car.fuelType
+	                          		)
+                          		));
+          				slide.append(info);
+
+          				//controls
+          				var leftControl = $('<a>')
+				          				.addClass('left carousel-control')
+				          				.attr('href', '#' + car._id)
+				          				.attr('role', 'button')
+				          				.attr('data-slide', 'prev')
+				          				.append($('<span>').addClass('glyphicon glyphicon-chevron-left').attr('aria-hidden', 'true'))
+          				slide.append(leftControl);
+          				
+          				var rightControl = $('<a>')
+				          				.addClass('right carousel-control')
+				          				.attr('href', '#' + car._id)
+				          				.attr('role', 'button')
+				          				.attr('data-slide', 'next')
+				          				.append($('<span>').addClass('glyphicon glyphicon-chevron-right').attr('aria-hidden', 'true'))
+          				slide.append(rightControl);
+						
+          				row.append(colDiv.append(slide));
+          				
+              			//set skip
+          				if(firstFlag){ 
+                      	   	container.attr('data-skip',  parseInt(container.attr('data-skip')) + Object.keys(responce.cars).length); 
+                  	   	}
+          				firstFlag = false; 
+           		    });
+          			container.append(row);
+
+          			$(".carousel").swiperight(function() {  
+          				$(this).carousel('prev');  
+          			});  
+          			            	
+          			$(".carousel").swipeleft(function() {  
+          				$(this).carousel('next');  
+          			}); 
+
+          			processing = false;
+       		   });
+        	   
+           }
+
+	$(window).scroll(function() {
+		if (  document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight )
+		{ 
+		    if(!processing){ loadPage(container) };
+		}
+	});
+
+	$('.carousel').carousel({
+		interval: false
+	});
+	
+	$(".carousel").swiperight(function() {  
+		$(this).carousel('prev');  
+	});  
+	            	
+	$(".carousel").swipeleft(function() {  
+		$(this).carousel('next');  
+	}); 
+});
+</script>

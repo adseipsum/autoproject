@@ -14,6 +14,9 @@ if (php_sapi_name() === 'cli-server') {
     unset($path);
 }
 
+defined('PUBLIC_PATH')
+|| define('PUBLIC_PATH', realpath(dirname(__FILE__)));
+
 // Setup autoloading
 require 'init_autoloader.php';
 

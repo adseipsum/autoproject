@@ -14,24 +14,24 @@ class Car
     public $_id;
     
     /**
+     * @ODM\Field(type="string")
+     */
+    public $date;
+    
+    /**
+     * @ODM\Field(type="string")
+     */
+    public $popularity;
+    
+    /**
      * @ODM\Field(type="integer")
      */
     public $garageId;
     
     /**
-     * @ODM\Field(type="integer")
-     */
-    public $price;
-    
-    /**
      * @ODM\Field(type="string")
      */
-    public $currency;
-    
-    /**
-     * @ODM\Field(type="string")
-     */
-    public $brand;
+    public $make;
     
     /**
      * @ODM\Field(type="string")
@@ -61,7 +61,7 @@ class Car
     /**
      * @ODM\Field(type="string")
      */
-    public $fuel;
+    public $fuelType;
     
     /**
      * @ODM\Field(type="string")
@@ -81,20 +81,25 @@ class Car
     /**
      * @ODM\Field(type="integer")
      */
+    public $kW;
+    
+    /**
+     * @ODM\Field(type="integer")
+     */
     public $mileage;
     
     /**
-     * @ODM\Field(type="array")
-     */
-    public $owner = array();
-    
-    /**
-     * @ODM\Field(type="array")
+     * @ODM\Field(type="collection")
      */
     public $features = array();
     
     /**
-     * @ODM\Field(type="array")
+     * @ODM\Field(type="collection")
+     */
+    public $owner = array();
+    
+    /**
+     * @ODM\Field(type="collection")
      */
     public $photos = array();
     
@@ -102,5 +107,15 @@ class Car
      * @ODM\Field(type="string")
      */
     public $description;
+    
+    /**
+     * @ODM\Field(type="integer")
+     */
+    public $price;
+    
+    /**
+     * @ODM\Field(type="string")
+     */
+    public $currency;
  
 }

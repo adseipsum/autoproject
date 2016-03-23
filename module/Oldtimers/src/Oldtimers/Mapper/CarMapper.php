@@ -31,6 +31,10 @@ class CarMapper implements CarMapperInterface
 		$this->repository = $repository;
 	}
 	
+	public function findBy($criteria, $sort = null, $limit = null, $skip = null){
+		return $this->repository->findBy($criteria, $sort, $limit, $skip);
+	}
+	
 	public function find($id)
 	{
 	    return $this->repository->find($id);
@@ -51,5 +55,47 @@ class CarMapper implements CarMapperInterface
 	{
 	    $this->documentManager->remove($entity);
 	    $this->documentManager->flush();
+	}
+	
+	public function getRepository(){
+		return $this->repository;
+	}
+	
+	public function getCarList($search, $pageSize, $skip){
+		//$this->documentManager->getSchemaManager('Oldtimers\Entity\Car')->ensureIndexes('Oldtimers\Entity\Car');
+		$qb = $this->documentManager->createQueryBuilder('Oldtimers\Entity\Car');
+		
+		if(!empty($search['make'])){
+			$qb->field('make')->equals($search['make']);
+		}
+		
+		if(!empty($search['model'])){
+			$qb->field('model')->equals($search['model']);
+		}
+		
+		if(!empty($search['from'])){
+			$qb->field('year')->gte((int)$search['from']);
+		}
+		
+		if(!empty($search['to'])){
+			$qb->field('year')->lte((int)$search['to']);
+		}
+		
+		if(!empty($search['fuelType'])){
+			$qb->field('fuelType')->equals($search['fuelType']);
+		}
+		
+		if(!empty($search['city'])){
+			$qb->field('owner.1')->equals($search['city']);
+		}
+		
+		$qb
+			//->sort('date', 'desc')
+			->skip($skip)
+			->limit($pageSize);
+		
+		$query = $qb->getQuery();
+
+		return $query->execute()->toArray();
 	}
 }

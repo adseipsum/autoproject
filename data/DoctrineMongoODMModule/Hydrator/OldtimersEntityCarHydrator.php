@@ -36,11 +36,171 @@ class OldtimersEntityCarHydrator implements HydratorInterface
         }
 
         /** @Field(type="string") */
-        if (isset($data['text'])) {
-            $value = $data['text'];
+        if (isset($data['date'])) {
+            $value = $data['date'];
             $return = (string) $value;
-            $this->class->reflFields['text']->setValue($document, $return);
-            $hydratedData['text'] = $return;
+            $this->class->reflFields['date']->setValue($document, $return);
+            $hydratedData['date'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['popularity'])) {
+            $value = $data['popularity'];
+            $return = (string) $value;
+            $this->class->reflFields['popularity']->setValue($document, $return);
+            $hydratedData['popularity'] = $return;
+        }
+
+        /** @Field(type="integer") */
+        if (isset($data['garageId'])) {
+            $value = $data['garageId'];
+            $return = (int) $value;
+            $this->class->reflFields['garageId']->setValue($document, $return);
+            $hydratedData['garageId'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['make'])) {
+            $value = $data['make'];
+            $return = (string) $value;
+            $this->class->reflFields['make']->setValue($document, $return);
+            $hydratedData['make'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['model'])) {
+            $value = $data['model'];
+            $return = (string) $value;
+            $this->class->reflFields['model']->setValue($document, $return);
+            $hydratedData['model'] = $return;
+        }
+
+        /** @Field(type="integer") */
+        if (isset($data['year'])) {
+            $value = $data['year'];
+            $return = (int) $value;
+            $this->class->reflFields['year']->setValue($document, $return);
+            $hydratedData['year'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['transmission'])) {
+            $value = $data['transmission'];
+            $return = (string) $value;
+            $this->class->reflFields['transmission']->setValue($document, $return);
+            $hydratedData['transmission'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['driverSide'])) {
+            $value = $data['driverSide'];
+            $return = (string) $value;
+            $this->class->reflFields['driverSide']->setValue($document, $return);
+            $hydratedData['driverSide'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['wheelDrive'])) {
+            $value = $data['wheelDrive'];
+            $return = (string) $value;
+            $this->class->reflFields['wheelDrive']->setValue($document, $return);
+            $hydratedData['wheelDrive'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['fuelType'])) {
+            $value = $data['fuelType'];
+            $return = (string) $value;
+            $this->class->reflFields['fuelType']->setValue($document, $return);
+            $hydratedData['fuelType'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['engineType'])) {
+            $value = $data['engineType'];
+            $return = (string) $value;
+            $this->class->reflFields['engineType']->setValue($document, $return);
+            $hydratedData['engineType'] = $return;
+        }
+
+        /** @Field(type="integer") */
+        if (isset($data['engineCapacity'])) {
+            $value = $data['engineCapacity'];
+            $return = (int) $value;
+            $this->class->reflFields['engineCapacity']->setValue($document, $return);
+            $hydratedData['engineCapacity'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['color'])) {
+            $value = $data['color'];
+            $return = (string) $value;
+            $this->class->reflFields['color']->setValue($document, $return);
+            $hydratedData['color'] = $return;
+        }
+
+        /** @Field(type="integer") */
+        if (isset($data['kW'])) {
+            $value = $data['kW'];
+            $return = (int) $value;
+            $this->class->reflFields['kW']->setValue($document, $return);
+            $hydratedData['kW'] = $return;
+        }
+
+        /** @Field(type="integer") */
+        if (isset($data['mileage'])) {
+            $value = $data['mileage'];
+            $return = (int) $value;
+            $this->class->reflFields['mileage']->setValue($document, $return);
+            $hydratedData['mileage'] = $return;
+        }
+
+        /** @Field(type="collection") */
+        if (isset($data['features'])) {
+            $value = $data['features'];
+            $return = $value;
+            $this->class->reflFields['features']->setValue($document, $return);
+            $hydratedData['features'] = $return;
+        }
+
+        /** @Field(type="collection") */
+        if (isset($data['owner'])) {
+            $value = $data['owner'];
+            $return = $value;
+            $this->class->reflFields['owner']->setValue($document, $return);
+            $hydratedData['owner'] = $return;
+        }
+
+        /** @Field(type="collection") */
+        if (isset($data['photos'])) {
+            $value = $data['photos'];
+            $return = $value;
+            $this->class->reflFields['photos']->setValue($document, $return);
+            $hydratedData['photos'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['description'])) {
+            $value = $data['description'];
+            $return = (string) $value;
+            $this->class->reflFields['description']->setValue($document, $return);
+            $hydratedData['description'] = $return;
+        }
+
+        /** @Field(type="integer") */
+        if (isset($data['price'])) {
+            $value = $data['price'];
+            $return = (int) $value;
+            $this->class->reflFields['price']->setValue($document, $return);
+            $hydratedData['price'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['currency'])) {
+            $value = $data['currency'];
+            $return = (string) $value;
+            $this->class->reflFields['currency']->setValue($document, $return);
+            $hydratedData['currency'] = $return;
         }
         return $hydratedData;
     }

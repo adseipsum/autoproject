@@ -19,59 +19,66 @@
 </div>
 <div class="row">
     <div id="advertisementBlock" class="col-lg-8 col-lg-offset-2">
-        <form action="" method="post" role="form" class="form" enctype="multipart/form-data">
+        <form action="" method="post" role="form" class="form" enctype="multipart/form-data" data-toggle="validator">
             <div class="form-group">
-                <label for="brand">Marka:</label>
-                <select id="make" name="make" class="form-control">
+                <label for="brand" class="control-label">Marka:</label>
+                <select id="make" name="make" class="form-control" data-error="Please select mark" required>
                     <option value="" selected disabled>Izaberite Marku</option>
                     <?php foreach ($make as $maker): ?>
                         <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
                     <?php endforeach;?>
                 </select>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="model">Model:</label>
-                <select id="model" name="model" class="form-control">
-                    <option value="" selected disabled>Izaberite Model:</option>
+                <label for="model" class="control-label">Model:</label>
+                <select id="model" name="model" class="form-control" data-error="Please select model" required>
+                    <option value="" selected disabled>Prvo izaberite marku</option>
                 </select>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="modification">Modification:</label>
+                <label for="modification" class="control-label">Modification:</label>
                 <input type="text" name="modification" class="form-control"/>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="year">Godište:</label>
-                <input type="text" name="year" class="form-control"/>
+                <label for="year" class="control-label">Godište:</label>
+                <input type="number" name="year" id="year" class="form-control" data-minlength="4" data-error="Please add car manufacture year" required/>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="transmission">Mjenjač:</label>
-                <select id="transmission" name="transmission" class="form-control">
+                <select id="transmission" name="transmission" class="form-control" data-error="Please select transmission type" required>
                     <option value="">Izaberite Mjenjač</option>
                     <option value="manual">Manuelni</option>
                     <option value="automatic">Automatski</option>
                     <option value="tiptronik">Tiptronik</option>
                 </select>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="driverSide">Strana volana:</label>
-                <select id="driverSide" name="driverSide" class="form-control">
+                <label for="driverSide" class="control-label">Strana volana:</label>
+                <select id="driverSide" name="driverSide" class="form-control" data-error="Please select driver side" required>
                     <option value="">Izaberite Stranu Volana</option>
                     <option value="left">Lijeva</option>
                     <option value="right">Desna</option>
                 </select>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="wheelDrive">Pogon:</label>
-                <select id="wheelDrive" name="wheelDrive" class="form-control">
+                <label for="wheelDrive" class="control-label">Pogon:</label>
+                <select id="wheelDrive" name="wheelDrive" class="form-control" data-error="Please select wheel drive" required>
                     <option value="">Izaberite Pogon</option>
                     <option value="front">Prednja vuča</option>
                     <option value="rear">Zadnja vuča</option>
                     <option value="all">4x4</option>
                 </select>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="fuelType">Gorivo:</label>
-                <select id="fuelType" name="fuelType" class="form-control">
+                <label for="fuelType" class="control-label">Gorivo:</label>
+                <select id="fuelType" name="fuelType" class="form-control" data-error="Please select fuel type" required>
                     <option value="">Izaberite Vrstu Goriva</option>
                     <option value="diesel">Dizel</option>
                     <option value="petrol">Benzin</option>
@@ -80,38 +87,45 @@
                     <option value="hybrid">Hibridni pogon</option>
                     <option value="electric">Električni pogon</option>
                 </select>
+                <div class="help-block with-errors"></div>
+            </div>
+<!--             <div class="form-group"> -->
+<!--                 <label for="engineType">Motor:</label> -->
+<!--                 <input type="text" name="engineType" class="form-control"/> -->
+<!--             </div> -->
+            <div class="form-group">
+                <label for="engineCapacity" class="control-label">Kubikaža: (cm3)</label>
+                <input type="text" name="engineCapacity" class="form-control" data-minlength="3" data-error="Please add engine capacity in cm3" required/>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="engineType">Motor:</label>
-                <input type="text" name="engineType" class="form-control"/>
-            </div>
-            <div class="form-group">
-                <label for="engineCapacity">Kubikaža: (cm3)</label>
-                <input type="text" name="engineCapacity" class="form-control"/>
-            </div>
-            <div class="form-group">
-                <label for="engineCapacity">Snaga: (kW)</label>
+                <label for="engineCapacity" class="control-label">Snaga: (kW)</label>
                 <input type="text" name="enginePower" class="form-control"/>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="color">Boja:</label>
+                <label for="color" class="control-label">Boja:</label>
                 <input type="text" name="color" class="form-control"/>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="mileage">Kilometraža: (km)</label>
-                <input type="text" name="mileage" class="form-control"/>
+                <label for="mileage" class="control-label">Kilometraža: (km)</label>
+                <input type="text" name="mileage" class="form-control" data-error="Please add mileage" required/>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="description">Opis:</label>
+                <label for="description" class="control-label">Opis:</label>
                 <textarea name="description" class="form-control"></textarea>
+                <div class="help-block with-errors"></div>
             </div>
             
             <div class="form-group">
-                <label for="mileage">Cijena:</label>
+                <label for="price" class="control-label">Cijena:</label>
                 <div class="input-group">
                   <span class="input-group-addon">€</span>
-                  <input type="text" name="price" class="form-control">
+                  <input type="text" name="price" id="price" class="form-control" data-error="Please put your price" required/>
                 </div>
+                <div class="help-block with-errors"></div>
             </div>
             <h3 class="text-center">Komponente</h3>
             <ul class="list-group">
@@ -143,23 +157,111 @@
             </ul>
             
             <div class="form-group">
-                <label for="phoneNumber">Telefon:</label>
-                <input type="text" name="owner[phoneNumber]" class="form-control"/>
+                <label for="phoneNumber" class="control-label">Telefon:</label>
+                <input type="text" name="owner[phoneNumber]" class="form-control" data-error="Please add telefon number" required/>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" name="owner[email]" class="form-control"/>
+                <label for="email" class="control-label">Email:</label>
+                <div class="input-group">
+	                <span class="input-group-addon">@</span>
+	                <input type="email" name="owner[email]" class="form-control" data-error="Email address is invalid" />
+	            </div>
+	            <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="link">Grad:</label>
-                <input type="text" name="owner[city]" class="form-control"/>
+                <label for="city" class="control-label">Grad:</label>
+                <select id="city" name="owner[city]" class="form-control" data-error="Please choose city where car located" required>
+                    <option value="" disabled>Izaberite Grad</option>
+                    <option value="Podgorica">Podgorica</option>
+                    <option value="Nikšić">Nikšić</option>
+                    <option value="Pljevlja">Pljevlja</option>
+                    <option value="Bijelo Polje">Bijelo Polje</option>
+                    <option value="Cetinje">Cetinje</option>
+                    <option value="Bar">Bar</option>
+                    <option value="Herceg Novi">Herceg Novi</option>
+                    <option value="Berane">Berane</option>
+                    <option value="Budva">Budva</option>
+                    <option value="Ulcinj">Ulcinj</option>
+                    <option value="Rožaje">Rožaje</option>
+                    <option value="Tivat">Tivat</option>
+                    <option value="Dobrota">Dobrota</option>
+                    <option value="Kotor">Kotor</option>
+                    <option value="Danilovgrad">Danilovgrad</option>
+                    <option value="Mojkovac">Mojkovac</option>
+                    <option value="Škaljari">Škaljari</option>
+                    <option value="Tuzi">Tuzi</option>
+                    <option value="Igalo">Igalo</option>
+                    <option value="Bijela">Bijela</option>
+                    <option value="Plav">Plav</option>
+                    <option value="Burtaiši">Burtaiši</option>
+                    <option value="Kolašin">Kolašin</option>
+                    <option value="Ibarac">Ibarac</option>
+                    <option value="Golubovci">Golubovci</option>
+                    <option value="Resnik">Resnik</option>
+                    <option value="Nedakusi">Nedakusi</option>
+                    <option value="Šušanj">Šušanj</option>
+                    <option value="Risan">Risan</option>
+                    <option value="Ozrinići">Ozrinići</option>
+                    <option value="Žabljak">Žabljak</option>
+                    <option value="Pokrajci">Pokrajci</option>
+                    <option value="Stari Bar">Stari Bar</option>
+                    <option value="Donje Luge">Donje Luge</option>
+                    <option value="Mojanovići">Mojanovići</option>
+                    <option value="Sutomore">Sutomore</option>
+                    <option value="Zelenika">Zelenika</option>
+                    <option value="Pešca">Pešca</option>
+                    <option value="Gusinje">Gusinje</option>
+                    <option value="Budimlja">Budimlja</option>
+                    <option value="Spuž">Spuž</option>
+                    <option value="Polje">Polje</option>
+                    <option value="Rastovica">Rastovica</option>
+                    <option value="Polja">Polja</option>
+                    <option value="Mrčevac">Mrčevac</option>
+                    <option value="Plužine">Plužine</option>
+                    <option value="Petrovac">Petrovac</option>
+                    <option value="Beran Selo">Beran Selo</option>
+                    <option value="Bjeliši">Bjeliši</option>
+                    <option value="Čeluga">Čeluga</option>
+                    <option value="Mataguži">Mataguži</option>
+                    <option value="Dolac">Dolac</option>
+                    <option value="Đenovići">Đenovići</option>
+                    <option value="Lješnica">Lješnica</option>
+                    <option value="Prčanj">Prčanj</option>
+                    <option value="Mahala">Mahala</option>
+                    <option value="Goričani">Goričani</option>
+                    <option value="Podi">Podi</option>
+                    <option value="Meljine">Meljine</option>
+                    <option value="Tomba">Tomba</option>
+                    <option value="Andrijevica">Andrijevica</option>
+                    <option value="Kumbor">Kumbor</option>
+                    <option value="Buče">Buče</option>
+                    <option value="Smajlagića Polje">Smajlagića Polje</option>
+                    <option value="Kodre">Kodre</option>
+                    <option value="Bečići">Bečići</option>
+                    <option value="Donja Lastva">Donja Lastva</option>
+                    <option value="Židovići">Židovići</option>
+                    <option value="Šavnik">Šavnik</option>
+                    <option value="Sveti Stefan">Sveti Stefan</option>
+                    <option value="Slatina">Slatina</option>
+                    <option value="Gradac">Gradac</option>
+                    <option value="Perast">Perast</option>
+                    <option value="Virpazar">Virpazar</option>
+                    <option value="Goransko">Goransko</option>
+                    <option value="Bare">Bare</option>
+                    <option value="Njegovuđa">Njegovuđa</option>
+                    <option value="Rijeka Crnojevića">Rijeka Crnojevića</option>
+                </select>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <label for="name">Ime:</label>
+                <label for="name" class="control-label">Ime:</label>
                 <input type="text" name="owner[name]" class="form-control"/>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-                <input id="photos" name="photos[]" type="file" class="file" data-preview-file-type="image" multiple="true">
+                <input id="photos" name="photos[]" type="file" class="file" data-preview-file-type="image" multiple="true" placeholder="Dodaj sliki" data-error="Please add at least two photos" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <input type="submit" class="form-control" value="Post"/>
@@ -167,6 +269,10 @@
         </form>
     </div>
 </div>
+
+<?php 
+	echo $this->headScript()->prependFile($this->basePath('js/validator.js'));
+?>
 
 <script>
 $(document).ready(function(){
@@ -180,7 +286,7 @@ $(document).ready(function(){
 
 	$('#make').change(function(){
 		$.ajax({
-		  url: "getModelByMakeIdJson",
+		  url: "index/getModelByMakeIdJson",
 		  data: {'make' : $(this).val()}
 		}).done(function(responce) {
 			if(responce.success){

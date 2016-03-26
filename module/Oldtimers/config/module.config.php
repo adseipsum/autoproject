@@ -65,7 +65,21 @@ return array(
                             		),
                         	),
             				'may_terminate' => true,
-                    )
+                    ),
+            		'import' => array(
+            				'type' => 'Zend\Mvc\Router\Http\Segment',
+            				'options' => array(
+            						'route' => '/import/[:from]/[:to]',
+            						'constraints' => array(
+            								'from' => '[0-9]+',
+            								'to' => '[0-9]+',
+            						),
+            						'defaults' => array(
+            								'controller' => 'Oldtimers\Controller\Index',
+            								'action'     => 'import',
+            						),
+            				),
+            		)
             )
     ),
     

@@ -29,8 +29,10 @@ body{
 }
 
 .carousel{
+    max-width: 640px;
     cursor: pointer;
     padding: 5px;
+    margin: auto;
 }
 
 .carousel img{
@@ -39,18 +41,82 @@ body{
     max-height:100%;
     width: auto;
     height: 450px;
-    max-height: 700px;
+    min-height: 100% important;
     overflow:hidden;
 }
 
-
-.item{
-    /* float:left; width: 368px; height:235px; overflow:hidden; margin:10px; */
+.carousel .price{
+    position: absolute; 
+    top: 80%; 
+    left: 57%; 
+    width: 44%; 
+    height: 19%; 
+    color: white;
+    font-family: LilienthalGrotesk;
+    font-size: 1.6em;
+    text-align: center;
+    padding-top: 4%;
 }
 
-.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right{
-    font-size: 20px;
-    opacity: 0.4;
+.modal .item > .price{
+    top: 80% !important; 
+    left: 58% !important; 
+    width: 42% !important; 
+    height: 20% !important;
+    padding-top: 6%;
+}
+
+@media only screen and (min-width:960px){
+        /* styles for browsers larger than 960px; */
+    }
+    @media only screen and (min-width:1440px){
+        /* styles for browsers larger than 1440px; */
+    }
+    @media only screen and (min-width:2000px){
+        /* for sumo sized (mac) screens */
+    }
+    @media only screen and (max-device-width:480px){
+       /* styles for mobile browsers smaller than 480px; (iPhone) */
+    }
+    @media only screen and (device-width:768px){
+       /* default iPad screens */
+    }
+    /* different techniques for iPad screening */
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+      /* For portrait layouts only */
+    }
+
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+      /* For landscape layouts only */
+    }
+}
+
+.carousel-control .chevron-left, .carousel-control .chevron-right{
+    height: 100%;
+    width: 50px;
+    opacity: 0.6;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+
+.carousel-control .chevron-left:hover{
+    opacity: 0.9;
+} 
+
+.carousel-control .chevron-right:hover{
+    opacity: 0.9;
+}
+
+.carousel-control .chevron-left{
+    float:right;
+    background-image: url(/img/arrow-left.png);
+    background-position: 20% 47%;
+}
+
+.carousel-control .chevron-right{
+    float:left;
+    background-image: url(/img/arrow-right.png);
+    background-position: 80% 47%;
 }
 
 .carousel .carousel-caption{
@@ -116,16 +182,6 @@ body{
 
 .carousel .data .info:hover{
     text-decoration: underline;
-}
-
-.carousel .price{
-    position: absolute; 
-    top: 86%; 
-    left: 68%; 
-    width: 100%; 
-    color: white;
-    font-family: LilienthalGrotesk;
-    font-size: 1.5em;
 }
 
 #carModal .price{

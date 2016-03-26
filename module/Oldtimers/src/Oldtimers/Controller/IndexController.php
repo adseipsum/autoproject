@@ -187,7 +187,9 @@ class IndexController extends AbstractActionController
 		$final_height                 = 0;
 		list($width_old, $height_old) = $info;
 		$cropHeight = $cropWidth = 0;
-	
+		
+		if ( $width_old <= $height_old ) return false;
+		
 		# Calculating proportionality
 		if ($proportional) {
 			if      ($width  == 0)  $factor = $height/$height_old;
@@ -311,8 +313,11 @@ class IndexController extends AbstractActionController
     public function importAction(){
         include_once PUBLIC_PATH . '/simple_html_dom.php';
         
-        for($advertisementId = 560000; $advertisementId <= 571000; $advertisementId++){
-            sleep(5);
+        $from = $this->getEvent()->getRouteMatch()->getParam('from');
+        $to = $this->getEvent()->getRouteMatch()->getParam('to');
+
+        for($advertisementId = $from; $advertisementId <= $to; $advertisementId++){
+            
             $html = file_get_html('http://www.autodiler.me/auto_oglasi_auto/' . $advertisementId);
         
             //if sold
@@ -395,8 +400,10 @@ class IndexController extends AbstractActionController
             $array['owner']['phoneNumber'] = $element->children(7)->innertext;
             $array['owner']['email'] = $element->children(10)->children(0)->innertext;
         
-            //         var_dump($array);
-            //         die;
+        	if(empty($array['owner']['email']) && empty($array['owner']['phoneNumber'])){
+                $html->clear();
+                continue;
+            }
         
             if($array){
                 $car = $this->getServiceLocator()->get('OldtimersCar');
@@ -430,21 +437,28 @@ class IndexController extends AbstractActionController
                         mkdir($uploadDir, 0777, 1);
                     }
         
-                    for($i = 0; $i <= 10; $i++){
+                    for($i = 0; $i <= 12; $i++){
                         $filePath = $uploadDir . "/$i.jpg";
                         $file = @file_get_contents("http://www.autodiler.me/images/oglasi/$advertisementId//$i.jpg");
         
                         if($file){
                             file_put_contents($filePath, $file);
-                            $this->resizeImage($filePath);
-                            $car->photos[] = $i;
+                            if($this->resizeImage($filePath)){
+                            	$car->photos[] = $i;
+                            }else{
+                            	unlink($filePath);
+                            }
                         }
-                        $this->getCarMapper()->save($car);
+                        if($car->photos >= 2){
+                        	$this->getCarMapper()->save($car);
+                        }else{
+                        	$this->getCarMapper()->remove($car);
+                        }
                     }
                 }
             }
+            sleep(3);
             $html->clear();
-            //clean_all($GLOBALS);
             unset($html);
         }
         return true;

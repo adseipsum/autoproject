@@ -400,7 +400,7 @@ $(document).ready(function(){
 				          				.attr('href', '#' + car._id)
 				          				.attr('role', 'button')
 				          				.attr('data-slide', 'prev')
-				          				.append($('<span>').addClass('chevron-left').attr('aria-hidden', 'true'))
+				          				.append($('<span>').addClass('glyphicon chevron-left').attr('aria-hidden', 'true'))
           				slide.append(leftControl);
           				
           				var rightControl = $('<a>')
@@ -408,7 +408,7 @@ $(document).ready(function(){
 				          				.attr('href', '#' + car._id)
 				          				.attr('role', 'button')
 				          				.attr('data-slide', 'next')
-				          				.append($('<span>').addClass('chevron-right').attr('aria-hidden', 'true'))
+				          				.append($('<span>').addClass('glyphicon chevron-right').attr('aria-hidden', 'true'))
           				slide.append(rightControl);
 						
           				row.append(colDiv.append(slide));

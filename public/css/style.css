@@ -91,14 +91,6 @@ body{
     }
 }
 
-.carousel-control .chevron-left, .carousel-control .chevron-right{
-    height: 100%;
-    width: 50px;
-    opacity: 0.6;
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-}
-
 .carousel-control .chevron-left:hover{
     opacity: 0.9;
 } 
@@ -108,15 +100,23 @@ body{
 }
 
 .carousel-control .chevron-left{
-    float:right;
     background-image: url(/img/arrow-left.png);
-    background-position: 20% 47%;
+    background-position: 0% 47%;
+    margin-right: 40%;
+    height: 100%;
+    opacity: 0.6;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
 }
 
 .carousel-control .chevron-right{
-    float:left;
     background-image: url(/img/arrow-right.png);
-    background-position: 80% 47%;
+    background-position: 0% 47%;
+    margin-left: 40%;
+    height: 100%;
+    opacity: 0.6;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
 }
 
 .carousel .carousel-caption{

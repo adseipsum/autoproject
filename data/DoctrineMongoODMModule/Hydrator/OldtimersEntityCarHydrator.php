@@ -36,10 +36,18 @@ class OldtimersEntityCarHydrator implements HydratorInterface
         }
 
         /** @Field(type="string") */
+        if (isset($data['uniqueId'])) {
+            $value = $data['uniqueId'];
+            $return = (string) $value;
+            $this->class->reflFields['uniqueId']->setValue($document, $return);
+            $hydratedData['uniqueId'] = $return;
+        }
+
+        /** @Field(type="date") */
         if (isset($data['date'])) {
             $value = $data['date'];
-            $return = (string) $value;
-            $this->class->reflFields['date']->setValue($document, $return);
+            if ($value === null) { $return = null; } else { $return = \Doctrine\ODM\MongoDB\Types\DateType::getDateTime($value); }
+            $this->class->reflFields['date']->setValue($document, clone $return);
             $hydratedData['date'] = $return;
         }
 
@@ -201,6 +209,14 @@ class OldtimersEntityCarHydrator implements HydratorInterface
             $return = (string) $value;
             $this->class->reflFields['currency']->setValue($document, $return);
             $hydratedData['currency'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['autodealerId'])) {
+            $value = $data['autodealerId'];
+            $return = (string) $value;
+            $this->class->reflFields['autodealerId']->setValue($document, $return);
+            $hydratedData['autodealerId'] = $return;
         }
         return $hydratedData;
     }

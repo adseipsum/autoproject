@@ -66,6 +66,28 @@ body{
     padding-top: 6%;
 }
 
+@media only screen and (min-width:768px){
+        /* styles for browsers larger than 960px; */
+        .navbar-form select.form-control {
+            width: 120px;
+        }
+}
+
+@media only screen and (min-width:992px){
+        /* styles for browsers larger than 960px; */
+        .navbar-form select.form-control {
+            width: 150px;
+        }
+}
+
+@media only screen and (min-width:1200px){
+        /* styles for browsers larger than 960px; */
+        .navbar-form select.form-control {
+            width: 110px;
+        }
+}
+
+
 @media only screen and (min-width:960px){
         /* styles for browsers larger than 960px; */
     }
@@ -230,4 +252,19 @@ body{
 
 .modal-title{
     padding-left: 10px;
+}
+
+#counter{
+    font-size: 1em;
+    color: #f63e3e;
+    padding: 3px 3px;
+    line-height: 35px;
+}
+
+#navbar{
+    text-align: center;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+    background-color: white;
 }

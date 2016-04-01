@@ -1,7 +1,8 @@
 <div class="row">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-        <a href="/new" class="btn btn-default navbar-btn pull-right">Dodaj oglas</a>
+        <div id="counter" class="btn disabled navbar-btn pull-left"></div>
+        <a href="/new" class="btn btn-default navbar-btn pull-right">Novi oglas</a>
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -9,131 +10,143 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"></a>
+<!--             <a class="navbar-brand" href="/"></a> -->
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-left" role="search">
+            <form id="searchForm" class="navbar-form" role="search">
             	<div class="form-group">
-	            	<select id="make" name="make" class="form-control">
-	                    <option value="" selected>Marka</option>
-	                    <?php foreach ($make as $maker): ?>
-	                        <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
-	                    <?php endforeach;?>
-                	</select>
+            		<div class="form-group">
+		            	<select id="make" name="make" class="form-control">
+		                    <option value="" selected>Marka</option>
+		                    <?php foreach ($make as $maker): ?>
+		                        <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
+		                    <?php endforeach;?>
+	                	</select>
+                	</div>
+                	<div class="form-group">
+		                <select id="model" name="model" class="form-control">
+		                    <option value="" selected disabled>Model</option>
+		                </select>
+	                </div>
+	                <div class="form-group">
+		                <select id="from" name="from" class="form-control">
+		                	<?php for ($i = 1968; $i <= 2016; $i++):?>
+		                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+		                    <?php endfor;?>
+		                </select>
+	                </div>
+	                <div class="form-group">
+		                <select id="to" name="to" class="form-control">
+		                	<?php for ($i = 2016; $i >= 1968; $i--):?>
+		                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+		                    <?php endfor;?>
+		                </select>
+	                </div>
             	</div>
             	<div class="form-group">
-	                <select id="model" name="model" class="form-control">
-	                    <option value="" selected disabled>Model</option>
-	                </select>
-            	</div>
-            	<div class="form-group">
-	                <select id="from" name="from" class="form-control">
-	                	<?php for ($i = 1968; $i <= 2016; $i++):?>
-	                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-	                    <?php endfor;?>
-	                </select>
-            	</div>
-            	<div class="form-group">
-	                <select id="to" name="to" class="form-control">
-	                	<?php for ($i = 2016; $i >= 1968; $i--):?>
-	                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-	                    <?php endfor;?>
-	                </select>
-            	</div>
-            	<div class="form-group">
-	                <select id="fuelType" name="fuelType" class="form-control">
-	                    <option value="">Gorivo</option>
-	                    <option value="Dizel">Dizel</option>
-	                    <option value="Benzin">Benzin</option>
-	                    <option value="Metan">Metan</option>
-	                    <option value="Benzin + plin">Benzin + plin</option>
-	                    <option value="Hibridni pogon">Hibridni pogon</option>
-	                    <option value="Električni pogon">Električni pogon</option>
-                	</select>
-            	</div>
-            	<div class="form-group">
-	                <select id="city" name="city" class="form-control">
-	                    <option value="">Bilo Koji Grad</option>
-	                    <option value="" disabled>Izaberite Grad</option>
-	                    <option value="Podgorica">Podgorica</option>
-	                    <option value="Nikšić">Nikšić</option>
-	                    <option value="Pljevlja">Pljevlja</option>
-	                    <option value="Bijelo Polje">Bijelo Polje</option>
-	                    <option value="Cetinje">Cetinje</option>
-	                    <option value="Bar">Bar</option>
-	                    <option value="Herceg Novi">Herceg Novi</option>
-	                    <option value="Berane">Berane</option>
-	                    <option value="Budva">Budva</option>
-	                    <option value="Ulcinj">Ulcinj</option>
-	                    <option value="Rožaje">Rožaje</option>
-	                    <option value="Tivat">Tivat</option>
-	                    <option value="Dobrota">Dobrota</option>
-	                    <option value="Kotor">Kotor</option>
-	                    <option value="Danilovgrad">Danilovgrad</option>
-	                    <option value="Mojkovac">Mojkovac</option>
-	                    <option value="Škaljari">Škaljari</option>
-	                    <option value="Tuzi">Tuzi</option>
-	                    <option value="Igalo">Igalo</option>
-	                    <option value="Bijela">Bijela</option>
-	                    <option value="Plav">Plav</option>
-	                    <option value="Burtaiši">Burtaiši</option>
-	                    <option value="Kolašin">Kolašin</option>
-	                    <option value="Ibarac">Ibarac</option>
-	                    <option value="Golubovci">Golubovci</option>
-	                    <option value="Resnik">Resnik</option>
-	                    <option value="Nedakusi">Nedakusi</option>
-	                    <option value="Šušanj">Šušanj</option>
-	                    <option value="Risan">Risan</option>
-	                    <option value="Ozrinići">Ozrinići</option>
-	                    <option value="Žabljak">Žabljak</option>
-	                    <option value="Pokrajci">Pokrajci</option>
-	                    <option value="Stari Bar">Stari Bar</option>
-	                    <option value="Donje Luge">Donje Luge</option>
-	                    <option value="Mojanovići">Mojanovići</option>
-	                    <option value="Sutomore">Sutomore</option>
-	                    <option value="Zelenika">Zelenika</option>
-	                    <option value="Pešca">Pešca</option>
-	                    <option value="Gusinje">Gusinje</option>
-	                    <option value="Budimlja">Budimlja</option>
-	                    <option value="Spuž">Spuž</option>
-	                    <option value="Polje">Polje</option>
-	                    <option value="Rastovica">Rastovica</option>
-	                    <option value="Polja">Polja</option>
-	                    <option value="Mrčevac">Mrčevac</option>
-	                    <option value="Plužine">Plužine</option>
-	                    <option value="Petrovac">Petrovac</option>
-	                    <option value="Beran Selo">Beran Selo</option>
-	                    <option value="Bjeliši">Bjeliši</option>
-	                    <option value="Čeluga">Čeluga</option>
-	                    <option value="Mataguži">Mataguži</option>
-	                    <option value="Dolac">Dolac</option>
-	                    <option value="Đenovići">Đenovići</option>
-	                    <option value="Lješnica">Lješnica</option>
-	                    <option value="Prčanj">Prčanj</option>
-	                    <option value="Mahala">Mahala</option>
-	                    <option value="Goričani">Goričani</option>
-	                    <option value="Podi">Podi</option>
-	                    <option value="Meljine">Meljine</option>
-	                    <option value="Tomba">Tomba</option>
-	                    <option value="Andrijevica">Andrijevica</option>
-	                    <option value="Kumbor">Kumbor</option>
-	                    <option value="Buče">Buče</option>
-	                    <option value="Smajlagića Polje">Smajlagića Polje</option>
-	                    <option value="Kodre">Kodre</option>
-	                    <option value="Bečići">Bečići</option>
-	                    <option value="Donja Lastva">Donja Lastva</option>
-	                    <option value="Židovići">Židovići</option>
-	                    <option value="Šavnik">Šavnik</option>
-	                    <option value="Sveti Stefan">Sveti Stefan</option>
-	                    <option value="Slatina">Slatina</option>
-	                    <option value="Gradac">Gradac</option>
-	                    <option value="Perast">Perast</option>
-	                    <option value="Virpazar">Virpazar</option>
-	                    <option value="Goransko">Goransko</option>
-	                    <option value="Bare">Bare</option>
-	                    <option value="Njegovuđa">Njegovuđa</option>
-	                    <option value="Rijeka Crnojevića">Rijeka Crnojevića</option>
-                	</select>
+            		<div class="form-group">
+		                <select id="priceFrom" name="priceFrom" class="form-control">
+		                </select>
+	                </div>
+	                <div class="form-group">
+		                <select id="priceTo" name="priceTo" class="form-control">
+		                </select>
+	                </div>
+	                <div class="form-group">
+		                <select id="fuelType" name="fuelType" class="form-control">
+		                    <option value="">Gorivo</option>
+		                    <option value="Dizel">Dizel</option>
+		                    <option value="Benzin">Benzin</option>
+		                    <option value="Metan">Metan</option>
+		                    <option value="Benzin + plin">Benzin + plin</option>
+		                    <option value="Hibridni pogon">Hibridni pogon</option>
+		                    <option value="Električni pogon">Električni pogon</option>
+	                	</select>
+                	</div>
+                	<div class="form-group">
+		                <select id="city" name="city" class="form-control">
+		                    <option value="">Grad</option>
+		                    <option value="" disabled>Izaberite Grad</option>
+		                    <option value="Podgorica">Podgorica</option>
+		                    <option value="Nikšić">Nikšić</option>
+		                    <option value="Pljevlja">Pljevlja</option>
+		                    <option value="Bijelo Polje">Bijelo Polje</option>
+		                    <option value="Cetinje">Cetinje</option>
+		                    <option value="Bar">Bar</option>
+		                    <option value="Herceg Novi">Herceg Novi</option>
+		                    <option value="Berane">Berane</option>
+		                    <option value="Budva">Budva</option>
+		                    <option value="Ulcinj">Ulcinj</option>
+		                    <option value="Rožaje">Rožaje</option>
+		                    <option value="Tivat">Tivat</option>
+		                    <option value="Dobrota">Dobrota</option>
+		                    <option value="Kotor">Kotor</option>
+		                    <option value="Danilovgrad">Danilovgrad</option>
+		                    <option value="Mojkovac">Mojkovac</option>
+		                    <option value="Škaljari">Škaljari</option>
+		                    <option value="Tuzi">Tuzi</option>
+		                    <option value="Igalo">Igalo</option>
+		                    <option value="Bijela">Bijela</option>
+		                    <option value="Plav">Plav</option>
+		                    <option value="Burtaiši">Burtaiši</option>
+		                    <option value="Kolašin">Kolašin</option>
+		                    <option value="Ibarac">Ibarac</option>
+		                    <option value="Golubovci">Golubovci</option>
+		                    <option value="Resnik">Resnik</option>
+		                    <option value="Nedakusi">Nedakusi</option>
+		                    <option value="Šušanj">Šušanj</option>
+		                    <option value="Risan">Risan</option>
+		                    <option value="Ozrinići">Ozrinići</option>
+		                    <option value="Žabljak">Žabljak</option>
+		                    <option value="Pokrajci">Pokrajci</option>
+		                    <option value="Stari Bar">Stari Bar</option>
+		                    <option value="Donje Luge">Donje Luge</option>
+		                    <option value="Mojanovići">Mojanovići</option>
+		                    <option value="Sutomore">Sutomore</option>
+		                    <option value="Zelenika">Zelenika</option>
+		                    <option value="Pešca">Pešca</option>
+		                    <option value="Gusinje">Gusinje</option>
+		                    <option value="Budimlja">Budimlja</option>
+		                    <option value="Spuž">Spuž</option>
+		                    <option value="Polje">Polje</option>
+		                    <option value="Rastovica">Rastovica</option>
+		                    <option value="Polja">Polja</option>
+		                    <option value="Mrčevac">Mrčevac</option>
+		                    <option value="Plužine">Plužine</option>
+		                    <option value="Petrovac">Petrovac</option>
+		                    <option value="Beran Selo">Beran Selo</option>
+		                    <option value="Bjeliši">Bjeliši</option>
+		                    <option value="Čeluga">Čeluga</option>
+		                    <option value="Mataguži">Mataguži</option>
+		                    <option value="Dolac">Dolac</option>
+		                    <option value="Đenovići">Đenovići</option>
+		                    <option value="Lješnica">Lješnica</option>
+		                    <option value="Prčanj">Prčanj</option>
+		                    <option value="Mahala">Mahala</option>
+		                    <option value="Goričani">Goričani</option>
+		                    <option value="Podi">Podi</option>
+		                    <option value="Meljine">Meljine</option>
+		                    <option value="Tomba">Tomba</option>
+		                    <option value="Andrijevica">Andrijevica</option>
+		                    <option value="Kumbor">Kumbor</option>
+		                    <option value="Buče">Buče</option>
+		                    <option value="Smajlagića Polje">Smajlagića Polje</option>
+		                    <option value="Kodre">Kodre</option>
+		                    <option value="Bečići">Bečići</option>
+		                    <option value="Donja Lastva">Donja Lastva</option>
+		                    <option value="Židovići">Židovići</option>
+		                    <option value="Šavnik">Šavnik</option>
+		                    <option value="Sveti Stefan">Sveti Stefan</option>
+		                    <option value="Slatina">Slatina</option>
+		                    <option value="Gradac">Gradac</option>
+		                    <option value="Perast">Perast</option>
+		                    <option value="Virpazar">Virpazar</option>
+		                    <option value="Goransko">Goransko</option>
+		                    <option value="Bare">Bare</option>
+		                    <option value="Njegovuđa">Njegovuđa</option>
+		                    <option value="Rijeka Crnojevića">Rijeka Crnojevića</option>
+	                	</select>
+                	</div>
             	</div>
             </form>
           </div><!--/.nav-collapse -->
@@ -220,7 +233,7 @@ $(document).ready(function(){
 
 	enrichModelSelect();
 
-	$('#from, #to, #fuelType, #city').change(function(){
+	$('body').on('change', '#model, #from, #to, #priceFrom, #priceTo, #fuelType, #city', function(){
 	    container.attr('data-skip', 0).empty();
 	    if(!processing){ loadPage(container) };
 	});
@@ -283,13 +296,17 @@ $(document).ready(function(){
                 	  });
 
                 	  $('#description').append($('<table>').attr('id', 'description').addClass('table').append('<tr><td colspan="2">' + info.description + '</td></tr>'));
+
+                	  var t = info.date.date.split(/[- :]/);
+                  	  var date = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
                 	  
+                	  console.log(info.date);
                 	  $('#ownerInfo').append(
                         	   $('<table>').attr('id', 'ownerInfoTable').addClass('table')
                         	   .append('<tr><td width="120"><span>Grad:</span></td><td>' + info.owner[1] + '</td></tr>')
                 	   		   .append('<tr><td><span>Telefon:</span></td><td><a href="tel:' + info.owner[2] + '">' + info.owner[2] + '</a> <small><i>(click to call)</i></small></td></tr>')
                 	           .append('<tr><td><span>Prodavac:</span></td><td>' + info.owner[0] + '</td></tr>')
-                	           .append('<tr><td><span>Datum:</span></td><td>' + info.date + '</td></tr>')
+                	           .append('<tr><td><span>Datum:</span></td><td>' + date.toLocaleDateString() + '</td></tr>')
                 	           );
 
                 	   $('#delete').html(info._id);
@@ -344,6 +361,8 @@ $(document).ready(function(){
             		   'model' : $('#model').val(),
             		   'from' : $('#from').val(),
 				       'to' : $('#to').val(),
+				       'priceFrom' : $('#priceFrom').val(),
+				       'priceTo' : $('#priceTo').val(),
 				       'fuelType' : $('#fuelType').val(),
 				       'city' : $('#city').val()
             		   }
@@ -374,9 +393,9 @@ $(document).ready(function(){
               				var path = 'uploads/' + car.garageId + '/' + car._id + '/' + photo + '.jpg';
           					if(photo_id == 0){
           						item.addClass('active');
-          						item.append($('<img>').attr('src', path));
+          						item.append($('<img>').attr('src', path).attr('draggable', false));
           					}else{
-          						item.append($('<img>').attr('alt', path));
+          						item.append($('<img>').attr('alt', path).attr('draggable', false));
           					}
           					item.append($('<span>').addClass('price').html(car.price + '€'))
           					
@@ -421,6 +440,8 @@ $(document).ready(function(){
            		    });
           			container.append(row);
 
+          			$('#counter').html($('<b>').html(responce.count + ' auto'));
+
           			$(".carousel").swiperight(function() {  
           				$(this).carousel('prev');  
           			});  
@@ -429,8 +450,9 @@ $(document).ready(function(){
           				$(this).carousel('next');  
           			}); 
 
-          			processing = false;
-       		   });
+       		   }).always(function() {
+          		    processing = false;
+        	   });
         	   
            }
 
@@ -452,5 +474,54 @@ $(document).ready(function(){
 	$(".carousel").swipeleft(function() {  
 		$(this).carousel('next');  
 	}); 
+
+	$("#priceTo, #priceFrom").on('change', function(){
+	    bindPrice();
+	});
+
+
+	function bindPrice(){
+		var priceFrom = $("#priceFrom").val();
+		var priceTo = $("#priceTo").val();
+	    if(parseInt(priceFrom) > parseInt(priceTo)){
+	        $("#priceTo").val(priceFrom);
+	    }
+
+	    if(parseInt(priceTo) < parseInt(priceFrom)){
+	        $("#priceFrom").val(priceTo);
+	    }
+	}
+
+	generatePriceSelects();
+	
+	function generatePriceSelects(){
+		
+	    $("#priceFrom").append($('<option>').attr('value', 0).attr('disabled', true).attr('selected', true).text('Cijena Od'));
+	    for(i = 100; i < 5000; i = i + 500){
+	        $("#priceFrom").append($('<option>').attr('value', i).text(i + '€'));
+	    }
+
+	    for(i = 5000; i < 10000; i = i + 1000){
+	        $("#priceFrom").append($('<option>').attr('value', i).text(i + '€'));
+	    }
+
+	    for(i = 10000; i < 100000; i = i + 10000){
+	        $("#priceFrom").append($('<option>').attr('value', i).text(i + '€'));
+	    }
+
+	    $("#priceTo").append($('<option>').attr('value', 0).attr('disabled', true).attr('selected', true).text('Cijena Do'));
+	    for(i = 100000; i > 10000; i = i - 10000){
+	        $("#priceTo").append($('<option>').attr('value', i).text(i + '€'));
+	    }
+
+	    for(i = 10000; i > 5000; i = i - 1000){
+	        $("#priceTo").append($('<option>').attr('value', i).text(i + '€'));
+	    }
+
+	    for(i = 5000; i > 500; i = i - 500){
+	        $("#priceTo").append($('<option>').attr('value', i).text(i + '€'));
+	    }
+	}
+	
 });
 </script>

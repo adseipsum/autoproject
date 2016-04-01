@@ -62,7 +62,6 @@ class CarMapper implements CarMapperInterface
 	}
 	
 	public function getCarList($search, $pageSize, $skip){
-		//$this->documentManager->getSchemaManager('Oldtimers\Entity\Car')->ensureIndexes('Oldtimers\Entity\Car');
 		$qb = $this->documentManager->createQueryBuilder('Oldtimers\Entity\Car');
 		
 		if(!empty($search['make'])){
@@ -81,6 +80,14 @@ class CarMapper implements CarMapperInterface
 			$qb->field('year')->lte((int)$search['to']);
 		}
 		
+		if(!empty($search['priceFrom'])){
+			$qb->field('price')->gte((int)$search['priceFrom']);
+		}
+		
+		if(!empty($search['priceTo'])){
+			$qb->field('price')->lte((int)$search['priceTo']);
+		}
+		
 		if(!empty($search['fuelType'])){
 			$qb->field('fuelType')->equals($search['fuelType']);
 		}
@@ -88,14 +95,22 @@ class CarMapper implements CarMapperInterface
 		if(!empty($search['city'])){
 			$qb->field('owner.1')->equals($search['city']);
 		}
-		
 		$qb
-			//->sort('date', 'desc')
+			->sort(array('date' => '-1', 'make' => '1'))
 			->skip($skip)
 			->limit($pageSize);
 		
 		$query = $qb->getQuery();
 
-		return $query->execute()->toArray();
+		return $query->execute();
+	}
+	
+	public function getAllGrouped(){
+		$qb = $this->documentManager->createQueryBuilder('Oldtimers\Entity\Car');
+		$qb->group(array('make' => 1, 'model' => 1), array('count' => 0));
+		$qb->reduce('function (obj, prev) { prev.count++; }');
+		$query = $qb->getQuery();
+	
+		return $query->execute();
 	}
 }

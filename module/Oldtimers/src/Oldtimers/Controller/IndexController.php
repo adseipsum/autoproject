@@ -47,6 +47,12 @@ class IndexController extends AbstractActionController
     	if($this->params()->fromQuery('to')){
     		$search['to'] = $this->params()->fromQuery('to');
     	}
+    	if($this->params()->fromQuery('priceFrom')){
+    		$search['priceFrom'] = $this->params()->fromQuery('priceFrom');
+    	}
+    	if($this->params()->fromQuery('priceTo')){
+    		$search['priceTo'] = $this->params()->fromQuery('priceTo');
+    	}
     	if($this->params()->fromQuery('fuelType')){
     		$search['fuelType'] = new \MongoRegex('/^' . $this->params()->fromQuery('fuelType') . '$/i');
     	}
@@ -55,7 +61,11 @@ class IndexController extends AbstractActionController
     	}
 
     	$result = $this->getCarMapper()->getCarList($search, self::PAGE_SIZE, $skip);
-    	return new JsonModel(array('cars' => $result));
+    	
+    	$count = $result->count();
+    	$resultArray = $result->toArray();
+    	//var_dump(array_keys($resultArray));
+    	return new JsonModel(array('cars' => $resultArray, 'count' => $count));
     }
     
     public function carInfoJsonAction()
@@ -68,8 +78,47 @@ class IndexController extends AbstractActionController
     public function advertisementAction()
     {
     	$advertisement = $this->getCarMapper()->find($this->getEvent()->getRouteMatch()->getParam('id'));
+    	if(!$advertisement){ $this->redirect()->toUrl('/'); }
     	$result = new ViewModel(array('advertisement' => $advertisement));
     	return $result;
+    }
+    
+    public function testAction()
+    {$i = 0;
+    	$result = $this->getCarMapper()->findAll();
+    	foreach($result as $record){
+    		
+    		$doc = $this->getCarMapper()->findBy(array(
+    				'make' => $record->make, 
+    				'model' => $record->model,
+    				'year' => $record->year,
+    				'mileage' => $record->mileage,
+    				'price' => $record->price
+    		));
+
+    		if(count($doc) > 1){
+    			$i++;
+    			$car = $this->getCarMapper()->find($doc[1]->_id);
+    				if($car->photos) foreach($car->photos as $photo){
+    					unlink(PUBLIC_PATH . '/uploads/' . $car->garageId . '/' . $car->_id . '/' . $photo . '.jpg');
+    				}
+    			$this->getCarMapper()->remove($car);
+    		}
+    	}
+    	echo $i;
+    	die;
+    	$entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+    	
+    	$distinct = $this->getCarMapper()->getAllGrouped();
+    	
+    	foreach($distinct as $result){
+    		$sql = "INSERT INTO models (make, model) VALUES ('{$result['make']}', '{$result['model']}')";
+    		$stmt = $entityManager->getConnection()->prepare($sql);
+    		$result = $stmt->execute();
+    	}
+    	
+    	echo 'Done'; 
+    	die;
     }
 
     public function removeJsonAction()
@@ -94,6 +143,7 @@ class IndexController extends AbstractActionController
         if($this->params()->fromPost()){
             $car = $this->getServiceLocator()->get('OldtimersCar');
             $car->garageId = 0;
+            $car->date = date();
             $car->make = $this->params()->fromPost('make');
             $car->model = $this->params()->fromPost('model');
             $car->modification = $this->params()->fromPost('modification');
@@ -407,7 +457,8 @@ class IndexController extends AbstractActionController
         
             if($array){
                 $car = $this->getServiceLocator()->get('OldtimersCar');
-                $car->date = $array['date']->format('Y-m-d');
+                $car->uniqueId = md5($array['make'] . $array['year'] . $array['mileage']);
+                $car->date = $array['date']->format('d.m.Y');
                 $car->popularity = $array['popularity'];
                 $car->garageId = 0;
                 $car->make = $array['make'];
@@ -428,6 +479,7 @@ class IndexController extends AbstractActionController
                 $car->price = $array['price'];
                 $car->currency = 'EUR';
                 $car->owner = $array['owner'];
+                $car->autodealerId = $advertisementId;
                 $this->getCarMapper()->save($car);
         
                 if($car->_id){
@@ -449,15 +501,16 @@ class IndexController extends AbstractActionController
                             	unlink($filePath);
                             }
                         }
-                        if($car->photos >= 2){
-                        	$this->getCarMapper()->save($car);
-                        }else{
-                        	$this->getCarMapper()->remove($car);
-                        }
+                    }
+                    
+                    if($car->photos >= 2){
+                    	$this->getCarMapper()->save($car);
+                    }else{
+                    	$this->getCarMapper()->remove($car);
                     }
                 }
             }
-            sleep(3);
+            sleep(5);
             $html->clear();
             unset($html);
         }

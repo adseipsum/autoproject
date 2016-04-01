@@ -60,7 +60,8 @@
 				<tr><td width="120"><span>Grad:</span></td><td><?=$advertisement->owner[1]?></td></tr>
                 <tr><td><span>Telefon:</span></td><td><a href="tel:<?=$advertisement->owner[2]?>"><?=$advertisement->owner[2]?></a> <small><i>(click to call)</i></small></td></tr>
                 <tr><td><span>Prodavac:</span></td><td><?=$advertisement->owner[0]?></td></tr>
-                <tr><td><span>Datum:</span></td><td><?=$advertisement->date?></td></tr>
+                <tr><td><span>Datum:</span></td><td><?=$advertisement->date->format('d.m.Y')?></td></tr>
+                <tr style="color: white;"><td colspan="2"><?=$advertisement->autodealerId?></td></tr>
 			</table>
 		</div>
 	</div>

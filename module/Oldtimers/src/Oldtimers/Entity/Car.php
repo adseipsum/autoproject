@@ -16,6 +16,11 @@ class Car
     /**
      * @ODM\Field(type="string")
      */
+    public $uniqueId;
+    
+    /**
+     * @ODM\Field(type="date")
+     */
     public $date;
     
     /**
@@ -117,5 +122,10 @@ class Car
      * @ODM\Field(type="string")
      */
     public $currency;
+    
+    /**
+     * @ODM\Field(type="string")
+     */
+    public $autodealerId;
  
 }

@@ -1,7 +1,11 @@
 <div class="row">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-			<a href="/" class="btn btn-default navbar-btn pull-right">Back to list</a>
+			<div class="navbar-header">
+	            <a href="/" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right">Naslovna</a>
+	            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a>
+	            <h4><?=$advertisement->make?> <?=$advertisement->model?> <?=$advertisement->year?></h4>
+          </div>
 		</div>
 	</nav>
 </div>
@@ -44,12 +48,12 @@
 		</table>
 		<div id="features">
 			<div class="panel list-group">
-				<a href="#" class="list-group-item" data-toggle="collapse" data-target="#sm" data-parent="#features">
+				<a href="javascript:void(0);" class="list-group-item" data-toggle="collapse" data-target="#sm" data-parent="#features">
 					<span>Features</span>
 					<span class="glyphicon glyphicon-hand-down pull-right"></span>
 				</a>
-				<div id="sm" class="sublinks collapce">
-					<?php foreach($advertisement->features as $key => $info):?>
+				<div id="sm" class="sublinks collapse">
+					<?php if($advertisement->features) foreach($advertisement->features as $key => $info):?>
 						<a class="list-group-item small"><?php echo $info; ?></a>
 					<?php endforeach; ?>
 				</div>

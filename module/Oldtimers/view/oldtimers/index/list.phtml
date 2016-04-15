@@ -1,8 +1,6 @@
 <div class="row">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-        <div id="counter" class="btn disabled navbar-btn pull-left"></div>
-        <a href="/new" class="btn btn-default navbar-btn pull-right">Novi oglas</a>
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -10,51 +8,47 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-<!--             <a class="navbar-brand" href="/"></a> -->
+            <a href="/new" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right">Novi oglas</a>
+<!--             <a href="/new" id="newAdvertisement" class="btn btn-default navbar-btn pull-right">O nas</a> -->
+            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a>
+            <h4 id="counter"></h4>
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <form id="searchForm" class="navbar-form" role="search">
-            	<div class="form-group">
-            		<div class="form-group">
-		            	<select id="make" name="make" class="form-control">
-		                    <option value="" selected>Marka</option>
+        </div><!--/.container-fluid -->
+      </nav>
+      <div id="navbar" class="navbar-collapse collapse">
+      	<form id="searchForm" class="navbar-form" role="search">
+            <div id="searchBox">
+            		<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 form-group">
+		            	<select id="make" name="make" class="form-control" data-live-search="true">
+		                    <option value="0">Marke</option>
 		                    <?php foreach ($make as $maker): ?>
-		                        <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
-		                    <?php endforeach;?>
+	                        <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
+	                    <?php endforeach;?>
 	                	</select>
                 	</div>
-                	<div class="form-group">
-		                <select id="model" name="model" class="form-control">
-		                    <option value="" selected disabled>Model</option>
+                	<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 form-group">
+		                <select id="model" name="model" class="form-control" data-live-search="true">
 		                </select>
 	                </div>
-	                <div class="form-group">
-		                <select id="from" name="from" class="form-control">
+	                <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
+		                <select id="from" name="from" class="form-control" data-live-search="true">
+		                	<option value="1967">1967</option>
 		                	<?php for ($i = 1968; $i <= 2016; $i++):?>
-		                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-		                    <?php endfor;?>
+	                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+	                    <?php endfor;?>
+	                	</select>
+                	</div>
+                	<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
+	                	<select id="to" name="to" class="form-control" data-live-search="true">
+	                	<option value="2016">2016</option>
+	                	<?php for ($i = 2015; $i >= 1968; $i--):?>
+	                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+	                    <?php endfor;?>
 		                </select>
 	                </div>
-	                <div class="form-group">
-		                <select id="to" name="to" class="form-control">
-		                	<?php for ($i = 2016; $i >= 1968; $i--):?>
-		                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-		                    <?php endfor;?>
-		                </select>
-	                </div>
-            	</div>
-            	<div class="form-group">
-            		<div class="form-group">
-		                <select id="priceFrom" name="priceFrom" class="form-control">
-		                </select>
-	                </div>
-	                <div class="form-group">
-		                <select id="priceTo" name="priceTo" class="form-control">
-		                </select>
-	                </div>
-	                <div class="form-group">
+	                <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
 		                <select id="fuelType" name="fuelType" class="form-control">
-		                    <option value="">Gorivo</option>
+		                    <option value="0">Gorivo</option>
 		                    <option value="Dizel">Dizel</option>
 		                    <option value="Benzin">Benzin</option>
 		                    <option value="Metan">Metan</option>
@@ -63,10 +57,17 @@
 		                    <option value="Električni pogon">Električni pogon</option>
 	                	</select>
                 	</div>
-                	<div class="form-group">
-		                <select id="city" name="city" class="form-control">
-		                    <option value="">Grad</option>
-		                    <option value="" disabled>Izaberite Grad</option>
+            		<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
+		                <select id="priceFrom" name="priceFrom" class="form-control" data-live-search="true">
+		                </select>
+	                </div>
+	                <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
+		                <select id="priceTo" name="priceTo" class="form-control" data-live-search="true">
+		                </select>
+	                </div>
+                	<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 form-group">
+		                <select id="city" name="city" class="form-control" data-live-search="true">
+		                    <option value="0">Grad</option>
 		                    <option value="Podgorica">Podgorica</option>
 		                    <option value="Nikšić">Nikšić</option>
 		                    <option value="Pljevlja">Pljevlja</option>
@@ -147,11 +148,9 @@
 		                    <option value="Rijeka Crnojevića">Rijeka Crnojevića</option>
 	                	</select>
                 	</div>
-            	</div>
-            </form>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
+           	  </div>
+		  </form>
+      </div><!--/.nav-collapse -->
 </div>
 
 <div id="carModal" class="modal fade" role="dialog">
@@ -221,10 +220,11 @@ $(document).ready(function(){
 			}).done(function(responce) {
 				if(responce.success){
 					var model = $("#model").empty();
-					model.append($("<option />").val(0).text('Model'));
+					model.append($("<option />").val(0).text('Modeli'));
 					$.each(responce.models, function() {
 						model.append($("<option />").val(this.model).text(this.model));
 					});
+					model.selectpicker('refresh');
 				}
 				container.attr('data-skip', 0).empty();
 				if(!processing){ loadPage(container) };
@@ -440,7 +440,7 @@ $(document).ready(function(){
            		    });
           			container.append(row);
 
-          			$('#counter').html($('<b>').html(responce.count + ' auto'));
+          			$('#counter').html($('<span>').html(responce.count + ' auto listed'));
 
           			$(".carousel").swiperight(function() {  
           				$(this).carousel('prev');  
@@ -479,7 +479,6 @@ $(document).ready(function(){
 	    bindPrice();
 	});
 
-
 	function bindPrice(){
 		var priceFrom = $("#priceFrom").val();
 		var priceTo = $("#priceTo").val();
@@ -496,7 +495,7 @@ $(document).ready(function(){
 	
 	function generatePriceSelects(){
 		
-	    $("#priceFrom").append($('<option>').attr('value', 0).attr('disabled', true).attr('selected', true).text('Cijena Od'));
+	    $("#priceFrom").append($('<option>').attr('value', 0).text('€ Od'));
 	    for(i = 100; i < 5000; i = i + 500){
 	        $("#priceFrom").append($('<option>').attr('value', i).text(i + '€'));
 	    }
@@ -509,7 +508,7 @@ $(document).ready(function(){
 	        $("#priceFrom").append($('<option>').attr('value', i).text(i + '€'));
 	    }
 
-	    $("#priceTo").append($('<option>').attr('value', 0).attr('disabled', true).attr('selected', true).text('Cijena Do'));
+	    $("#priceTo").append($('<option>').attr('value', 0).text('€ Do'));
 	    for(i = 100000; i > 10000; i = i - 10000){
 	        $("#priceTo").append($('<option>').attr('value', i).text(i + '€'));
 	    }
@@ -521,6 +520,8 @@ $(document).ready(function(){
 	    for(i = 5000; i > 500; i = i - 500){
 	        $("#priceTo").append($('<option>').attr('value', i).text(i + '€'));
 	    }
+
+	    $('select').selectpicker();
 	}
 	
 });

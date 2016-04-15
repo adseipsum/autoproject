@@ -7,20 +7,66 @@ body{
 .navbar{
     background-color: white;
     border: none;
-    height: 100%;
     padding: 0px 10px;
+    margin-bottom: 0;
+}
+
+.navbar-header{
+    width: 100%;
+}
+
+.navbar-header .btn{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.navbar-header h4{
+    font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
+    margin: auto;
+    color: white;
+    padding: 18px 10px;
+    width: 40%;
+    text-align: center;
 }
 
 .navbar-default{
+    background-color: #f63e3e !important;
+    background-image: none;
+    color: white;
     box-shadow: none;
+    border: none;
+    border-radius: 1px;
+    padding: 0px 3px;
+}
+
+
+.navbar-default .navbar-toggle{
+    color: white;
+    border-color: white;
+    height: 39px;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+    background-color: #f63e3e;
+    opacity: 0.8;
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+    background-color: white;
 }
 
 .navbar-brand{
-    height: 50px;
-    background-image: url(/img/logo.png);
-    background-repeat: no-repeat;
-    background-position: 30% 55%;
-    width: 185px;
+    width: 120px;
+    height: 30px;
+    padding:0;
+}
+
+#searchBox > div{
+    padding-bottom: 8px;
+    padding-left: 5px;
+    padding-right: 5px
 }
 
 .col-xs-12{
@@ -36,6 +82,7 @@ body{
 }
 
 .carousel img{
+    border-radius: 1px;
     margin: auto;
     max-width:100%;
     max-height:100%;
@@ -66,12 +113,6 @@ body{
     padding-top: 6%;
 }
 
-@media only screen and (min-width:768px){
-        /* styles for browsers larger than 960px; */
-        .navbar-form select.form-control {
-            width: 120px;
-        }
-}
 
 @media only screen and (min-width:992px){
         /* styles for browsers larger than 960px; */
@@ -87,6 +128,18 @@ body{
         }
 }
 
+@media only screen and (max-width:768px){
+    .navbar-header h4{
+        font-size: 0.9em;
+        padding: 18px 10px;
+    }
+}
+
+@media only screen and (max-width:400px){
+    .navbar-header h4{
+        display: none;
+    }
+}
 
 @media only screen and (min-width:960px){
         /* styles for browsers larger than 960px; */
@@ -164,9 +217,8 @@ body{
     height: 25px; 
     text-overflow: ellipsis;
     text-align: center;
-    font-family: Arial Narrow;
+    font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
     font-size: 1.1em;
-    font-weight: bold;
     display:inline-block;
     width:100%;
     color: #797979;
@@ -254,17 +306,38 @@ body{
     padding-left: 10px;
 }
 
-#counter{
-    font-size: 1em;
-    color: #f63e3e;
-    padding: 3px 3px;
-    line-height: 35px;
+.btn{
+    border-radius: 1px;
+}
+
+.btn-default{
+    background-image: none;
+    font-size: 1.1em;
+}
+
+.btn-operational{
+    font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
+    font-size: 0.9em !important;
+    font-weight: normal !important;
+    line-height: 1.6;
+    color: #797979;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
+    background-color: white;
+}
+
+#newAdvertisement{
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+#newAdvertisement:focus, #newAdvertisement:hover{
+    opacity: 0.9;
 }
 
 #navbar{
-    text-align: center;
-}
-
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
-    background-color: white;
+    padding-left: 2px;
+    padding-right: 2px;
 }

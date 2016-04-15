@@ -143,7 +143,7 @@ class IndexController extends AbstractActionController
         if($this->params()->fromPost()){
             $car = $this->getServiceLocator()->get('OldtimersCar');
             $car->garageId = 0;
-            $car->date = date();
+            $car->date = date('c');
             $car->make = $this->params()->fromPost('make');
             $car->model = $this->params()->fromPost('model');
             $car->modification = $this->params()->fromPost('modification');
@@ -190,6 +190,10 @@ class IndexController extends AbstractActionController
                     $fileName++;
                 }
                 $this->getCarMapper()->save($car);
+                
+                return $this->redirect()->toRoute('advertisement', array(
+                		'id' => $car->_id
+                ));
             }
         }
 

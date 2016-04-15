@@ -1,26 +1,54 @@
 <style>
 #advertisementBlock{
     color: gray;
+    top: 10px;
 }
 
-#header{
-    margin-top: 0px;
+#advertisementBlock .form-group{
+    padding: 8px 10px;
 }
 
-#header a{
-    margin-top:20px;
+#advertisementBlock .list-group{
+    margin: 8px 3px;
+}
+
+.list-group .list-group-item{
+    padding: 2px 10px;
+}
+
+.help-block{
+    display: none;
+}
+
+#post{
+    background-color: #f63e3e !important;
+    color: white;
+    font-size: 1.1em;
+    font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
+}
+
+h3{
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 </style>
+
 <div class="row">
-	<div id="header" class="col-lg-8 col-lg-offset-2">
-		<h2 class="pull-left">Dodaj oglas</h2>
-    	<a href="/" class="btn btn-default pull-right">Naslovna</a>
-	</div>
+	<nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a href="/" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right">Naslovna</a>
+            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a>
+            <h4>Dodaj oglas</h4>
+          </div>
+        </div><!--/.container-fluid -->
+      </nav>
 </div>
 <div class="row">
-    <div id="advertisementBlock" class="col-lg-8 col-lg-offset-2">
+    <div id="advertisementBlock" class="col-lg-12">
         <form action="" method="post" role="form" class="form" enctype="multipart/form-data" data-toggle="validator">
-            <div class="form-group">
+        	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center">Glavno</h3></div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="brand" class="control-label">Marka:</label>
                 <select id="make" name="make" class="form-control" data-error="Please select mark" required>
                     <option value="" selected disabled>Izaberite Marku</option>
@@ -30,24 +58,24 @@
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="model" class="control-label">Model:</label>
                 <select id="model" name="model" class="form-control" data-error="Please select model" required>
                     <option value="" selected disabled>Prvo izaberite marku</option>
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="modification" class="control-label">Modification:</label>
                 <input type="text" name="modification" class="form-control"/>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="year" class="control-label">Godište:</label>
                 <input type="number" name="year" id="year" class="form-control" data-minlength="4" data-error="Please add car manufacture year" required/>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="transmission">Mjenjač:</label>
                 <select id="transmission" name="transmission" class="form-control" data-error="Please select transmission type" required>
                     <option value="">Izaberite Mjenjač</option>
@@ -57,7 +85,7 @@
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="driverSide" class="control-label">Strana volana:</label>
                 <select id="driverSide" name="driverSide" class="form-control" data-error="Please select driver side" required>
                     <option value="">Izaberite Stranu Volana</option>
@@ -66,7 +94,7 @@
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="wheelDrive" class="control-label">Pogon:</label>
                 <select id="wheelDrive" name="wheelDrive" class="form-control" data-error="Please select wheel drive" required>
                     <option value="">Izaberite Pogon</option>
@@ -76,7 +104,7 @@
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="fuelType" class="control-label">Gorivo:</label>
                 <select id="fuelType" name="fuelType" class="form-control" data-error="Please select fuel type" required>
                     <option value="">Izaberite Vrstu Goriva</option>
@@ -93,33 +121,68 @@
 <!--                 <label for="engineType">Motor:</label> -->
 <!--                 <input type="text" name="engineType" class="form-control"/> -->
 <!--             </div> -->
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="engineCapacity" class="control-label">Kubikaža: (cm3)</label>
                 <input type="text" name="engineCapacity" class="form-control" data-minlength="3" data-error="Please add engine capacity in cm3" required/>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
-                <label for="engineCapacity" class="control-label">Snaga: (kW)</label>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
+                <label for="enginePower" class="control-label">Snaga: (kW)</label>
                 <input type="text" name="enginePower" class="form-control"/>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="color" class="control-label">Boja:</label>
                 <input type="text" name="color" class="form-control"/>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="mileage" class="control-label">Kilometraža: (km)</label>
                 <input type="text" name="mileage" class="form-control" data-error="Please add mileage" required/>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center">Komponente</h3></div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
+            	<ul class="list-group">
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="AC klima" name="features[aac]">AC klima</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="ABS" name="features[abs]">ABS</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="ESP" name="features[esp]">ESP</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Muzika" name="features[audio]">Muzika</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Servo" name="features[powerAssistedSteering]">Servo</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Šiber" name="features[sunroof]">Šiber</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Kuka" name="features[towHook]">Kuka</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Digitalna klima" name="features[climatisation]">Digitalna klima</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Electro podizači" name="features[electricWindows]">Electro podizači</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Grijači sedišta" name="features[electricHeatedSeats]">Grijači sedišta</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Centralna brava" name="features[centralLocking]">Centralna brava</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Metalik boja" name="features[metallicColor]">Metalik boja</label></li>
+                </ul>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
+	            <ul class="list-group">
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Parking senzor" name="features[parkingSensors]">Parking senzor</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Svijetla za maglu" name="features[fogLamp]">Svijetla za maglu</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Koža" name="features[leather]">Koža</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Air bag" name="features[airbags]">Air bag</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Alarm" name="features[alarm]">Alarm</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Alu felne" name="features[alloyWheels]">Alu felne</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Kod ključ" name="features[immobilizer]">Kod ključ</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Navigacija" name="features[navigationSystem]">Navigacija</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Tempomat" name="features[cruiseControl]">Tempomat</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Daljinsko zaključavanje" name="features[remoteLock]">Daljinsko zaključavanje</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Panorama krov" name="features[panoramicRoof]">Panorama krov</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Xenon" name="features[xenonHeadlights]">Xenon</label></li>
+	            </ul>
+            </div>
+            
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
                 <label for="description" class="control-label">Opis:</label>
                 <textarea name="description" class="form-control"></textarea>
                 <div class="help-block with-errors"></div>
             </div>
             
-            <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center">Informacia</h3></div>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="price" class="control-label">Cijena:</label>
                 <div class="input-group">
                   <span class="input-group-addon">€</span>
@@ -127,41 +190,13 @@
                 </div>
                 <div class="help-block with-errors"></div>
             </div>
-            <h3 class="text-center">Komponente</h3>
-            <ul class="list-group">
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[aac]">AC klima</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[abs]">ABS</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[esp]">ESP</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[audio]">Muzika</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[powerAssistedSteering]">Servo</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[sunroof]">Šiber</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[towHook]">Kuka</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[climatisation]">Digitalna klima</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[electricWindows]">El. podizači</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[electricHeatedSeats]">Grijači sedišta</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[centralLocking]">Centralna brava</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[metallicColor]">Metalik boja</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[parkingSensors]">Parking senzor</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[fogLamp]">Svijetla za maglu</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[leather]">Koža</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[airbags]">Air bag</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[alarm]">Alarm</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[alloyWheels]">Alu felne</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[immobilizer]">Kod ključ</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[navigationSystem]">Navigacija</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[cruiseControl]">Tempomat</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[remoteLock]">Daljinsko zaključavanje</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[panoramicRoof]">Panorama krov</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[CDchanger]">CD šaržer</label></li>
-                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="0" name="features[xenonHeadlights]">Xenon</label></li>
-            </ul>
             
-            <div class="form-group">
+            <div class=" col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="phoneNumber" class="control-label">Telefon:</label>
                 <input type="text" name="owner[phoneNumber]" class="form-control" data-error="Please add telefon number" required/>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="email" class="control-label">Email:</label>
                 <div class="input-group">
 	                <span class="input-group-addon">@</span>
@@ -169,7 +204,7 @@
 	            </div>
 	            <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="city" class="control-label">Grad:</label>
                 <select id="city" name="owner[city]" class="form-control" data-error="Please choose city where car located" required>
                     <option value="" disabled>Izaberite Grad</option>
@@ -254,17 +289,18 @@
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="name" class="control-label">Ime:</label>
                 <input type="text" name="owner[name]" class="form-control"/>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
+            
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
                 <input id="photos" name="photos[]" type="file" class="file" data-preview-file-type="image" multiple="true" placeholder="Dodaj sliki" data-error="Please add at least two photos" required>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="form-group">
-                <input type="submit" class="form-control" value="Post"/>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                <input type="submit" id="post" class="btn-operational form-control" value="Dodaj"/>
             </div>
         </form>
     </div>

@@ -15,6 +15,11 @@ body{
     width: 100%;
 }
 
+#counter{
+    font-family: Ebrima;
+    font-weight: bold;
+}
+
 .navbar-header .btn{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -23,7 +28,7 @@ body{
 }
 
 .navbar-header h4{
-    font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
+    font-family: Ebrima;
     margin: auto;
     color: white;
     padding: 18px 10px;
@@ -44,8 +49,8 @@ body{
 
 .navbar-default .navbar-toggle{
     color: white;
-    border-color: white;
     height: 39px;
+    background-color: #2275a9 !important;
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
@@ -74,6 +79,72 @@ body{
     margin: auto;
 }
 
+#advertisementBlock{
+    color: gray;
+    top: 10px;
+}
+
+#advertisementBlock .form-group{
+    padding: 8px 10px;
+}
+
+#advertisementBlock .list-group{
+    margin: 8px 3px;
+}
+
+.list-group .list-group-item{
+    padding: 2px 10px;
+}
+
+.help-block{
+    display: none;
+}
+
+#post{
+    background-color: #f63e3e !important;
+    color: white;
+    font-size: 1.1em;
+    font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
+}
+
+h3{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.preview > img{
+    max-width:100%;
+    max-height:100%;
+}
+
+.progress{
+    height: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.fileInfo .name{
+    margin-bottom: 5px;
+    line-height: 2;
+    width: 65%;
+}
+
+.fileInfo > div{
+    float: left;
+}
+
+.progress-bar-success{
+    background-image: linear-gradient(to bottom, #2275a9 0px, #2275a9 100%) !important;
+    background-repeat: repeat-x;
+}
+
+.word-break {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+}
+
+
 .carousel{
     max-width: 640px;
     cursor: pointer;
@@ -92,27 +163,219 @@ body{
     overflow:hidden;
 }
 
-.carousel .price{
-    position: absolute; 
-    top: 80%; 
-    left: 57%; 
-    width: 44%; 
-    height: 19%; 
+.carousel .favorite{
+    position: absolute;
+    z-index: 999999;
+    background-color: #09A936;
     color: white;
-    font-family: LilienthalGrotesk;
-    font-size: 1.6em;
+    border: 10px dashed #09A936; 
+    top: 16px;
+    left: -8px;
+    font-size: 1em;
     text-align: center;
-    padding-top: 4%;
+    font-family: Cooper Std;
+    opacity: 0.8;
+    
 }
 
-.modal .item > .price{
-    top: 80% !important; 
-    left: 58% !important; 
-    width: 42% !important; 
-    height: 20% !important;
-    padding-top: 6%;
+.carousel .favorite > span{
+    vertical-align: middle;
 }
 
+.carousel-control .chevron-left:hover{
+    opacity: 0.9;
+} 
+
+.carousel-control .chevron-right:hover{
+    opacity: 0.9;
+}
+
+.carousel-control .chevron-left{
+    background-image: url(/img/arrow-left.png);
+    background-position: 0% 47%;
+    margin-right: 40%;
+    height: 100%;
+    opacity: 0.9;
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+}
+
+.carousel-control .chevron-right{
+    background-image: url(/img/arrow-right.png);
+    background-position: 0% 47%;
+    margin-left: 40%;
+    height: 100%;
+    opacity: 0.9;
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+}
+
+.carousel .carousel-caption{
+    width: 100%;
+    height: 30px;
+    font-weight: bold;
+    bottom: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    top: 88%;
+    left: 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    float: left;
+}
+
+.carousel .data{
+    height: 25px; 
+    text-overflow: ellipsis;
+    font-family: Ebrima;
+    font-weight: bold;
+    display:inline-block;
+    width:100%;
+    text-shadow: none;
+    margin-top: 10px;
+    /* Fallback for web browsers that don't support RGBa */
+    /*background-color: rgb(0, 0, 0);*/
+    /* RGBa with 0.6 opacity */
+    /*background-color: rgba(0, 0, 0, 0.9);*/
+    /* For IE 5.5 - 7*/
+    /*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);*/
+    /* For IE 8*/
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";*/
+}
+
+.carousel .price{
+    display: block;
+    float: right;
+    color: #f63e3e;
+    font-size: 1.4em;
+    text-align: center;
+    padding-right: 5px;
+    padding-top: 3px;
+}
+
+.carousel .info{
+    float: left;
+    font-size: 0.9em;
+    padding-left: 5px;
+    text-align: center;
+    width: 70%;
+}
+
+.carousel .info a{
+    color: #2275a9;
+}
+
+.carousel .info .cm{
+    text-transform: lowercase;
+}
+
+.carousel .info:hover{
+    text-decoration: underline;
+}
+
+.carousel-control.right, .carousel-control.left{
+    background: none;
+    z-index:1000;
+}
+
+@font-face {
+    font-family: LilienthalGrotesk;
+    src: url("/fonts/LilienthalGrotesk.otf") format("opentype");
+}
+
+.footer{
+    background-color: white;
+    border: none;
+    height: 20px;
+    margin-top: 50px;
+}
+
+.navbar-collapse.in{
+    overflow-y: visible;
+}
+
+#generalInfo, #ownerInfo{
+    list-style-type: none;
+}
+
+#generalInfo span{
+    font-size: 0.8em;
+    font-family: LilienthalGrotesk;
+}
+
+#carInfo{
+    padding: 10px 20px;
+}
+
+.modal-title{
+    padding-left: 10px;
+}
+
+.btn{
+    border-radius: 1px;
+    font-family: Ebrima;
+}
+
+.btn-default{
+    background-image: none;
+    font-size: 1em;
+}
+
+.btn-operational{
+    font-family: Ebrima;
+    font-size: 0.9em !important;
+    font-weight: bold !important;
+    line-height: 1.6;
+    color: #797979;
+    background-color: #2275a9 !important;
+    color: white;
+    max-width: 400px;
+}
+
+.btn-operational:hover, .btn-operational:focus, .btn-operational:active{
+    color: lightgray;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
+    background-color: white;
+}
+
+#newAdvertisement{
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+#newAdvertisement:focus, #newAdvertisement:hover{
+    opacity: 0.9;
+}
+
+#navbar{
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+#dynamic-content .row > div{
+    -webkit-box-shadow: 2px 3px 6px 0px rgba(0,0,0,0.44);
+    -moz-box-shadow: 2px 3px 6px 0px rgba(0,0,0,0.44);
+    box-shadow: 2px 3px 6px 0px rgba(0,0,0,0.44);
+    padding: 8px;
+    
+}
+
+#previews > div{
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#actions > div{
+    margin-top: 15px;
+}
 
 @media only screen and (min-width:992px){
         /* styles for browsers larger than 960px; */
@@ -164,180 +427,4 @@ body{
     @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
       /* For landscape layouts only */
     }
-}
-
-.carousel-control .chevron-left:hover{
-    opacity: 0.9;
-} 
-
-.carousel-control .chevron-right:hover{
-    opacity: 0.9;
-}
-
-.carousel-control .chevron-left{
-    background-image: url(/img/arrow-left.png);
-    background-position: 0% 47%;
-    margin-right: 40%;
-    height: 100%;
-    opacity: 0.6;
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-}
-
-.carousel-control .chevron-right{
-    background-image: url(/img/arrow-right.png);
-    background-position: 0% 47%;
-    margin-left: 40%;
-    height: 100%;
-    opacity: 0.6;
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-}
-
-.carousel .carousel-caption{
-    width: 100%;
-    height: 30px;
-    font-weight: bold;
-    bottom: 0px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    top: 88%;
-    left: 0px;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    float: left;
-}
-
-.carousel .data{
-    height: 25px; 
-    text-overflow: ellipsis;
-    text-align: center;
-    font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
-    font-size: 1.1em;
-    display:inline-block;
-    width:100%;
-    color: #797979;
-    text-shadow: none;
-    background-color: white;
-    padding-top: 8px;
-    padding-bottom: 6px;
-    /* Fallback for web browsers that don't support RGBa */
-    /*background-color: rgb(0, 0, 0);*/
-    /* RGBa with 0.6 opacity */
-    /*background-color: rgba(0, 0, 0, 0.9);*/
-    /* For IE 5.5 - 7*/
-    /*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);*/
-    /* For IE 8*/
-    /*-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";*/
-}
-
-.carousel .data .info{
-    display: block;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.carousel .data .info a{
-    color: #797979;
-}
-
-.carousel .data .info .cm{
-    text-transform: lowercase;
-}
-
-.carousel .data .info #make{
-     color: #f63e3e;
-}
-
-.carousel .data .info:hover{
-    text-decoration: underline;
-}
-
-#carModal .price{
-    position: absolute; 
-    top: 88%; 
-    left: 70%; 
-    width: 100%; 
-    color: white;
-    font-family: LilienthalGrotesk;
-    font-size: 1.5em;
-}
-
-.carousel-control.right, .carousel-control.left{
-    background: none;
-    z-index:1000;
-}
-
-@font-face {
-    font-family: LilienthalGrotesk;
-    src: url("/fonts/LilienthalGrotesk.otf") format("opentype");
-}
-
-.footer{
-    background-color: white;
-    border: none;
-    height: 20px;
-    margin-top: 50px;
-}
-
-.navbar-collapse.in{
-    overflow-y: visible;
-}
-
-#generalInfo, #ownerInfo{
-    list-style-type: none;
-}
-
-#generalInfo span{
-    font-size: 0.8em;
-    font-family: LilienthalGrotesk;
-}
-
-#carInfo{
-    padding: 10px 20px;
-}
-
-.modal-title{
-    padding-left: 10px;
-}
-
-.btn{
-    border-radius: 1px;
-}
-
-.btn-default{
-    background-image: none;
-    font-size: 1.1em;
-}
-
-.btn-operational{
-    font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
-    font-size: 0.9em !important;
-    font-weight: normal !important;
-    line-height: 1.6;
-    color: #797979;
-}
-
-.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
-    background-color: white;
-}
-
-#newAdvertisement{
-    border: 1px solid white;
-    background-color: transparent;
-    color: white;
-}
-
-#newAdvertisement:focus, #newAdvertisement:hover{
-    opacity: 0.9;
-}
-
-#navbar{
-    padding-left: 2px;
-    padding-right: 2px;
 }

@@ -8,9 +8,9 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="/new" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right">Novi oglas</a>
+            <a href="/new" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><?php echo $this->translate('Place a Car') ?></a>
 <!--             <a href="/new" id="newAdvertisement" class="btn btn-default navbar-btn pull-right">O nas</a> -->
-            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a>
+            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="turbo-cars.com"/></a>
             <h4 id="counter"></h4>
           </div>
         </div><!--/.container-fluid -->
@@ -20,10 +20,10 @@
             <div id="searchBox">
             		<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 form-group">
 		            	<select id="make" name="make" class="form-control" data-live-search="true">
-		                    <option value="0">Marke</option>
+		                    <option value="0"><?php echo $this->translate('Make') ?></option>
 		                    <?php foreach ($make as $maker): ?>
 	                        <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
-	                    <?php endforeach;?>
+	                    	<?php endforeach;?>
 	                	</select>
                 	</div>
                 	<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 form-group">
@@ -32,29 +32,29 @@
 	                </div>
 	                <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
 		                <select id="from" name="from" class="form-control" data-live-search="true">
-		                	<option value="1967">1967</option>
-		                	<?php for ($i = 1968; $i <= 2016; $i++):?>
+		                	<option value="1940">1940</option>
+		                	<?php for ($i = 1941; $i <= 2016; $i++):?>
 	                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-	                    <?php endfor;?>
+	                    	<?php endfor;?>
 	                	</select>
                 	</div>
                 	<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
 	                	<select id="to" name="to" class="form-control" data-live-search="true">
-	                	<option value="2016">2016</option>
-	                	<?php for ($i = 2015; $i >= 1968; $i--):?>
-	                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-	                    <?php endfor;?>
+		                	<option value="2016">2016</option>
+		                	<?php for ($i = 2015; $i >= 1968; $i--):?>
+		                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+		                    <?php endfor;?>
 		                </select>
 	                </div>
 	                <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
 		                <select id="fuelType" name="fuelType" class="form-control">
-		                    <option value="0">Gorivo</option>
-		                    <option value="Dizel">Dizel</option>
-		                    <option value="Benzin">Benzin</option>
-		                    <option value="Metan">Metan</option>
-		                    <option value="Benzin + plin">Benzin + plin</option>
-		                    <option value="Hibridni pogon">Hibridni pogon</option>
-		                    <option value="Električni pogon">Električni pogon</option>
+		                    <option value="0"><?php echo $this->translate('Fuel') ?></option>
+		                    <option value="diesel"><?php echo $this->translate('Diesel') ?></option>
+		                    <option value="Benzin"><?php echo $this->translate('Petrol') ?></option>
+		                    <option value="gas"><?php echo $this->translate('Gas') ?></option>
+		                    <option value="petrolAndGas"><?php echo $this->translate('Petrol + Gas') ?></option>
+		                    <option value="hybrid"><?php echo $this->translate('Hybrid') ?></option>
+		                    <option value="electric"><?php echo $this->translate('Electric') ?></option>
 	                	</select>
                 	</div>
             		<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
@@ -67,7 +67,7 @@
 	                </div>
                 	<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 form-group">
 		                <select id="city" name="city" class="form-control" data-live-search="true">
-		                    <option value="0">Grad</option>
+		                    <option value="0"><?php echo $this->translate('City') ?></option>
 		                    <option value="Podgorica">Podgorica</option>
 		                    <option value="Nikšić">Nikšić</option>
 		                    <option value="Pljevlja">Pljevlja</option>
@@ -75,77 +75,6 @@
 		                    <option value="Cetinje">Cetinje</option>
 		                    <option value="Bar">Bar</option>
 		                    <option value="Herceg Novi">Herceg Novi</option>
-		                    <option value="Berane">Berane</option>
-		                    <option value="Budva">Budva</option>
-		                    <option value="Ulcinj">Ulcinj</option>
-		                    <option value="Rožaje">Rožaje</option>
-		                    <option value="Tivat">Tivat</option>
-		                    <option value="Dobrota">Dobrota</option>
-		                    <option value="Kotor">Kotor</option>
-		                    <option value="Danilovgrad">Danilovgrad</option>
-		                    <option value="Mojkovac">Mojkovac</option>
-		                    <option value="Škaljari">Škaljari</option>
-		                    <option value="Tuzi">Tuzi</option>
-		                    <option value="Igalo">Igalo</option>
-		                    <option value="Bijela">Bijela</option>
-		                    <option value="Plav">Plav</option>
-		                    <option value="Burtaiši">Burtaiši</option>
-		                    <option value="Kolašin">Kolašin</option>
-		                    <option value="Ibarac">Ibarac</option>
-		                    <option value="Golubovci">Golubovci</option>
-		                    <option value="Resnik">Resnik</option>
-		                    <option value="Nedakusi">Nedakusi</option>
-		                    <option value="Šušanj">Šušanj</option>
-		                    <option value="Risan">Risan</option>
-		                    <option value="Ozrinići">Ozrinići</option>
-		                    <option value="Žabljak">Žabljak</option>
-		                    <option value="Pokrajci">Pokrajci</option>
-		                    <option value="Stari Bar">Stari Bar</option>
-		                    <option value="Donje Luge">Donje Luge</option>
-		                    <option value="Mojanovići">Mojanovići</option>
-		                    <option value="Sutomore">Sutomore</option>
-		                    <option value="Zelenika">Zelenika</option>
-		                    <option value="Pešca">Pešca</option>
-		                    <option value="Gusinje">Gusinje</option>
-		                    <option value="Budimlja">Budimlja</option>
-		                    <option value="Spuž">Spuž</option>
-		                    <option value="Polje">Polje</option>
-		                    <option value="Rastovica">Rastovica</option>
-		                    <option value="Polja">Polja</option>
-		                    <option value="Mrčevac">Mrčevac</option>
-		                    <option value="Plužine">Plužine</option>
-		                    <option value="Petrovac">Petrovac</option>
-		                    <option value="Beran Selo">Beran Selo</option>
-		                    <option value="Bjeliši">Bjeliši</option>
-		                    <option value="Čeluga">Čeluga</option>
-		                    <option value="Mataguži">Mataguži</option>
-		                    <option value="Dolac">Dolac</option>
-		                    <option value="Đenovići">Đenovići</option>
-		                    <option value="Lješnica">Lješnica</option>
-		                    <option value="Prčanj">Prčanj</option>
-		                    <option value="Mahala">Mahala</option>
-		                    <option value="Goričani">Goričani</option>
-		                    <option value="Podi">Podi</option>
-		                    <option value="Meljine">Meljine</option>
-		                    <option value="Tomba">Tomba</option>
-		                    <option value="Andrijevica">Andrijevica</option>
-		                    <option value="Kumbor">Kumbor</option>
-		                    <option value="Buče">Buče</option>
-		                    <option value="Smajlagića Polje">Smajlagića Polje</option>
-		                    <option value="Kodre">Kodre</option>
-		                    <option value="Bečići">Bečići</option>
-		                    <option value="Donja Lastva">Donja Lastva</option>
-		                    <option value="Židovići">Židovići</option>
-		                    <option value="Šavnik">Šavnik</option>
-		                    <option value="Sveti Stefan">Sveti Stefan</option>
-		                    <option value="Slatina">Slatina</option>
-		                    <option value="Gradac">Gradac</option>
-		                    <option value="Perast">Perast</option>
-		                    <option value="Virpazar">Virpazar</option>
-		                    <option value="Goransko">Goransko</option>
-		                    <option value="Bare">Bare</option>
-		                    <option value="Njegovuđa">Njegovuđa</option>
-		                    <option value="Rijeka Crnojevića">Rijeka Crnojevića</option>
 	                	</select>
                 	</div>
            	  </div>
@@ -159,7 +88,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title"><?php echo $this->translate('Loading') ?>...</h4>
       </div>
       <div class="modal-body">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -168,11 +97,9 @@
           <!-- Controls -->
           <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
             <span class="glyphicon chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
           </a>
           <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
             <span class="glyphicon chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
           </a>
         </div>
         &nbsp; &nbsp; &nbsp;
@@ -220,7 +147,7 @@ $(document).ready(function(){
 			}).done(function(responce) {
 				if(responce.success){
 					var model = $("#model").empty();
-					model.append($("<option />").val(0).text('Modeli'));
+					model.append($("<option />").val(0).text('Model'));
 					$.each(responce.models, function() {
 						model.append($("<option />").val(this.model).text(this.model));
 					});
@@ -265,14 +192,14 @@ $(document).ready(function(){
                 	  $('#generalInfo').append($('<table>').addClass('infoTable table')
              		  	  .append('<tr><td width="120"><span>Proizvođač:</span></td><td>' + info.make + '</td></tr>')
              		   	  .append('<tr><td><span>Model:</span></td><td>' + info.model + '</td></tr>')
-	             		  .append('<tr><td><span>Godište:</span></td><td>' + info.year + '</td></tr>')
-	             		  .append('<tr><td><span>Mjenjač:</span></td><td>' + info.transmission + '</td></tr>')
-	             		  .append('<tr><td><span>Strana volana:</span></td><td>' + info.driverSide + '</td></tr>')
-	             		  .append('<tr><td><span>Pogon:</span></td><td>' + info.wheelDrive + '</td></tr>')
-	             		  .append('<tr><td><span>Gorivo:</span></td><td>' + info.fuelType + '</td></tr>')
-	             		  .append('<tr><td><span>Kubikaža:</span></td><td>' + info.engineCapacity + ' cm<sup>3</sup></td></tr>')
-	             		  .append('<tr><td><span>Snaga:</span></td><td>' + info.kW + ' kW</tr>')
-	             		  .append('<tr><td><span>Kilometraža:</span></td><td>' + info.mileage + ' km</td></tr>'));
+	             		  .append('<tr><td><span>Year:</span></td><td>' + info.year + '</td></tr>')
+	             		  .append('<tr><td><span>Transmission:</span></td><td>' + info.transmission + '</td></tr>')
+	             		  .append('<tr><td><span>Driver Side:</span></td><td>' + info.driverSide + '</td></tr>')
+	             		  .append('<tr><td><span>Wheel Drive:</span></td><td>' + info.wheelDrive + '</td></tr>')
+	             		  .append('<tr><td><span>Fuel Type:</span></td><td>' + info.fuelType + '</td></tr>')
+	             		  .append('<tr><td><span>Engine Capacity:</span></td><td>' + info.engineCapacity + ' cm<sup>3</sup></td></tr>')
+	             		  .append('<tr><td><span>Power:</span></td><td>' + info.kW + ' kW</tr>')
+	             		  .append('<tr><td><span>Mileage:</span></td><td>' + info.mileage + ' km</td></tr>'));
 
                 	  $('#features').append(
                         	  $('<div>')
@@ -318,7 +245,7 @@ $(document).ready(function(){
 
     	   $('body').on('click', '#delete', function(e){
     		   $.ajax({
-        		   url: "http://vozila.me/index/remove-json?id=" + $(this).html(),
+        		   url: "http://turbo-cars.com/index/remove-json?id=" + $(this).html(),
        		   }).done(function(responce) {
            		   
        		   });
@@ -326,7 +253,7 @@ $(document).ready(function(){
 
     	   $('body').on('keydown', '#search', function(e){
     		   $.ajax({
-        		   url: "http://vozila.me/index/searchTag?tag=" + $(this).val(),
+        		   url: "http://turbo-cars.com/index/searchTag?tag=" + $(this).val(),
        		   }).done(function(responce) {
            		   console.log(responce);
        		   });
@@ -354,7 +281,7 @@ $(document).ready(function(){
 
     	       processing = true;
         	   $.ajax({
-        		   url: "http://vozila.me/index/getPage",
+        		   url: "http://turbo-cars.com/index/getPage",
         		   data: {
             		   'skip' : container.attr('data-skip'),
             		   'make' : $('#make').val(),
@@ -397,20 +324,35 @@ $(document).ready(function(){
           					}else{
           						item.append($('<img>').attr('alt', path).attr('draggable', false));
           					}
-          					item.append($('<span>').addClass('price').html(car.price + '€'))
           					
-          					carouselInner.append(item)
-          					;
+          					carouselInner.append(item);
           				});
           				slide.append(carouselInner);
 
+          				if(firstFlag){
+            				//slide.append($('<div>').addClass('favorite').html('<span class="glyphicon glyphicon-star"></span>'));
+          				}
+
 						//car info
-          				var info = $('<span>').addClass('data');
-          				info.append($('<span>').addClass('info').html(
-	                  				$('<a>').attr('href', '/advertisement/' + car._id).html(
-	                          			'<span id="make">' + car.make + '</span> ' + car.model + ' ' + car.engineCapacity + ' <span class="cm">cm<sup>3</sup></span> ' + car.fuelType
-	                          		)
-                          		));
+          				var info = $('<div>').addClass('data');
+          				info.append(
+                  				$('<div>').addClass('info').html(
+            						$('<a>').attr('href', '/advertisement/' + car._id)
+            							.html(
+                    							//<span style="color: #f63e3e;">&#8226;</span>
+                    							car.make + ' ' + 
+                    							car.model + ' ' + 
+                    							car.year + ' (' + 
+                    							addCommas(car.mileage) + '<span style="text-transform: lowercase; margin-left:2px;">km</span>)<br/>' +
+                    							car.fuelType + ' ' +
+                    							car.engineCapacity + ' <span class="cm">cm<sup>3</sup></span> ' +   
+                    							car.transmission + ' ' 
+                    							
+                    							//getFuelTypeSymbol(car.fuelType)
+                    						)
+                          		)
+                        );
+          				info.append($('<div>').addClass('price').html(car.price + '€</span>'));
           				slide.append(info);
 
           				//controls
@@ -491,11 +433,49 @@ $(document).ready(function(){
 	    }
 	}
 
+	function addCommas(nStr)
+	{
+		nStr += '';
+		x = nStr.split('.');
+		x1 = x[0];
+		x2 = x.length > 1 ? '.' + x[1] : '';
+		var rgx = /(\d+)(\d{3})/;
+		while (rgx.test(x1)) {
+			x1 = x1.replace(rgx, '$1' + ',' + '$2');
+		}
+		return x1 + x2;
+	}
+
+	function getFuelTypeSymbol(fuelType){
+		switch(fuelType){
+			case 'petrol':
+				return 'P';
+				break;
+			case 'disel':
+				return 'D';
+				break;
+			case 'gas':
+				return 'G';
+				break;
+			case 'petrolAndGas':
+				return 'P&G';
+				break;
+			case 'hybrid':
+				return 'H';
+				break;
+			case 'electric':
+				return 'E';
+				break;
+			default:
+				break;
+		}
+	}
+
 	generatePriceSelects();
 	
 	function generatePriceSelects(){
 		
-	    $("#priceFrom").append($('<option>').attr('value', 0).text('€ Od'));
+	    $("#priceFrom").append($('<option>').attr('value', 0).text('€ From'));
 	    for(i = 100; i < 5000; i = i + 500){
 	        $("#priceFrom").append($('<option>').attr('value', i).text(i + '€'));
 	    }
@@ -508,7 +488,7 @@ $(document).ready(function(){
 	        $("#priceFrom").append($('<option>').attr('value', i).text(i + '€'));
 	    }
 
-	    $("#priceTo").append($('<option>').attr('value', 0).text('€ Do'));
+	    $("#priceTo").append($('<option>').attr('value', 0).text('€ To'));
 	    for(i = 100000; i > 10000; i = i - 10000){
 	        $("#priceTo").append($('<option>').attr('value', i).text(i + '€'));
 	    }

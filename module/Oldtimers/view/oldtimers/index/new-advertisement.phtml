@@ -1,57 +1,26 @@
-<style>
-#advertisementBlock{
-    color: gray;
-    top: 10px;
-}
-
-#advertisementBlock .form-group{
-    padding: 8px 10px;
-}
-
-#advertisementBlock .list-group{
-    margin: 8px 3px;
-}
-
-.list-group .list-group-item{
-    padding: 2px 10px;
-}
-
-.help-block{
-    display: none;
-}
-
-#post{
-    background-color: #f63e3e !important;
-    color: white;
-    font-size: 1.1em;
-    font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
-}
-
-h3{
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-</style>
+<?php 
+	echo $this->headScript()->prependFile($this->basePath('js/validator.js'));
+?>
 
 <div class="row">
 	<nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a href="/" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right">Naslovna</a>
-            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a>
-            <h4>Dodaj oglas</h4>
+            <a href="/" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><?php echo $this->translate('List all cars') ?></a>
+<!--             <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a> -->
+            <h4><?php echo $this->translate('New car') ?></h4>
           </div>
         </div><!--/.container-fluid -->
       </nav>
 </div>
 <div class="row">
     <div id="advertisementBlock" class="col-lg-12">
-        <form action="" method="post" role="form" class="form" enctype="multipart/form-data" data-toggle="validator">
-        	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center">Glavno</h3></div>
+        <form id="advertisementForm" action="/" method="post" role="form" class="form" enctype="multipart/form-data" data-toggle="validator">
+        	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center"><?php echo $this->translate('Main information') ?></h3></div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="brand" class="control-label">Marka:</label>
+                <label for="brand" class="control-label"><?php echo $this->translate('Make') ?>:</label>
                 <select id="make" name="make" class="form-control" data-error="Please select mark" required>
-                    <option value="" selected disabled>Izaberite Marku</option>
+                    <option value="" selected disabled><?php echo $this->translate('Choose make') ?></option>
                     <?php foreach ($make as $maker): ?>
                         <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
                     <?php endforeach;?>
@@ -59,61 +28,61 @@ h3{
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="model" class="control-label">Model:</label>
+                <label for="model" class="control-label"><?php echo $this->translate('Model') ?>:</label>
                 <select id="model" name="model" class="form-control" data-error="Please select model" required>
-                    <option value="" selected disabled>Prvo izaberite marku</option>
+                    <option value="" selected disabled><?php echo $this->translate('First choose make') ?></option>
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="modification" class="control-label">Modification:</label>
+                <label for="modification" class="control-label"><?php echo $this->translate('Modification') ?>:</label>
                 <input type="text" name="modification" class="form-control"/>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="year" class="control-label">Godište:</label>
-                <input type="number" name="year" id="year" class="form-control" data-minlength="4" data-error="Please add car manufacture year" required/>
+                <label for="year" class="control-label"><?php echo $this->translate('Manufacture year') ?>:</label>
+                <input type="number" name="year" id="year" class="form-control" data-minlength="4" data-error="<?php echo $this->translate('Please add car manufacture year') ?>" required/>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="transmission">Mjenjač:</label>
-                <select id="transmission" name="transmission" class="form-control" data-error="Please select transmission type" required>
-                    <option value="">Izaberite Mjenjač</option>
-                    <option value="manual">Manuelni</option>
-                    <option value="automatic">Automatski</option>
-                    <option value="tiptronik">Tiptronik</option>
+                <label for="transmission"><?php echo $this->translate('Transmission') ?>:</label>
+                <select id="transmission" name="transmission" class="form-control" data-error="<?php echo $this->translate('Please select transmission type') ?>" required>
+                    <option value=""><?php echo $this->translate('Choose transmission type') ?></option>
+                    <option value="manual"><?php echo $this->translate('Manual') ?></option>
+                    <option value="automatic"><?php echo $this->translate('Automatic') ?></option>
+                    <option value="tiptronik"><?php echo $this->translate('Tiptronic') ?></option>
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="driverSide" class="control-label">Strana volana:</label>
-                <select id="driverSide" name="driverSide" class="form-control" data-error="Please select driver side" required>
-                    <option value="">Izaberite Stranu Volana</option>
-                    <option value="left">Lijeva</option>
-                    <option value="right">Desna</option>
+                <label for="driverSide" class="control-label"><?php echo $this->translate('Driver side') ?>:</label>
+                <select id="driverSide" name="driverSide" class="form-control" data-error="<?php echo $this->translate('Please select driver side') ?>" required>
+                    <option value=""><?php echo $this->translate('Choose driver side') ?></option>
+                    <option value="left"><?php echo $this->translate('Left') ?></option>
+                    <option value="right"><?php echo $this->translate('Right') ?></option>
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="wheelDrive" class="control-label">Pogon:</label>
-                <select id="wheelDrive" name="wheelDrive" class="form-control" data-error="Please select wheel drive" required>
-                    <option value="">Izaberite Pogon</option>
-                    <option value="front">Prednja vuča</option>
-                    <option value="rear">Zadnja vuča</option>
-                    <option value="all">4x4</option>
+                <label for="wheelDrive" class="control-label"><?php echo $this->translate('Wheel drive') ?>:</label>
+                <select id="wheelDrive" name="wheelDrive" class="form-control" data-error="<?php echo $this->translate('Please select wheel drive') ?>" required>
+                    <option value=""><?php echo $this->translate('Choose wheel drive') ?></option>
+                    <option value="front"><?php echo $this->translate('Front-wheel drive') ?></option>
+                    <option value="rear"><?php echo $this->translate('Rear-wheel drive') ?></option>
+                    <option value="all"><?php echo $this->translate('Full-wheel drive') ?></option>
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="fuelType" class="control-label">Gorivo:</label>
-                <select id="fuelType" name="fuelType" class="form-control" data-error="Please select fuel type" required>
-                    <option value="">Izaberite Vrstu Goriva</option>
-                    <option value="diesel">Dizel</option>
-                    <option value="petrol">Benzin</option>
-                    <option value="gas">Metan</option>
-                    <option value="petrol_and_gas">Benzin + plin</option>
-                    <option value="hybrid">Hibridni pogon</option>
-                    <option value="electric">Električni pogon</option>
+                <label for="fuelType" class="control-label"><?php echo $this->translate('Fuel type') ?>:</label>
+                <select id="fuelType" name="fuelType" class="form-control" data-error="<?php echo $this->translate('Please select fuel type') ?>" required>
+                    <option value=""><?php echo $this->translate('Choose fuel type') ?></option>
+                    <option value="diesel"><?php echo $this->translate('Disel') ?></option>
+                    <option value="petrol"><?php echo $this->translate('Petrol') ?></option>
+                    <option value="gas"><?php echo $this->translate('Gas') ?></option>
+                    <option value="petrolAndGas"><?php echo $this->translate('Petrol + Gas') ?></option>
+                    <option value="hybrid"><?php echo $this->translate('Hybrid') ?></option>
+                    <option value="electric"><?php echo $this->translate('Electric') ?></option>
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
@@ -122,204 +91,215 @@ h3{
 <!--                 <input type="text" name="engineType" class="form-control"/> -->
 <!--             </div> -->
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="engineCapacity" class="control-label">Kubikaža: (cm3)</label>
-                <input type="text" name="engineCapacity" class="form-control" data-minlength="3" data-error="Please add engine capacity in cm3" required/>
+                <label for="engineCapacity" class="control-label"><?php echo $this->translate('Engine capacity') ?>: (cm3)</label>
+                <input type="text" name="engineCapacity" class="form-control" data-minlength="3" data-error="<?php echo $this->translate('Please add engine capacity in cm3') ?>" required/>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="enginePower" class="control-label">Snaga: (kW)</label>
+                <label for="enginePower" class="control-label"><?php echo $this->translate('Power') ?>: (kW)</label>
                 <input type="text" name="enginePower" class="form-control"/>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="color" class="control-label">Boja:</label>
+                <label for="color" class="control-label"><?php echo $this->translate('Color') ?>:</label>
                 <input type="text" name="color" class="form-control"/>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="mileage" class="control-label">Kilometraža: (km)</label>
-                <input type="text" name="mileage" class="form-control" data-error="Please add mileage" required/>
+                <label for="mileage" class="control-label"><?php echo $this->translate('Mileage') ?>: (km)</label>
+                <input type="text" name="mileage" class="form-control" data-error="<?php echo $this->translate('Please add mileage') ?>" required/>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center">Komponente</h3></div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center"><?php echo $this->translate('Features') ?></h3></div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
             	<ul class="list-group">
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="AC klima" name="features[aac]">AC klima</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="ABS" name="features[abs]">ABS</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="ESP" name="features[esp]">ESP</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Muzika" name="features[audio]">Muzika</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Servo" name="features[powerAssistedSteering]">Servo</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Šiber" name="features[sunroof]">Šiber</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Kuka" name="features[towHook]">Kuka</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Digitalna klima" name="features[climatisation]">Digitalna klima</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Electro podizači" name="features[electricWindows]">Electro podizači</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Grijači sedišta" name="features[electricHeatedSeats]">Grijači sedišta</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Centralna brava" name="features[centralLocking]">Centralna brava</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Metalik boja" name="features[metallicColor]">Metalik boja</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="airConditioning" name="features[airConditioning]"><?php echo $this->translate('Air conditioning') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="abs" name="features[abs]"><?php echo $this->translate('ABS') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="esp" name="features[esp]"><?php echo $this->translate('ESP') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="audio" name="features[audio]"><?php echo $this->translate('Audio system') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="powerAssistedSteering" name="features[powerAssistedSteering]"><?php echo $this->translate('Power Assisted Steering') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="sunRoof" name="features[sunRoof]"><?php echo $this->translate('Sun roof') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="towHook" name="features[towHook]"><?php echo $this->translate('Tow hook') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="climatisation" name="features[climatisation]"><?php echo $this->translate('Climatisation') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="electricWindows" name="features[electricWindows]"><?php echo $this->translate('Electric Windows') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="electricHeatedSeats" name="features[electricHeatedSeats]"><?php echo $this->translate('Electric Heated Seats') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="centralLocking" name="features[centralLocking]"><?php echo $this->translate('Central Locking') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="metallicColor" name="features[metallicColor]"><?php echo $this->translate('Metallic Color') ?></label></li>
                 </ul>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
 	            <ul class="list-group">
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Parking senzor" name="features[parkingSensors]">Parking senzor</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Svijetla za maglu" name="features[fogLamp]">Svijetla za maglu</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Koža" name="features[leather]">Koža</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Air bag" name="features[airbags]">Air bag</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Alarm" name="features[alarm]">Alarm</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Alu felne" name="features[alloyWheels]">Alu felne</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Kod ključ" name="features[immobilizer]">Kod ključ</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Navigacija" name="features[navigationSystem]">Navigacija</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Tempomat" name="features[cruiseControl]">Tempomat</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Daljinsko zaključavanje" name="features[remoteLock]">Daljinsko zaključavanje</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Panorama krov" name="features[panoramicRoof]">Panorama krov</label></li>
-	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="Xenon" name="features[xenonHeadlights]">Xenon</label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="parkingSensors" name="features[parkingSensors]"><?php echo $this->translate('Parking Sensors') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="fogLamp" name="features[fogLamp]"><?php echo $this->translate('Fog Lamp') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="leather" name="features[leatherSeats]"><?php echo $this->translate('Leather Seats') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="airbags" name="features[airbags]"><?php echo $this->translate('Airbags') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="alarm" name="features[alarm]"><?php echo $this->translate('Alarm') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="remoteLock" name="features[remoteLock]"><?php echo $this->translate('Remote Lock') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="alloyWheels" name="features[alloyWheels]"><?php echo $this->translate('Alloy Wheels') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="immobilizer" name="features[immobilizer]"><?php echo $this->translate('Immobilizer') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="navigationSystem" name="features[navigationSystem]"><?php echo $this->translate('Navigation System') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="cruiseControl" name="features[cruiseControl]"><?php echo $this->translate('Cruise Control') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="panoramicRoof" name="features[panoramicRoof]"><?php echo $this->translate('Panoramic Roof') ?></label></li>
+	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="xenonHeadlights" name="features[xenonHeadlights]"><?php echo $this->translate('Xenon Headlights') ?></label></li>
 	            </ul>
             </div>
             
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                <label for="description" class="control-label">Opis:</label>
+                <label for="description" class="control-label"><?php echo $this->translate('Description') ?>:</label>
                 <textarea name="description" class="form-control"></textarea>
                 <div class="help-block with-errors"></div>
             </div>
             
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center">Informacia</h3></div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center"><?php echo $this->translate('Owner information') ?></h3></div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="price" class="control-label">Cijena:</label>
+                <label for="price" class="control-label"><?php echo $this->translate('Price') ?>:</label>
                 <div class="input-group">
                   <span class="input-group-addon">€</span>
-                  <input type="text" name="price" id="price" class="form-control" data-error="Please put your price" required/>
+                  <input type="text" name="price" id="price" class="form-control" data-error="<?php echo $this->translate('Please put your price') ?>" required/>
                 </div>
                 <div class="help-block with-errors"></div>
             </div>
             
             <div class=" col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="phoneNumber" class="control-label">Telefon:</label>
-                <input type="text" name="owner[phoneNumber]" class="form-control" data-error="Please add telefon number" required/>
+                <label for="phoneNumber" class="control-label"><?php echo $this->translate('Phone number') ?>:</label>
+                <input type="text" name="owner[phoneNumber]" class="form-control" data-error="<?php echo $this->translate('Please add telefon number') ?>" required/>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="email" class="control-label">Email:</label>
+                <label for="email" class="control-label"><?php echo $this->translate('Email') ?>:</label>
                 <div class="input-group">
 	                <span class="input-group-addon">@</span>
-	                <input type="email" name="owner[email]" class="form-control" data-error="Email address is invalid" />
+	                <input type="email" name="owner[email]" class="form-control" data-error="<?php echo $this->translate('Email address is invalid') ?>" />
 	            </div>
 	            <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="city" class="control-label">Grad:</label>
-                <select id="city" name="owner[city]" class="form-control" data-error="Please choose city where car located" required>
-                    <option value="" disabled>Izaberite Grad</option>
+                <label for="city" class="control-label"><?php echo $this->translate('City') ?>:</label>
+                <select id="city" name="owner[city]" class="form-control" data-error="<?php echo $this->translate('Please choose city where car located') ?>" required>
+                    <option value="" disabled><?php echo $this->translate('Choose city') ?></option>
                     <option value="Podgorica">Podgorica</option>
                     <option value="Nikšić">Nikšić</option>
                     <option value="Pljevlja">Pljevlja</option>
                     <option value="Bijelo Polje">Bijelo Polje</option>
-                    <option value="Cetinje">Cetinje</option>
-                    <option value="Bar">Bar</option>
-                    <option value="Herceg Novi">Herceg Novi</option>
-                    <option value="Berane">Berane</option>
-                    <option value="Budva">Budva</option>
-                    <option value="Ulcinj">Ulcinj</option>
-                    <option value="Rožaje">Rožaje</option>
-                    <option value="Tivat">Tivat</option>
-                    <option value="Dobrota">Dobrota</option>
-                    <option value="Kotor">Kotor</option>
-                    <option value="Danilovgrad">Danilovgrad</option>
-                    <option value="Mojkovac">Mojkovac</option>
-                    <option value="Škaljari">Škaljari</option>
-                    <option value="Tuzi">Tuzi</option>
-                    <option value="Igalo">Igalo</option>
-                    <option value="Bijela">Bijela</option>
-                    <option value="Plav">Plav</option>
-                    <option value="Burtaiši">Burtaiši</option>
-                    <option value="Kolašin">Kolašin</option>
-                    <option value="Ibarac">Ibarac</option>
-                    <option value="Golubovci">Golubovci</option>
-                    <option value="Resnik">Resnik</option>
-                    <option value="Nedakusi">Nedakusi</option>
-                    <option value="Šušanj">Šušanj</option>
-                    <option value="Risan">Risan</option>
-                    <option value="Ozrinići">Ozrinići</option>
-                    <option value="Žabljak">Žabljak</option>
-                    <option value="Pokrajci">Pokrajci</option>
-                    <option value="Stari Bar">Stari Bar</option>
-                    <option value="Donje Luge">Donje Luge</option>
-                    <option value="Mojanovići">Mojanovići</option>
-                    <option value="Sutomore">Sutomore</option>
-                    <option value="Zelenika">Zelenika</option>
-                    <option value="Pešca">Pešca</option>
-                    <option value="Gusinje">Gusinje</option>
-                    <option value="Budimlja">Budimlja</option>
-                    <option value="Spuž">Spuž</option>
-                    <option value="Polje">Polje</option>
-                    <option value="Rastovica">Rastovica</option>
-                    <option value="Polja">Polja</option>
-                    <option value="Mrčevac">Mrčevac</option>
-                    <option value="Plužine">Plužine</option>
-                    <option value="Petrovac">Petrovac</option>
-                    <option value="Beran Selo">Beran Selo</option>
-                    <option value="Bjeliši">Bjeliši</option>
-                    <option value="Čeluga">Čeluga</option>
-                    <option value="Mataguži">Mataguži</option>
-                    <option value="Dolac">Dolac</option>
-                    <option value="Đenovići">Đenovići</option>
-                    <option value="Lješnica">Lješnica</option>
-                    <option value="Prčanj">Prčanj</option>
-                    <option value="Mahala">Mahala</option>
-                    <option value="Goričani">Goričani</option>
-                    <option value="Podi">Podi</option>
-                    <option value="Meljine">Meljine</option>
-                    <option value="Tomba">Tomba</option>
-                    <option value="Andrijevica">Andrijevica</option>
-                    <option value="Kumbor">Kumbor</option>
-                    <option value="Buče">Buče</option>
-                    <option value="Smajlagića Polje">Smajlagića Polje</option>
-                    <option value="Kodre">Kodre</option>
-                    <option value="Bečići">Bečići</option>
-                    <option value="Donja Lastva">Donja Lastva</option>
-                    <option value="Židovići">Židovići</option>
-                    <option value="Šavnik">Šavnik</option>
-                    <option value="Sveti Stefan">Sveti Stefan</option>
-                    <option value="Slatina">Slatina</option>
-                    <option value="Gradac">Gradac</option>
-                    <option value="Perast">Perast</option>
-                    <option value="Virpazar">Virpazar</option>
-                    <option value="Goransko">Goransko</option>
-                    <option value="Bare">Bare</option>
-                    <option value="Njegovuđa">Njegovuđa</option>
-                    <option value="Rijeka Crnojevića">Rijeka Crnojevića</option>
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="name" class="control-label">Ime:</label>
+                <label for="name" class="control-label"><?php echo $this->translate('Name') ?>:</label>
                 <input type="text" name="owner[name]" class="form-control"/>
                 <div class="help-block with-errors"></div>
             </div>
             
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                <input id="photos" name="photos[]" type="file" class="file" data-preview-file-type="image" multiple="true" placeholder="Dodaj sliki" data-error="Please add at least two photos" required>
+				<div class="table table-striped files" id="previews">
+					<div id="template" class="file-row col-lg-4 col-md-4 col-sm-6 col-xs-12">
+						<!-- This is used as the file preview template -->
+						<div>
+							<span class="preview"><img data-dz-thumbnail /><div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+									<div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+							</div></span>
+						</div>
+						<div>
+<!-- 							<p class="size" data-dz-size></p> -->
+						</div>
+						<div class="fileInfo">
+							<div class="name word-break" data-dz-name></div>
+							<div class="pull-right">
+								<button data-dz-remove class="btn btn-operational delete">
+									<i class="glyphicon glyphicon-trash"></i>
+									<span>Delete</span>
+								</button>
+							</div>
+						</div>
+						<div>
+							<strong class="error text-danger" data-dz-errormessage></strong>
+						</div>
+					</div>
+				</div>
+				
+				<div id="actions" class="row">
+			      <div class="col-lg-12">
+			        <!-- The fileinput-button span is used to style the file input field as button -->
+			        <span class="btn btn-lg btn-operational fileinput-button pull-right">
+			            <i class="glyphicon glyphicon-plus"></i>
+			            <span>Add files</span>
+			        </span>
+			      </div>
+			
+			      <div class="col-lg-12">
+			        <!-- The global file processing state -->
+			        <span class="fileupload-process">
+	 				  <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="display: none;">
+				            <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+			          </div>
+			        </span>
+			      </div>
+			
+			    </div>
                 <div class="help-block with-errors"></div>
             </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                <input type="submit" id="post" class="btn-operational form-control" value="Dodaj"/>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group pull-right">
+                <input type="submit" id="post" class="btn btn-operational pull-right" value="<?php echo $this->translate('Post car') ?>"/>
+                <div class="help-block with-errors"></div>
             </div>
         </form>
     </div>
 </div>
 
-<?php 
-	echo $this->headScript()->prependFile($this->basePath('js/validator.js'));
-?>
-
 <script>
 $(document).ready(function(){
-	$('#photos').fileinput({
-	    resizeImage: true,
-	    maxImageWidth: 200,
-	    maxImageHeight: 200,
-	    resizePreference: 'width',
-	    maxFileCount: 10
-	});
+    // Get the template HTML and remove it from the doument
+    var previewNode = document.querySelector("#template");
+    previewNode.id = "";
+    var previewTemplate = previewNode.parentNode.innerHTML;
+    previewNode.parentNode.removeChild(previewNode);
 
+    var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+      url: "/index/saveTempFile", // Set the url
+      maxFilesize: '2000',
+      maxFiles: 15,
+      thumbnailWidth: 350,
+      thumbnailHeight: 220,
+      parallelUploads: 15,
+      previewTemplate: previewTemplate,
+      acceptedFiles: 'image/jpeg, image/png, image/gif',
+      autoQueue: true, // Make sure the files aren't queued until manually added
+      previewsContainer: "#previews", // Define the container to display the previews
+      clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+    });
+
+    myDropzone.on("addedfile", function(file) {
+      // Hookup the start button
+      //file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
+    });
+
+    // Update the total progress bar
+    myDropzone.on("totaluploadprogress", function(progress) {
+    	document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
+    });
+
+    myDropzone.on("sending", function(file) {
+      // Show the total progress bar when upload starts
+      document.querySelector("#total-progress").style.display = "block";
+      // And disable the start button
+      //file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+    });
+
+    // Hide the total progress bar when nothing's uploading anymore
+    myDropzone.on("queuecomplete", function(progress) {
+    	document.querySelector("#total-progress").style.display = "none";
+    });
+
+    // Setup the buttons for all transfers
+    // The "add files" button doesn't need to be setup because the config
+    // `clickable` has already been specified.
+//     document.querySelector("#actions .start").onclick = function() {
+//       myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+//     };
+//     document.querySelector("#actions .cancel").onclick = function() {
+//       myDropzone.removeAllFiles(true);
+//     };
+    
 	$('#make').change(function(){
 		$.ajax({
 		  url: "index/getModelByMakeIdJson",

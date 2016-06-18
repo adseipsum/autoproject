@@ -207,6 +207,10 @@ class IndexController extends AbstractActionController
         return $view;
     }
     
+    public function saveTempFileAction(){
+    	return true;
+    }
+    
     public function getModelByMakeIdJsonAction()
     {
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
@@ -325,7 +329,7 @@ class IndexController extends AbstractActionController
 				break;
 		}
 		
-		$image_resized = $this->addWatermark($image_resized, true);
+		//$image_resized = $this->addWatermark($image_resized, true);
 	
 		# Writing image according to type to the output destination and image quality
 				switch ( $info[2] ) {

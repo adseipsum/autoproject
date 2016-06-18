@@ -1,5 +1,5 @@
 <?php
-$db = 'oldtimers';
+$db = 'turbo-cars';
 return array(
     'doctrine' => array(
         //just some self-explanatory connection info

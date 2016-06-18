@@ -144,7 +144,7 @@ return array(
                                 'port'     => '3306',
                                 'user'     => 'root',
                                 'password' => 'opossum',
-                                'dbname'   => 'autoproject',
+                                'dbname'   => 'turbo-cars',
                         )
                 )
         )

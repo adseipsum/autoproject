@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
 			<div class="navbar-header">
-	            <a href="/" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right">Naslovna</a>
+	            <a href="/" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right">All cars</a>
 	            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a>
 	            <h4><?=$advertisement->make?> <?=$advertisement->model?> <?=$advertisement->year?></h4>
           </div>
@@ -35,16 +35,16 @@
 <div class="row">
 	<div class="col-lg-8 col-lg-offset-2">
 		<table class="table" style="margin-top:30px;">
-			<tr><td width="120">Marka</td><td><?=$advertisement->make?></td></tr>
+			<tr><td width="120">Make</td><td><?=$advertisement->make?></td></tr>
 			<tr><td>Model</td><td><?=$advertisement->model?></td></tr>
-			<tr><td>Godište</td><td><?=$advertisement->year?></td></tr>
-			<tr><td>Mjenjač</td><td><?=$advertisement->transmission?></td></tr>
-			<tr><td>Strana volana</td><td><?=$advertisement->driverSide?></td></tr>
-			<tr><td>Pogon</td><td><?=$advertisement->wheelDrive?></td></tr>
-			<tr><td>Gorivo</td><td><?=$advertisement->fuelType?></td></tr>
-			<tr><td>Kubikaža</td><td><?=$advertisement->engineCapacity?>cm<sup>3</sup></td></tr>
-			<tr><td>Snaga</td><td><?=$advertisement->kW?> kW</td></tr>
-			<tr><td>Kilometraža</td><td><?=$advertisement->mileage?></td></tr>
+			<tr><td>Year</td><td><?=$advertisement->year?></td></tr>
+			<tr><td>Transmission</td><td><?=$advertisement->transmission?></td></tr>
+			<tr><td>Driver Side</td><td><?=$advertisement->driverSide?></td></tr>
+			<tr><td>Wheel Drive</td><td><?=$advertisement->wheelDrive?></td></tr>
+			<tr><td>Fuel Type</td><td><?=$advertisement->fuelType?></td></tr>
+			<tr><td>Engine Capacity</td><td><?=$advertisement->engineCapacity?>cm<sup>3</sup></td></tr>
+			<tr><td>Power</td><td><?=$advertisement->kW?> kW</td></tr>
+			<tr><td>Mileage</td><td><?=$advertisement->mileage?></td></tr>
 		</table>
 		<div id="features">
 			<div class="panel list-group">
@@ -61,10 +61,10 @@
 		</div>
 		<div>
 			<table class="table">
-				<tr><td width="120"><span>Grad:</span></td><td><?=$advertisement->owner[1]?></td></tr>
-                <tr><td><span>Telefon:</span></td><td><a href="tel:<?=$advertisement->owner[2]?>"><?=$advertisement->owner[2]?></a> <small><i>(click to call)</i></small></td></tr>
-                <tr><td><span>Prodavac:</span></td><td><?=$advertisement->owner[0]?></td></tr>
-                <tr><td><span>Datum:</span></td><td><?=$advertisement->date->format('d.m.Y')?></td></tr>
+				<tr><td width="120"><span>City:</span></td><td><?=$advertisement->owner[1]?></td></tr>
+                <tr><td><span>Phone:</span></td><td><a href="tel:<?=$advertisement->owner[2]?>"><?=$advertisement->owner[2]?></a> <small><i>(click to call)</i></small></td></tr>
+                <tr><td><span>Seller:</span></td><td><?=$advertisement->owner[0]?></td></tr>
+                <tr><td><span>Date:</span></td><td><?=$advertisement->date->format('d.m.Y')?></td></tr>
                 <tr style="color: white;"><td colspan="2"><?=$advertisement->autodealerId?></td></tr>
 			</table>
 		</div>

@@ -17,7 +17,6 @@ body{
 
 #counter{
     font-family: Ebrima;
-    font-weight: bold;
 }
 
 .navbar-header .btn{
@@ -37,7 +36,7 @@ body{
 }
 
 .navbar-default{
-    background-color: #f63e3e !important;
+    background-color: #e41912 !important;
     background-image: none;
     color: white;
     box-shadow: none;
@@ -54,7 +53,7 @@ body{
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
-    background-color: #f63e3e;
+    background-color: #e41912;
     opacity: 0.8;
 }
 
@@ -66,6 +65,7 @@ body{
     width: 120px;
     height: 30px;
     padding:0;
+    padding-left:14px;
 }
 
 #searchBox > div{
@@ -101,7 +101,7 @@ body{
 }
 
 #post{
-    background-color: #f63e3e !important;
+    background-color: #e41912 !important;
     color: white;
     font-size: 1.1em;
     font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
@@ -251,7 +251,7 @@ h3{
 .carousel .price{
     display: block;
     float: right;
-    color: #f63e3e;
+    color: #e41912;
     font-size: 1.4em;
     text-align: center;
     padding-right: 5px;
@@ -263,7 +263,7 @@ h3{
     font-size: 0.9em;
     padding-left: 5px;
     text-align: center;
-    width: 70%;
+    width: 75%;
 }
 
 .carousel .info a{
@@ -346,9 +346,9 @@ h3{
 }
 
 #newAdvertisement{
-    border: 1px solid white;
     background-color: transparent;
     color: white;
+    margin-right: 20px;
 }
 
 #newAdvertisement:focus, #newAdvertisement:hover{

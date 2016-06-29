@@ -16,7 +16,7 @@ class IndexController extends AbstractActionController
 {
 
     private $carMapper = null;
-    const PAGE_SIZE = 12;
+    const PAGE_SIZE = 6;
 
     public function listAction()
     {
@@ -84,7 +84,8 @@ class IndexController extends AbstractActionController
     }
     
     public function testAction()
-    {$i = 0;
+    {
+    	$i = 0;
     	$result = $this->getCarMapper()->findAll();
     	foreach($result as $record){
     		
@@ -123,6 +124,7 @@ class IndexController extends AbstractActionController
 
     public function removeJsonAction()
     {
+    	die;
         $id = $this->params()->fromQuery('id');
         $result = [];
         if($id != null){
@@ -140,6 +142,8 @@ class IndexController extends AbstractActionController
 
     public function newAdvertisementAction()
     {
+    	$entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+    	
         if($this->params()->fromPost()){
             $car = $this->getServiceLocator()->get('OldtimersCar');
             $car->garageId = 0;
@@ -161,54 +165,69 @@ class IndexController extends AbstractActionController
             $car->price = $this->params()->fromPost('price');
             $car->currency = 'EUR';
             $car->owner = $this->params()->fromPost('owner');
-            $this->getCarMapper()->save($car);
             
-            if($car->_id && $this->getRequest()->getFiles()->toArray()){
-                $adapter = new \Zend\File\Transfer\Adapter\Http();
-                $adapter->setDestination(PUBLIC_PATH . '/uploads');
-                $uploadDir = PUBLIC_PATH . '/uploads/' . $car->garageId . '/' . $car->_id;
-                
-                if (!file_exists($uploadDir)){
-                    mkdir($uploadDir, 0777, 1);
-                }
-                
-                $fileName = 0;
-                $msg = array();
-                foreach ($adapter->getFileInfo() as $info) {
-                    $filePath = $uploadDir .  '/' . $fileName . '.jpg';
-                    
-                    $adapter->addFilter('Rename', array('target' => $filePath, 'overwrite' => true));
-                    $adapter->addValidator('filesize',  array('max' => 10000000, 'min' => 300000));
-                    $adapter->addValidator('IsImage',  false, 'jpg, jpeg, png');
-                    
-                    if(!$adapter->receive($info['name'])){
-                        $msg[] = $adapter->getMessages();
-                    }
-
-                    $this->resizeImage($filePath);
-                    $car->photos[] = $fileName;
-                    $fileName++;
-                }
-                $this->getCarMapper()->save($car);
-                
-                return $this->redirect()->toRoute('advertisement', array(
-                		'id' => $car->_id
-                ));
+            
+            $files = $entityManager->createQuery("SELECT tf.directory, tf.name FROM Oldtimers\Entity\Files tf WHERE tf.id IN ( " . implode(',', $this->params()->fromPost('photos')) . " )")->getResult();
+            $filesPathes = array();
+            foreach($files as $file){
+            	$filesPathes[] = $file['directory'] . '/' . $file['name'];
             }
+            //var_dump($tempFileId);
+            $car->photos = $filesPathes;
+            
+            $this->getCarMapper()->save($car);
+            $this->redirect()->toUrl('/');
         }
-
-        $entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+        
+        
         $make = $entityManager->createQuery('SELECT m.make FROM Oldtimers\Entity\Models m GROUP BY m.make')->getResult();
         
         $view = new ViewModel(array(
                 'make' => $make,
+        		'carDirectory' => uniqid("car-directory-")
         ));
         
         return $view;
     }
     
-    public function saveTempFileAction(){
-    	return true;
+    public function saveFileAction(){
+    	
+    	$entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+    	$carDirectory = $this->params()->fromPost('carDirectory') ? $this->params()->fromPost('carDirectory') : uniqid("car-directory-");
+    	
+    	if($this->getRequest()->getFiles()->toArray()){
+    		$adapter = new \Zend\File\Transfer\Adapter\Http();
+    		$adapter->setDestination(PUBLIC_PATH . '/uploads');
+    		$uploadDir = PUBLIC_PATH . '/uploads/' . $carDirectory;
+
+    		if (!file_exists($uploadDir)){
+    			mkdir($uploadDir, 0777, 1);
+    		}
+    	
+    		$info = $adapter->getFileInfo();
+    		
+    		if ($info) {
+    			$fileName = uniqid("file-id-");
+    			$filePath = $uploadDir . '/' . $fileName . '.jpg';
+
+    			$adapter->addFilter('Rename', array('target' => $filePath, 'overwrite' => true));
+    			$adapter->addValidator('filesize',  array('max' => 10000000, 'min' => 300000));
+    			$adapter->addValidator('IsImage',  false, 'jpg, jpeg, png');
+    			
+    			if(!$adapter->receive()){
+    				return new JsonModel($adapter->getMessages());
+    			}
+
+    			$file = array('directory' => $carDirectory, 'name' => $fileName);
+    			$entityManager->getConnection()->insert('files', $file);
+
+    			$this->resizeImage($filePath);
+    			
+    			return new JsonModel(array('carDirectory' => $carDirectory, 'fileId' => $entityManager->getConnection()->lastInsertId()));
+    		}
+    	}
+    	
+    	return false;
     }
     
     public function getModelByMakeIdJsonAction()
@@ -227,8 +246,8 @@ class IndexController extends AbstractActionController
 	protected function resizeImage($file) {
 	      
 		$string             = null;
-		$width              = 640;
-		$height             = 480;
+		$width              = 800;
+		$height             = 600;
 		$proportional       = false;
 		$output             = 'file';
 		$delete_original    = true;

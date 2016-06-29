@@ -68,13 +68,10 @@
                 	<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 form-group">
 		                <select id="city" name="city" class="form-control" data-live-search="true">
 		                    <option value="0"><?php echo $this->translate('City') ?></option>
-		                    <option value="Podgorica">Podgorica</option>
-		                    <option value="Nikšić">Nikšić</option>
-		                    <option value="Pljevlja">Pljevlja</option>
-		                    <option value="Bijelo Polje">Bijelo Polje</option>
-		                    <option value="Cetinje">Cetinje</option>
-		                    <option value="Bar">Bar</option>
-		                    <option value="Herceg Novi">Herceg Novi</option>
+		                    <option value="Berlin">Berlin</option>
+		                    <option value="Paris">Paris</option>
+		                    <option value="London">London</option>
+		                    <option value="Rome">Rome</option>
 	                	</select>
                 	</div>
            	  </div>
@@ -183,7 +180,7 @@ $(document).ready(function(){
              			   var div = $('#carModal').find('.carousel-inner').append(
                      			   		$('<div>').addClass('item').html(
                              			   		$('<img>')
-                     			   				.attr('src', 'uploads/' + info.garageId + '/' + info._id + '/' + value + '.jpg'))
+                     			   				.attr('src', 'uploads/' +  value + '.jpg'))
                      			   				.append($('<span>').addClass('price').html(info.price + '€')));
              			   if(key == 0){
                  			   $(div).find(':first').addClass('active');
@@ -230,10 +227,10 @@ $(document).ready(function(){
                 	  console.log(info.date);
                 	  $('#ownerInfo').append(
                         	   $('<table>').attr('id', 'ownerInfoTable').addClass('table')
-                        	   .append('<tr><td width="120"><span>Grad:</span></td><td>' + info.owner[1] + '</td></tr>')
-                	   		   .append('<tr><td><span>Telefon:</span></td><td><a href="tel:' + info.owner[2] + '">' + info.owner[2] + '</a> <small><i>(click to call)</i></small></td></tr>')
-                	           .append('<tr><td><span>Prodavac:</span></td><td>' + info.owner[0] + '</td></tr>')
-                	           .append('<tr><td><span>Datum:</span></td><td>' + date.toLocaleDateString() + '</td></tr>')
+                        	   .append('<tr><td width="120"><span>City:</span></td><td>' + info.owner[2] + '</td></tr>')
+                	   		   .append('<tr><td><span>Phone:</span></td><td><a href="tel:' + info.owner[0] + '">' + info.owner[0] + '</a> <small><i>(click to call)</i></small></td></tr>')
+                	           .append('<tr><td><span>Seller:</span></td><td>' + info.owner[1] + '</td></tr>')
+                	           .append('<tr><td><span>Date:</span></td><td>' + date.toLocaleDateString() + '</td></tr>')
                 	           );
 
                 	   $('#delete').html(info._id);
@@ -317,7 +314,7 @@ $(document).ready(function(){
           				$.each(car.photos, function( photo_id, photo ) {
               				
           					var item = $('<div>').addClass('item');
-              				var path = 'uploads/' + car.garageId + '/' + car._id + '/' + photo + '.jpg';
+              				var path = 'uploads/' + photo + '.jpg';
           					if(photo_id == 0){
           						item.addClass('active');
           						item.append($('<img>').attr('src', path).attr('draggable', false));

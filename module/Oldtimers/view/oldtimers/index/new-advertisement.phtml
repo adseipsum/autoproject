@@ -1,7 +1,3 @@
-<?php 
-	echo $this->headScript()->prependFile($this->basePath('js/validator.js'));
-?>
-
 <div class="row">
 	<nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -15,7 +11,7 @@
 </div>
 <div class="row">
     <div id="advertisementBlock" class="col-lg-12">
-        <form id="advertisementForm" action="/" method="post" role="form" class="form" enctype="multipart/form-data" data-toggle="validator">
+        <form id="advertisementForm" action="/new" method="post" role="form" class="form" enctype="multipart/form-data">
         	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center"><?php echo $this->translate('Main information') ?></h3></div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="brand" class="control-label"><?php echo $this->translate('Make') ?>:</label>
@@ -177,10 +173,10 @@
                 <label for="city" class="control-label"><?php echo $this->translate('City') ?>:</label>
                 <select id="city" name="owner[city]" class="form-control" data-error="<?php echo $this->translate('Please choose city where car located') ?>" required>
                     <option value="" disabled><?php echo $this->translate('Choose city') ?></option>
-                    <option value="Podgorica">Podgorica</option>
-                    <option value="Nikšić">Nikšić</option>
-                    <option value="Pljevlja">Pljevlja</option>
-                    <option value="Bijelo Polje">Bijelo Polje</option>
+                    <option value="Berlin">Berlin</option>
+                    <option value="Paris">Paris</option>
+                    <option value="London">London</option>
+                    <option value="Rome">Rome</option>
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
@@ -239,15 +235,21 @@
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group pull-right">
-                <input type="submit" id="post" class="btn btn-operational pull-right" value="<?php echo $this->translate('Post car') ?>"/>
+                <button type="submit" id="post" class="btn btn-operational pull-right"><?php echo $this->translate('Post car') ?></button>
                 <div class="help-block with-errors"></div>
             </div>
+            <input type="hidden" id="carDirectory" name="carDirectory" value=""/>
+            <div id="filesInputsContainer"></div>
         </form>
     </div>
 </div>
 
 <script>
+var carDirectory = '<?= $carDirectory ?>';
+
 $(document).ready(function(){
+    $('#carDirectory').val(carDirectory);
+    
     // Get the template HTML and remove it from the doument
     var previewNode = document.querySelector("#template");
     previewNode.id = "";
@@ -255,7 +257,10 @@ $(document).ready(function(){
     previewNode.parentNode.removeChild(previewNode);
 
     var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-      url: "/index/saveTempFile", // Set the url
+      url: "/index/saveFile", // Set the url
+      params: { 
+          carDirectory : $('#carDirectory').val()
+          },
       maxFilesize: '2000',
       maxFiles: 15,
       thumbnailWidth: 350,
@@ -265,10 +270,17 @@ $(document).ready(function(){
       acceptedFiles: 'image/jpeg, image/png, image/gif',
       autoQueue: true, // Make sure the files aren't queued until manually added
       previewsContainer: "#previews", // Define the container to display the previews
-      clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+      clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
+      success: function(file, response){
+          if(response){
+              $('#carDirectory').val(response.carDirectory);
+              $('#filesInputsContainer').append($('<input>').attr('type', 'hidden').attr('name', 'photos[]').attr('value', response.fileId));
+          }
+      }
     });
 
     myDropzone.on("addedfile", function(file) {
+      $('#post').attr('disabled', true);
       // Hookup the start button
       //file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
     });
@@ -287,6 +299,7 @@ $(document).ready(function(){
 
     // Hide the total progress bar when nothing's uploading anymore
     myDropzone.on("queuecomplete", function(progress) {
+        $('#post').attr('disabled', false);
     	document.querySelector("#total-progress").style.display = "none";
     });
 
@@ -313,6 +326,18 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+	$('#advertisementForm').find('button[type=submit]').on('click', function(e) {
+        if ($('#advertisementForm').validator('validate').has('.has-error').length) {
+        } else {
+            $('#advertisementForm').submit();
+        }
+        return false;
+    });
 	
 });
 </script>
+
+<?php 
+	$this->headScript()->prependFile($this->basePath('js/validator.js'));
+?>

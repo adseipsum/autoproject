@@ -41,7 +41,7 @@ body{
     color: white;
     box-shadow: none;
     border: none;
-    border-radius: 1px;
+    border-radius: 2px;
     padding: 0px 3px;
 }
 
@@ -148,7 +148,7 @@ h3{
 .carousel{
     max-width: 640px;
     cursor: pointer;
-    padding: 5px;
+    padding: 3px;
     margin: auto;
 }
 
@@ -182,12 +182,13 @@ h3{
     vertical-align: middle;
 }
 
+/*
 .carousel-control .chevron-left:hover{
-    opacity: 0.9;
+    opacity: 0.3;
 } 
 
 .carousel-control .chevron-right:hover{
-    opacity: 0.9;
+    opacity: 0.3;
 }
 
 .carousel-control .chevron-left{
@@ -208,7 +209,7 @@ h3{
     opacity: 0.9;
     background-size: 25px 25px;
     background-repeat: no-repeat;
-}
+}*/
 
 .carousel .carousel-caption{
     width: 100%;
@@ -232,8 +233,8 @@ h3{
 .carousel .data{
     height: 25px; 
     text-overflow: ellipsis;
-    font-family: Ebrima;
-    font-weight: bold;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: 500;
     display:inline-block;
     width:100%;
     text-shadow: none;
@@ -252,7 +253,9 @@ h3{
     display: block;
     float: right;
     color: #e41912;
-    font-size: 1.4em;
+    font-size: 1.2em;
+	font-family: LilienthalGrotesk;
+	font-weight: 600;
     text-align: center;
     padding-right: 5px;
     padding-top: 3px;
@@ -279,8 +282,17 @@ h3{
 }
 
 .carousel-control.right, .carousel-control.left{
-    background: none;
-    z-index:1000;
+    background: #2275a9;
+	opacity: 0;
+    z-index:999;
+	top:0;
+	bottom:13%;
+	margin:2px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,2275a9+98&1+48,0+99 */
+	background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(32,102,161,1) 48%, rgba(34,117,169,0.02) 98%, rgba(34,117,169,0) 99%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(32,102,161,1) 48%,rgba(34,117,169,0.02) 98%,rgba(34,117,169,0) 99%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(32,102,161,1) 48%,rgba(34,117,169,0.02) 98%,rgba(34,117,169,0) 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#002275a9',GradientType=0 ); /* IE6-9 */
 }
 
 @font-face {
@@ -361,10 +373,7 @@ h3{
 }
 
 #dynamic-content .row > div{
-    -webkit-box-shadow: 2px 3px 6px 0px rgba(0,0,0,0.44);
-    -moz-box-shadow: 2px 3px 6px 0px rgba(0,0,0,0.44);
-    box-shadow: 2px 3px 6px 0px rgba(0,0,0,0.44);
-    padding: 8px;
+    padding: 5px;
     
 }
 
@@ -375,6 +384,10 @@ h3{
 
 #actions > div{
     margin-top: 15px;
+}
+
+.modal-content{
+	border-radius: 2px;
 }
 
 @media only screen and (min-width:992px){

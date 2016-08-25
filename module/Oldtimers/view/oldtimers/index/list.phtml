@@ -224,7 +224,6 @@ $(document).ready(function(){
                 	  var t = info.date.date.split(/[- :]/);
                   	  var date = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
                 	  
-                	  console.log(info.date);
                 	  $('#ownerInfo').append(
                         	   $('<table>').attr('id', 'ownerInfoTable').addClass('table')
                         	   .append('<tr><td width="120"><span>City:</span></td><td>' + info.owner[2] + '</td></tr>')
@@ -242,7 +241,7 @@ $(document).ready(function(){
 
     	   $('body').on('click', '#delete', function(e){
     		   $.ajax({
-        		   url: "http://turbo-cars.com/index/remove-json?id=" + $(this).html(),
+        		   url: "index/remove-json?id=" + $(this).html(),
        		   }).done(function(responce) {
            		   
        		   });
@@ -250,7 +249,7 @@ $(document).ready(function(){
 
     	   $('body').on('keydown', '#search', function(e){
     		   $.ajax({
-        		   url: "http://turbo-cars.com/index/searchTag?tag=" + $(this).val(),
+        		   url: "index/searchTag?tag=" + $(this).val(),
        		   }).done(function(responce) {
            		   console.log(responce);
        		   });
@@ -278,7 +277,7 @@ $(document).ready(function(){
 
     	       processing = true;
         	   $.ajax({
-        		   url: "http://turbo-cars.com/index/getPage",
+        		   url: "index/getPage",
         		   data: {
             		   'skip' : container.attr('data-skip'),
             		   'make' : $('#make').val(),
@@ -339,9 +338,9 @@ $(document).ready(function(){
                     							//<span style="color: #f63e3e;">&#8226;</span>
                     							car.make + ' ' + 
                     							car.model + ' ' + 
-                    							car.year + ' (' + 
-                    							addCommas(car.mileage) + '<span style="text-transform: lowercase; margin-left:2px;">km</span>)<br/>' +
-                    							car.fuelType + ' ' +
+                    							car.year + ' <br/>' + 
+                    							addCommas(car.mileage) + '<span style="text-transform: lowercase; margin-left:2px;">km</span> ' +
+                    							car.fuelType + '  ' +
                     							car.engineCapacity + ' <span class="cm">cm<sup>3</sup></span> ' +   
                     							car.transmission + ' ' 
                     							
@@ -353,13 +352,14 @@ $(document).ready(function(){
           				slide.append(info);
 
           				//controls
+          				var controls = $('<div>').addClass('controls');
           				var leftControl = $('<a>')
 				          				.addClass('left carousel-control')
 				          				.attr('href', '#' + car._id)
 				          				.attr('role', 'button')
 				          				.attr('data-slide', 'prev')
 				          				.append($('<span>').addClass('glyphicon chevron-left').attr('aria-hidden', 'true'))
-          				slide.append(leftControl);
+				        controls.append(leftControl);
           				
           				var rightControl = $('<a>')
 				          				.addClass('right carousel-control')
@@ -367,8 +367,10 @@ $(document).ready(function(){
 				          				.attr('role', 'button')
 				          				.attr('data-slide', 'next')
 				          				.append($('<span>').addClass('glyphicon chevron-right').attr('aria-hidden', 'true'))
-          				slide.append(rightControl);
-						
+				        controls.append(rightControl);
+								        
+				        slide.append($('<div>').append(controls));
+				        
           				row.append(colDiv.append(slide));
           				
               			//set skip
@@ -412,7 +414,15 @@ $(document).ready(function(){
 	            	
 	$(".carousel").swipeleft(function() {  
 		$(this).carousel('next');  
-	}); 
+	});
+
+	$('#dynamic-content').on('mouseenter', '.carousel', function(){
+		$(this).find('.carousel-control.right, .carousel-control.left').css('opacity', 0.2);
+	});
+	
+	$('#dynamic-content').on('mouseleave', '.carousel', function(){
+		$(this).find('.carousel-control.right, .carousel-control.left').css('opacity', 0);
+	});
 
 	$("#priceTo, #priceFrom").on('change', function(){
 	    bindPrice();

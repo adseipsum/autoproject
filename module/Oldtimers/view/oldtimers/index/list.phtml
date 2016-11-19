@@ -1,3 +1,8 @@
+<style>
+    .carousel-control.right, .carousel-control.left {
+        opacity: 0;
+    }
+</style>
 <div class="row">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -186,7 +191,10 @@ $(document).ready(function(){
                  			   $(div).find(':first').addClass('active');
              			   }
               		   });
-                	  $('#generalInfo').append($('<table>').addClass('infoTable table')
+
+                       $('#carModal').find('.carousel-control.right, .carousel-control.left').css('opacity', 0.5);
+
+                       $('#generalInfo').append($('<table>').addClass('infoTable table')
              		  	  .append('<tr><td width="120"><span>Proizvođač:</span></td><td>' + info.make + '</td></tr>')
              		   	  .append('<tr><td><span>Model:</span></td><td>' + info.model + '</td></tr>')
 	             		  .append('<tr><td><span>Year:</span></td><td>' + info.year + '</td></tr>')
@@ -198,7 +206,7 @@ $(document).ready(function(){
 	             		  .append('<tr><td><span>Power:</span></td><td>' + info.kW + ' kW</tr>')
 	             		  .append('<tr><td><span>Mileage:</span></td><td>' + info.mileage + ' km</td></tr>'));
 
-                	  $('#features').append(
+                       $('#features').append(
                         	  $('<div>')
                         	  .addClass('panel list-group')
                         	  .append(
@@ -214,17 +222,17 @@ $(document).ready(function(){
                         	  .append(
                                 	  $('<div>').attr('id', 'sm').addClass('sublinks collapse')
                                )
-                      );
-                	  $.each(info.features, function( key, value ) {
-                	      $('#features .sublinks').append($('<a>').addClass('list-group-item small').html(value));
-                	  });
+                       );
+                       $.each(info.features, function( key, value ) {
+                           $('#features .sublinks').append($('<a>').addClass('list-group-item small').html(value));
+                       });
 
-                	  $('#description').append($('<table>').attr('id', 'description').addClass('table').append('<tr><td colspan="2">' + info.description + '</td></tr>'));
+                	   $('#description').append($('<table>').attr('id', 'description').addClass('table').append('<tr><td colspan="2">' + info.description + '</td></tr>'));
 
-                	  var t = info.date.date.split(/[- :]/);
-                  	  var date = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                	   var t = info.date.date.split(/[- :]/);
+                  	   var date = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
                 	  
-                	  $('#ownerInfo').append(
+                	   $('#ownerInfo').append(
                         	   $('<table>').attr('id', 'ownerInfoTable').addClass('table')
                         	   .append('<tr><td width="120"><span>City:</span></td><td>' + info.owner[2] + '</td></tr>')
                 	   		   .append('<tr><td><span>Phone:</span></td><td><a href="tel:' + info.owner[0] + '">' + info.owner[0] + '</a> <small><i>(click to call)</i></small></td></tr>')
@@ -240,6 +248,7 @@ $(document).ready(function(){
     	   });
 
     	   $('body').on('click', '#delete', function(e){
+			   console.log(1222);
     		   $.ajax({
         		   url: "index/remove-json?id=" + $(this).html(),
        		   }).done(function(responce) {
@@ -417,7 +426,7 @@ $(document).ready(function(){
 	});
 
 	$('#dynamic-content').on('mouseenter', '.carousel', function(){
-		$(this).find('.carousel-control.right, .carousel-control.left').css('opacity', 0.2);
+		$(this).find('.carousel-control.right, .carousel-control.left').css('opacity', 0.5);
 	});
 	
 	$('#dynamic-content').on('mouseleave', '.carousel', function(){

@@ -144,9 +144,26 @@ return array(
                                 'port'     => '3306',
                                 'user'     => 'root',
                                 'password' => 'opossum',
-                                'dbname'   => 'turbo-cars',
+                                'dbname'   => 'autoproject',
                         )
                 )
+        )
+    ),
+    // Placeholder for console routes
+    'console' => array(
+        'router' => array(
+            'routes' => array(
+                'import' => array(
+                    'options' => array(
+                        'route' => 'import <id>',
+                        'defaults' => array(
+                            '__NAMESPACE__' => 'Oldtimers\Controller',
+                            'controller' => 'index',
+                            'action' => 'import'
+                        ),
+                    ),
+                ),
+            )
         )
     ),
     'environment' => 'development',

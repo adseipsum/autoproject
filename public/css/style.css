@@ -182,35 +182,6 @@ h3{
     vertical-align: middle;
 }
 
-/*
-.carousel-control .chevron-left:hover{
-    opacity: 0.3;
-} 
-
-.carousel-control .chevron-right:hover{
-    opacity: 0.3;
-}
-
-.carousel-control .chevron-left{
-    background-image: url(/img/arrow-left.png);
-    background-position: 0% 47%;
-    margin-right: 40%;
-    height: 100%;
-    opacity: 0.9;
-    background-size: 25px 25px;
-    background-repeat: no-repeat;
-}
-
-.carousel-control .chevron-right{
-    background-image: url(/img/arrow-right.png);
-    background-position: 0% 47%;
-    margin-left: 40%;
-    height: 100%;
-    opacity: 0.9;
-    background-size: 25px 25px;
-    background-repeat: no-repeat;
-}*/
-
 .carousel .carousel-caption{
     width: 100%;
     height: 30px;
@@ -282,18 +253,48 @@ h3{
 }
 
 .carousel-control.right, .carousel-control.left{
-    background: #2275a9;
-	opacity: 0;
-    z-index:999;
-	top:0;
-	bottom:13%;
-	margin:2px;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,2275a9+98&1+48,0+99 */
-	background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(32,102,161,1) 48%, rgba(34,117,169,0.02) 98%, rgba(34,117,169,0) 99%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(32,102,161,1) 48%,rgba(34,117,169,0.02) 98%,rgba(34,117,169,0) 99%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(32,102,161,1) 48%,rgba(34,117,169,0.02) 98%,rgba(34,117,169,0) 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#002275a9',GradientType=0 ); /* IE6-9 */
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 88%;
+    opacity: 0.6;
 }
+
+.carousel-control.right{
+    background-image: url(/img/arrow-right.png);
+}
+
+.carousel-control.left{
+    background-image: url(/img/arrow-left.png);
+}
+/*
+.carousel-control .chevron-left:hover{
+    opacity: 0.3;
+}
+
+.carousel-control .chevron-right:hover{
+    opacity: 0.3;
+}
+
+.carousel-control .chevron-left{
+    background-image: url(/img/arrow-left.png);
+    background-position: 0% 47%;
+    margin-right: 40%;
+    height: 100%;
+    opacity: 0.9;
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+}
+
+.carousel-control .chevron-right{
+    background-image: url(/img/arrow-right.png);
+    background-position: 0% 47%;
+    margin-left: 40%;
+    height: 100%;
+    opacity: 0.9;
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+}*/
+
 
 @font-face {
     font-family: LilienthalGrotesk;

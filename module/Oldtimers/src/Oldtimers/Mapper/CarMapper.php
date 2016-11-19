@@ -63,7 +63,7 @@ class CarMapper implements CarMapperInterface
 	
 	public function getCarList($search, $pageSize, $skip){
 		$qb = $this->documentManager->createQueryBuilder('Oldtimers\Entity\Car');
-		
+
 		if(!empty($search['make'])){
 			$qb->field('make')->equals($search['make']);
 		}
@@ -99,7 +99,7 @@ class CarMapper implements CarMapperInterface
 			->sort(array('date' => '-1', 'make' => '1'))
 			->skip($skip)
 			->limit($pageSize);
-		
+
 		$query = $qb->getQuery();
 
 		return $query->execute();

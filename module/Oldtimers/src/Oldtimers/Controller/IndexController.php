@@ -61,7 +61,7 @@ class IndexController extends AbstractActionController
     	}
 
     	$result = $this->getCarMapper()->getCarList($search, self::PAGE_SIZE, $skip);
-    	
+        
     	$count = $result->count();
     	$resultArray = $result->toArray();
     	//var_dump(array_keys($resultArray));
@@ -124,7 +124,7 @@ class IndexController extends AbstractActionController
 
     public function removeJsonAction()
     {
-    	die;
+    	
         $id = $this->params()->fromQuery('id');
         $result = [];
         if($id != null){

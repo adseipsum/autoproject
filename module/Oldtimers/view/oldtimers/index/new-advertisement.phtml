@@ -51,25 +51,6 @@
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="driverSide" class="control-label"><?php echo $this->translate('Driver side') ?>:</label>
-                <select id="driverSide" name="driverSide" class="form-control" data-error="<?php echo $this->translate('Please select driver side') ?>" required>
-                    <option value=""><?php echo $this->translate('Choose driver side') ?></option>
-                    <option value="left"><?php echo $this->translate('Left') ?></option>
-                    <option value="right"><?php echo $this->translate('Right') ?></option>
-                </select>
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="wheelDrive" class="control-label"><?php echo $this->translate('Wheel drive') ?>:</label>
-                <select id="wheelDrive" name="wheelDrive" class="form-control" data-error="<?php echo $this->translate('Please select wheel drive') ?>" required>
-                    <option value=""><?php echo $this->translate('Choose wheel drive') ?></option>
-                    <option value="front"><?php echo $this->translate('Front-wheel drive') ?></option>
-                    <option value="rear"><?php echo $this->translate('Rear-wheel drive') ?></option>
-                    <option value="all"><?php echo $this->translate('Full-wheel drive') ?></option>
-                </select>
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="fuelType" class="control-label"><?php echo $this->translate('Fuel type') ?>:</label>
                 <select id="fuelType" name="fuelType" class="form-control" data-error="<?php echo $this->translate('Please select fuel type') ?>" required>
                     <option value=""><?php echo $this->translate('Choose fuel type') ?></option>
@@ -94,11 +75,6 @@
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="enginePower" class="control-label"><?php echo $this->translate('Power') ?>: (kW)</label>
                 <input type="text" name="enginePower" class="form-control"/>
-                <div class="help-block with-errors"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="color" class="control-label"><?php echo $this->translate('Color') ?>:</label>
-                <input type="text" name="color" class="form-control"/>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
@@ -139,35 +115,19 @@
 	                <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="xenonHeadlights" name="features[xenonHeadlights]"><?php echo $this->translate('Xenon Headlights') ?></label></li>
 	            </ul>
             </div>
-            
+
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
                 <label for="description" class="control-label"><?php echo $this->translate('Description') ?>:</label>
                 <textarea name="description" class="form-control"></textarea>
                 <div class="help-block with-errors"></div>
             </div>
-            
+
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center"><?php echo $this->translate('Owner information') ?></h3></div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="price" class="control-label"><?php echo $this->translate('Price') ?>:</label>
-                <div class="input-group">
-                  <span class="input-group-addon">€</span>
-                  <input type="text" name="price" id="price" class="form-control" data-error="<?php echo $this->translate('Please put your price') ?>" required/>
-                </div>
-                <div class="help-block with-errors"></div>
-            </div>
-            
+
             <div class=" col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="phoneNumber" class="control-label"><?php echo $this->translate('Phone number') ?>:</label>
                 <input type="text" name="owner[phoneNumber]" class="form-control" data-error="<?php echo $this->translate('Please add telefon number') ?>" required/>
                 <div class="help-block with-errors"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="email" class="control-label"><?php echo $this->translate('Email') ?>:</label>
-                <div class="input-group">
-	                <span class="input-group-addon">@</span>
-	                <input type="email" name="owner[email]" class="form-control" data-error="<?php echo $this->translate('Email address is invalid') ?>" />
-	            </div>
-	            <div class="help-block with-errors"></div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
                 <label for="city" class="control-label"><?php echo $this->translate('City') ?>:</label>
@@ -180,12 +140,26 @@
                 </select>
                 <div class="help-block with-errors"></div>
             </div>
+
             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                <label for="name" class="control-label"><?php echo $this->translate('Name') ?>:</label>
-                <input type="text" name="owner[name]" class="form-control"/>
+                <label for="price" class="control-label"><?php echo $this->translate('Price') ?>:</label>
+                <div class="input-group">
+                    <span class="input-group-addon">€</span>
+                    <input type="text" name="price" id="price" class="form-control" data-error="<?php echo $this->translate('Please put your price') ?>" required/>
+                </div>
                 <div class="help-block with-errors"></div>
             </div>
-            
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 form-group">
+                <label for="email" class="control-label"><?php echo $this->translate('Email') ?>:</label>
+                <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="email" name="owner[email]" class="form-control" data-error="<?php echo $this->translate('Email address is invalid') ?>" />
+                </div>
+                <span class="help-inline">we will send you links to control your advertisement</span>
+                <div class="help-block with-errors">we will send you links to control your advertisement</div>
+            </div>
+
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
 				<div class="table table-striped files" id="previews">
 					<div id="template" class="file-row col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -212,7 +186,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div id="actions" class="row">
 			      <div class="col-lg-12">
 			        <!-- The fileinput-button span is used to style the file input field as button -->
@@ -221,7 +195,7 @@
 			            <span>Add files</span>
 			        </span>
 			      </div>
-			
+
 			      <div class="col-lg-12">
 			        <!-- The global file processing state -->
 			        <span class="fileupload-process">
@@ -230,7 +204,7 @@
 			          </div>
 			        </span>
 			      </div>
-			
+
 			    </div>
                 <div class="help-block with-errors"></div>
             </div>
@@ -273,8 +247,13 @@ $(document).ready(function(){
       clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
       success: function(file, response){
           if(response){
-              $('#carDirectory').val(response.carDirectory);
-              $('#filesInputsContainer').append($('<input>').attr('type', 'hidden').attr('name', 'photos[]').attr('value', response.fileId));
+          	console.log(response);
+          	if(response.fileId && response.carDirectory) {
+	            $('#carDirectory').val(response.carDirectory);
+	            $('#filesInputsContainer').append($('<input>').attr('type', 'hidden').attr('name', 'photos[]').attr('value', response.fileId));
+            }else{
+	            $('body.dz-error-message').text(response);
+            }
           }
       }
     });

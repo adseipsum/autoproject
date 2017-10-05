@@ -165,9 +165,10 @@ class IndexController extends AbstractActionController
             $car->price = $this->params()->fromPost('price');
             $car->currency = 'EUR';
             $car->owner = $this->params()->fromPost('owner');
-            
-            
-            $files = $entityManager->createQuery("SELECT tf.directory, tf.name FROM Oldtimers\Entity\Files tf WHERE tf.id IN ( " . implode(',', $this->params()->fromPost('photos')) . " )")->getResult();
+
+            $photos = implode(',', $this->params()->fromPost('photos'));
+
+            $files = $entityManager->createQuery("SELECT tf.directory, tf.name FROM Oldtimers\Entity\Files tf WHERE tf.id IN ( $photos )")->getResult();
             $filesPathes = array();
             foreach($files as $file){
             	$filesPathes[] = $file['directory'] . '/' . $file['name'];

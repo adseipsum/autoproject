@@ -24,7 +24,7 @@
             ->prependFile($this->basePath('js/jquery.min.js'))
             ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
             ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
-            
+
         ; ?>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,19 +37,53 @@
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	
+
 	  ga('create', 'UA-77751794-1', 'auto');
 	  ga('send', 'pageview');
-	
+
 	</script>
+      <script>
+
+          var test = [
+              {'creationTime' : ''},
+              {'creationTime' : '1'},
+              {'creationTime' : ''},
+              {'creationTime' : ''},
+              {'creationTime' : '3'},
+              {'creationTime' : '2'},
+              {'creationTime' : '5'},
+              {'creationTime' : '4'}
+          ];
+
+          console.table(test);
+
+          test.sort(function(a,b){
+
+              if(!a.creationTime && b.creationTime){
+                  return 1;
+              }
+
+              if(a.creationTime && !b.creationTime){
+                  return -1;
+              }
+
+              if(a.creationTime.length && b.creationTime.length){
+                  return (new Date(a.creationTime*1000).getTime() - (new Date(b.creationTime*1000)).getTime());
+              }
+
+              return 0;
+          });
+
+          console.table(test);
+      </script>
   </head>
   <body>
-  
+
     <div class="container">
         <?php echo $this->content; ?>
     </div>
     <script>
-	  
+
 	</script>
     <?php echo $this->inlineScript() ?>
   </body>

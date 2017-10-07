@@ -179,12 +179,13 @@ class IndexController extends AbstractActionController
             $this->getCarMapper()->save($car);
             $this->redirect()->toUrl('/');
         }
-        
-        
+
+        $cities = $entityManager->createQuery('SELECT c.name FROM Oldtimers\Entity\Cities c')->getResult();
         $make = $entityManager->createQuery('SELECT m.make FROM Oldtimers\Entity\Models m GROUP BY m.make')->getResult();
         
         $view = new ViewModel(array(
                 'make' => $make,
+        		'cities' => $cities,
         		'carDirectory' => uniqid("car-directory-")
         ));
         
@@ -240,7 +241,7 @@ class IndexController extends AbstractActionController
                 'models' => $models,
                 'success' => true,
         ));
-        
+
         return $result;
     }
     

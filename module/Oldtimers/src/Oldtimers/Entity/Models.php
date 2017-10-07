@@ -40,12 +40,17 @@ class Models
     public function getModel() {
         return $this->model;
     }
-    
+
+    public function getYear() {
+        return $this->year;
+    }
+
     public function jsonSerialize(){
         return array(
             'id'      => $this->getId(),
             'make'     => $this->getMake(),
             'model'     => $this->getModel(),
+            'year'     => $this->getYear(),
         );
     }
     

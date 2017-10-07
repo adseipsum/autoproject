@@ -1,7 +1,11 @@
 body{
-    background-color: white;
+    background-color: #E6EFED;
     text-shadow: none;
     scroll-behavior: smooth;
+}
+
+h3, .h3 {
+    font-size: 20px;
 }
 
 .navbar{
@@ -36,7 +40,7 @@ body{
 }
 
 .navbar-default{
-    background-color: #e41912 !important;
+    background-color: #1C1D30 !important;
     background-image: none;
     color: white;
     box-shadow: none;
@@ -49,11 +53,11 @@ body{
 .navbar-default .navbar-toggle{
     color: white;
     height: 39px;
-    background-color: #2275a9 !important;
+    background-color: #176BC4 !important;
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
-    background-color: #e41912;
+    background-color: #1C1D30;
     opacity: 0.8;
 }
 
@@ -80,7 +84,7 @@ body{
 }
 
 #advertisementBlock{
-    color: gray;
+    color: #736C61;
     top: 10px;
 }
 
@@ -96,12 +100,21 @@ body{
     padding: 2px 10px;
 }
 
+.list-group .list-group-item > label{
+    padding-top: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    min-height: 30px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
 .help-block{
     display: none;
 }
 
 #post{
-    background-color: #e41912 !important;
+    background-color: #C88A1C !important;
     color: white;
     font-size: 1.1em;
     font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
@@ -134,7 +147,7 @@ h3{
 }
 
 .progress-bar-success{
-    background-image: linear-gradient(to bottom, #2275a9 0px, #2275a9 100%) !important;
+    background-image: linear-gradient(to bottom, #176BC4 0px, #176BC4 100%) !important;
     background-repeat: repeat-x;
 }
 
@@ -166,9 +179,9 @@ h3{
 .carousel .favorite{
     position: absolute;
     z-index: 999999;
-    background-color: #09A936;
+    background-color: #736C61;
     color: white;
-    border: 10px dashed #09A936; 
+    border: 10px dashed #736C61;
     top: 16px;
     left: -8px;
     font-size: 1em;
@@ -223,7 +236,7 @@ h3{
 .carousel .price{
     display: block;
     float: right;
-    color: #e41912;
+    color: #C88A1C;
     font-size: 1.2em;
 	font-family: LilienthalGrotesk;
 	font-weight: 600;
@@ -241,7 +254,7 @@ h3{
 }
 
 .carousel .info a{
-    color: #2275a9;
+    color: #1C1D30;
 }
 
 .carousel .info .cm{
@@ -302,7 +315,7 @@ h3{
 }
 
 .footer{
-    background-color: white;
+    background-color: #E6EFED;
     border: none;
     height: 20px;
     margin-top: 50px;
@@ -344,8 +357,8 @@ h3{
     font-size: 0.9em !important;
     font-weight: bold !important;
     line-height: 1.6;
-    color: #797979;
-    background-color: #2275a9 !important;
+    color: #E6EFED;
+    background-color: #176BC4 !important;
     color: white;
     max-width: 400px;
 }
@@ -360,7 +373,7 @@ h3{
 
 #newAdvertisement{
     background-color: transparent;
-    color: white;
+    color: #E6EFED;
     margin-right: 20px;
 }
 
@@ -389,6 +402,14 @@ h3{
 
 .modal-content{
 	border-radius: 2px;
+}
+
+.aliceblue {
+    background-color: aliceblue;
+}
+
+.white {
+    background-color: white;
 }
 
 @media only screen and (min-width:992px){

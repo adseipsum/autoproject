@@ -145,6 +145,10 @@ return array(
                                 'user'     => 'root',
                                 'password' => 'opossum',
                                 'dbname'   => 'autoproject',
+                                'charset'  => 'utf8',
+                                'driverOptions' => array(
+                                    1002 => 'SET NAMES utf8'
+                                )
                         )
                 )
         )

@@ -241,6 +241,8 @@ $(document).ready(function(){
                 	           );
 
                 	   $('#delete').html(info._id);
+
+
            		   }
    		       });
 
@@ -264,6 +266,7 @@ $(document).ready(function(){
        		   });
     	   });
 
+    	   //solve this using preloadPhotos
     	   $('body').bind('slide.bs.carousel', '.carousel', function (e) {
    		       if(e.direction == 'left'){
 	               var url = $(e.target).find('.item.active').next().find("img").attr('alt'); 
@@ -280,6 +283,22 @@ $(document).ready(function(){
            });
 
     	   if(!processing){ loadPage(container) };
+
+    	   function preloadPhotos(id){
+    	   	var target = '#' + id;
+               var nextURL = $(target).find('.item.active').next().find("img").attr('alt');
+		       if(nextURL != undefined) {
+			       $(target).find('.item.active').next().find("img").attr("src", nextURL);
+		       }
+
+               var previousURL = $(target).find('.item.active').prev().find("img").attr('alt');
+               if(previousURL != undefined){
+                   $(target).find('.item.active').prev().find("img").attr("src", previousURL);
+               }else{
+	               previousURL = $(target).find(':last-child').find("img").attr('alt');
+                    $(target).find(':last-child').find("img").attr("src", previousURL);
+                }
+           }
 
     	   
     	   function loadPage(container){
@@ -346,18 +365,18 @@ $(document).ready(function(){
             							.html(
                     							//<span style="color: #f63e3e;">&#8226;</span>
                     							car.make + ' ' + 
-                    							car.model + ' ' + 
-                    							car.year + ' <br/>' + 
-                    							addCommas(car.mileage) + '<span style="text-transform: lowercase; margin-left:2px;">km</span> ' +
-                    							car.fuelType + '  ' +
-                    							car.engineCapacity + ' <span class="cm">cm<sup>3</sup></span> ' +   
-                    							car.transmission + ' ' 
-                    							
+                    							car.model + ' (' +
+                    							car.year + ') <br/>' +
+							                    car.engineCapacity + ' <span class="cm">cm<sup>3</sup></span> ' +
+							                    car.fuelType+ ' &#183; ' +
+							                    car.transmission + ' ' +
+                    							addCommas(car.mileage) + '<span style="text-transform: lowercase; margin-left:2px;">km</span> ' + ''
+
                     							//getFuelTypeSymbol(car.fuelType)
                     						)
                           		)
                         );
-          				info.append($('<div>').addClass('price').html(car.price + '€</span>'));
+          				info.append($('<div>').addClass('price').html('€ ' + car.price + '</span>'));
           				slide.append(info);
 
           				//controls
@@ -386,7 +405,9 @@ $(document).ready(function(){
           				if(firstFlag){ 
                       	   	container.attr('data-skip',  parseInt(container.attr('data-skip')) + Object.keys(responce.cars).length); 
                   	   	}
-          				firstFlag = false; 
+          				firstFlag = false;
+
+			            preloadPhotos(car._id);
            		    });
           			container.append(row);
 

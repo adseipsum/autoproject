@@ -12,7 +12,6 @@ h3, .h3 {
     background-color: white;
     border: none;
     padding: 0px 10px;
-    margin-bottom: 0;
 }
 
 .navbar-header{
@@ -161,7 +160,7 @@ h3{
 .carousel{
     max-width: 640px;
     cursor: pointer;
-    padding: 3px;
+    padding: 0px 3px;
     margin: auto;
 }
 
@@ -215,14 +214,14 @@ h3{
 }
 
 .carousel .data{
-    height: 25px; 
+    max-height: 35px;
     text-overflow: ellipsis;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    font-weight: 500;
+    font-family: Europa;
+    font-weight: bold;
     display:inline-block;
     width:100%;
     text-shadow: none;
-    margin-top: 10px;
+    margin: 8px 0;
     /* Fallback for web browsers that don't support RGBa */
     /*background-color: rgb(0, 0, 0);*/
     /* RGBa with 0.6 opacity */
@@ -237,12 +236,13 @@ h3{
     display: block;
     float: right;
     color: #C88A1C;
-    font-size: 1.2em;
-	font-family: LilienthalGrotesk;
-	font-weight: 600;
+    font-size: 1.5em;
+	font-family: Europa;
+	font-weight: bold;
     text-align: center;
     padding-right: 5px;
     padding-top: 3px;
+
 }
 
 .carousel .info{
@@ -312,6 +312,11 @@ h3{
 @font-face {
     font-family: LilienthalGrotesk;
     src: url("/fonts/LilienthalGrotesk.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Europa;
+    src: url("/fonts/europa-light-webfont.ttf") format("opentype");
 }
 
 .footer{
@@ -387,7 +392,7 @@ h3{
 }
 
 #dynamic-content .row > div{
-    padding: 5px;
+    padding: 0px 5px;
     
 }
 
@@ -413,6 +418,13 @@ h3{
 }
 
 @media only screen and (min-width:992px){
+    /* styles for browsers larger than 960px; */
+    .navbar-form select.form-control {
+        width: 150px;
+    }
+}
+
+@media only screen and (min-width:992px){
         /* styles for browsers larger than 960px; */
         .navbar-form select.form-control {
             width: 150px;
@@ -431,11 +443,19 @@ h3{
         font-size: 0.9em;
         padding: 18px 10px;
     }
+
+    .navbar {
+        margin-bottom: 10px;
+    }
 }
 
 @media only screen and (max-width:400px){
     .navbar-header h4{
         display: none;
+    }
+
+    .price {
+        font-size: small !important;
     }
 }
 

@@ -61,16 +61,36 @@ class IndexController extends AbstractActionController
     	}
 
     	$result = $this->getCarMapper()->getCarList($search, self::PAGE_SIZE, $skip);
+
+
         
     	$count = $result->count();
     	$resultArray = $result->toArray();
     	//var_dump(array_keys($resultArray));
+        $translate = $this->getServiceLocator()->get('ViewHelperManager')->get('translate');
+
+        foreach($resultArray as $car){
+            $car->transmission = $translate($car->transmission);
+            $car->fuelType = $translate($car->fuelType);
+            foreach($car->features as $key => $feature){
+                $car->features[$key] = $translate($feature);
+            }
+        }
     	return new JsonModel(array('cars' => $resultArray, 'count' => $count));
     }
     
     public function carInfoJsonAction()
     {
         $car = $this->getCarMapper()->find($this->params()->fromQuery('id'));
+
+        $translate = $this->getServiceLocator()->get('ViewHelperManager')->get('translate');
+
+        $car->transmission = $translate($car->transmission);
+        $car->fuelType = $translate($car->fuelType);
+        foreach($car->features as $key => $feature){
+            $car->features[$key] = $translate($feature);
+        }
+
         $result = new JsonModel(array('carInfo' => $car));
         return $result;
     }

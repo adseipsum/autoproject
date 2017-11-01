@@ -11,7 +11,6 @@ return array(
             'Oldtimers\Controller\Index' => 'Oldtimers\Controller\IndexController'
         ),
     ),
-        
     'router' => array(
             'routes' => array(
                     'home' => array(
@@ -171,4 +170,14 @@ return array(
         )
     ),
     'environment' => 'development',
+    'translator' => [
+        'locale' => 'sr_SP',
+        'translation_file_patterns' => [
+            [
+                'base_dir' => __DIR__ . '/../translation',
+                'type'     => 'phpArray',
+                'pattern'  => '%s.php',
+            ]
+        ],
+    ],
 );

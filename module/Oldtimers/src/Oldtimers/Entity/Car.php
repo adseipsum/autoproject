@@ -99,7 +99,7 @@ class Car
     public $features = array();
     
     /**
-     * @ODM\Field(type="collection")
+     * @ODM\Field(type="hash")
      */
     public $owner = array();
     

@@ -171,7 +171,7 @@ class OldtimersEntityCarHydrator implements HydratorInterface
             $hydratedData['features'] = $return;
         }
 
-        /** @Field(type="collection") */
+        /** @Field(type="hash") */
         if (isset($data['owner'])) {
             $value = $data['owner'];
             $return = $value;

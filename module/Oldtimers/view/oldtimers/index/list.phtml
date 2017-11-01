@@ -7,15 +7,17 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a href="/new" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><?php echo $this->translate('Sell your car') ?></a>
+
+            <div class="nav-justified text-center">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+              </button>
+            </div>
+
+            <a href="/new" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><span class="glyphicon glyphicon-plus"></span></a>
 <!--             <a href="/new" id="newAdvertisement" class="btn btn-default navbar-btn pull-right">O nas</a> -->
             <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" style="height: 42px;" alt=""/></a>
+
             <h4 id="counter"></h4>
           </div>
         </div><!--/.container-fluid -->
@@ -23,19 +25,38 @@
       <div id="navbar" class="navbar-collapse collapse">
       	<form id="searchForm" class="navbar-form" role="search">
             <div id="searchBox">
-            		<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 form-group">
+            		<div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
 		            	<select id="make" name="make" class="form-control" data-live-search="true">
-		                    <option value="0"><?php echo $this->translate('Make') ?></option>
+		                    <option value="0"><?php echo $this->translate('select_make') ?></option>
 		                    <?php foreach ($make as $maker): ?>
 	                        <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
 	                    	<?php endforeach;?>
 	                	</select>
                 	</div>
-                	<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 form-group">
+                	<div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
 		                <select id="model" name="model" class="form-control" data-live-search="true">
 		                </select>
 	                </div>
-	                <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
+                        <select id="fuelType" name="fuelType" class="form-control">
+                            <option value="0"><?php echo $this->translate('select_fuel_type') ?></option>
+                            <option value="diesel"><?php echo $this->translate('diesel') ?></option>
+                            <option value="Benzin"><?php echo $this->translate('petrol') ?></option>
+                            <option value="gas"><?php echo $this->translate('gas') ?></option>
+                            <option value="petrolAndGas"><?php echo $this->translate('petrol_gas') ?></option>
+                            <option value="hybrid"><?php echo $this->translate('hybrid') ?></option>
+                            <option value="electric"><?php echo $this->translate('electric') ?></option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
+                        <select id="city" name="city" class="form-control" data-live-search="true">
+                            <option value="0"><?php echo $this->translate('select_location') ?></option>
+                            <?php foreach($cities as $city): ?>
+                                <option value="<?= $city['name']?>"><?= $city['name']?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+	                <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
 		                <select id="from" name="from" class="form-control" data-live-search="true">
 		                	<option value="1940">1940</option>
 		                	<?php for ($i = 1941; $i <= 2016; $i++):?>
@@ -43,7 +64,7 @@
 	                    	<?php endfor;?>
 	                	</select>
                 	</div>
-                	<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
+                	<div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
 	                	<select id="to" name="to" class="form-control" data-live-search="true">
 		                	<option value="2016">2016</option>
 		                	<?php for ($i = 2015; $i >= 1968; $i--):?>
@@ -51,34 +72,14 @@
 		                    <?php endfor;?>
 		                </select>
 	                </div>
-	                <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
-		                <select id="fuelType" name="fuelType" class="form-control">
-		                    <option value="0"><?php echo $this->translate('Fuel') ?></option>
-		                    <option value="diesel"><?php echo $this->translate('Diesel') ?></option>
-		                    <option value="Benzin"><?php echo $this->translate('Petrol') ?></option>
-		                    <option value="gas"><?php echo $this->translate('Gas') ?></option>
-		                    <option value="petrolAndGas"><?php echo $this->translate('Petrol + Gas') ?></option>
-		                    <option value="hybrid"><?php echo $this->translate('Hybrid') ?></option>
-		                    <option value="electric"><?php echo $this->translate('Electric') ?></option>
-	                	</select>
-                	</div>
-            		<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
+            		<div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
 		                <select id="priceFrom" name="priceFrom" class="form-control" data-live-search="true">
 		                </select>
 	                </div>
-	                <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 form-group">
+	                <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
 		                <select id="priceTo" name="priceTo" class="form-control" data-live-search="true">
 		                </select>
 	                </div>
-                	<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 form-group">
-		                <select id="city" name="city" class="form-control" data-live-search="true">
-		                    <option value="0"><?php echo $this->translate('City') ?></option>
-		                    <option value="Berlin">Berlin</option>
-		                    <option value="Paris">Paris</option>
-		                    <option value="London">London</option>
-		                    <option value="Rome">Rome</option>
-	                	</select>
-                	</div>
            	  </div>
 		  </form>
       </div><!--/.nav-collapse -->
@@ -90,7 +91,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><?php echo $this->translate('Loading') ?>...</h4>
+        <h4 class="modal-title"><?php echo $this->translate('loading') ?>...</h4>
       </div>
       <div class="modal-body">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -118,7 +119,7 @@
       </div>
       <div class="modal-footer">
         <span id="delete" data-id="" style="width:30px; height:30px; float:left; display: block; color: white;"></span>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $this->translate('close') ?></button>
       </div>
     </div>
 
@@ -130,7 +131,7 @@
 </div>
 
         <div class="footer">
-            <p>&copy; 2005 - <?php echo date('Y') ?> by Adseipsum <?php echo $this->translate('All rights reserved.') ?></p>
+            <p>&copy; 2005 - <?php echo date('Y') ?> by Adseipsum <?php echo $this->translate('copyright') ?></p>
         </div>
         
 <script>
@@ -149,7 +150,7 @@ $(document).ready(function(){
 			}).done(function(responce) {
 				if(responce.success){
 					var model = $("#model").empty();
-					model.append($("<option />").val(0).text('Model'));
+					model.append($("<option />").val(0).text('<?php echo $this->translate('select_model') ?>'));
 					$.each(responce.models, function() {
 						model.append($("<option />").val(this.model).text(this.model));
 					});
@@ -196,15 +197,13 @@ $(document).ready(function(){
 
                        $('#generalInfo').append($('<table>').addClass('infoTable table')
              		  	  .append('<tr><td width="120"><span>Proizvođač:</span></td><td>' + info.make + '</td></tr>')
-             		   	  .append('<tr><td><span>Model:</span></td><td>' + info.model + '</td></tr>')
-	             		  .append('<tr><td><span>Year:</span></td><td>' + info.year + '</td></tr>')
-	             		  .append('<tr><td><span>Transmission:</span></td><td>' + info.transmission + '</td></tr>')
-	             		  .append('<tr><td><span>Driver Side:</span></td><td>' + info.driverSide + '</td></tr>')
-	             		  .append('<tr><td><span>Wheel Drive:</span></td><td>' + info.wheelDrive + '</td></tr>')
-	             		  .append('<tr><td><span>Fuel Type:</span></td><td>' + info.fuelType + '</td></tr>')
-	             		  .append('<tr><td><span>Engine Capacity:</span></td><td>' + info.engineCapacity + ' cm<sup>3</sup></td></tr>')
-	             		  .append('<tr><td><span>Power:</span></td><td>' + info.kW + ' kW</tr>')
-	             		  .append('<tr><td><span>Mileage:</span></td><td>' + info.mileage + ' km</td></tr>'));
+             		   	  .append('<tr><td><span><?php echo $this->translate('select_make') ?>:</span></td><td>' + info.model + '</td></tr>')
+	             		  .append('<tr><td><span><?php echo $this->translate('production_year') ?>:</span></td><td>' + info.year + '</td></tr>')
+	             		  .append('<tr><td><span><?php echo $this->translate('select_transmission') ?>:</span></td><td>' + info.transmission + '</td></tr>')
+	             		  .append('<tr><td><span><?php echo $this->translate('select_fuel_type') ?>:</span></td><td>' + info.fuelType + '</td></tr>')
+	             		  .append('<tr><td><span><?php echo $this->translate('engine_capacity') ?>:</span></td><td>' + info.engineCapacity + ' cm<sup>3</sup></td></tr>')
+	             		  .append('<tr><td><span><?php echo $this->translate('engine_power') ?>:</span></td><td>' + info.kW + ' kW</tr>')
+	             		  .append('<tr><td><span><?php echo $this->translate('mileage') ?>:</span></td><td>' + info.mileage + ' km</td></tr>'));
 
                        $('#features').append(
                         	  $('<div>')
@@ -216,7 +215,7 @@ $(document).ready(function(){
                             	      .attr('data-target', '#sm')
                             	      .attr('data-parent', '#menu')
                             	      .addClass('list-group-item')
-                            	      .append($('<span>').html('Features'))
+                            	      .append($('<span>').html('<?php echo $this->translate('features_toggle') ?>'))
                                       .append($('<span>').addClass('glyphicon glyphicon-hand-down pull-right'))
                         	      )
                         	  .append(
@@ -231,13 +230,12 @@ $(document).ready(function(){
 
                 	   var t = info.date.date.split(/[- :]/);
                   	   var date = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
-                	  
+
                 	   $('#ownerInfo').append(
                         	   $('<table>').attr('id', 'ownerInfoTable').addClass('table')
-                        	   .append('<tr><td width="120"><span>City:</span></td><td>' + info.owner[2] + '</td></tr>')
-                	   		   .append('<tr><td><span>Phone:</span></td><td><a href="tel:' + info.owner[0] + '">' + info.owner[0] + '</a> <small><i>(click to call)</i></small></td></tr>')
-                	           .append('<tr><td><span>Seller:</span></td><td>' + info.owner[1] + '</td></tr>')
-                	           .append('<tr><td><span>Date:</span></td><td>' + date.toLocaleDateString() + '</td></tr>')
+                        	   .append('<tr><td width="120"><span><?php echo $this->translate('select_location') ?>:</span></td><td>' + info.owner['city'] + '</td></tr>')
+                	   		   .append('<tr><td><span><?php echo $this->translate('phone_number') ?>:</span></td><td><a href="tel:' + info.owner['phoneNumber'] + '">' + info.owner['phoneNumber'] + '</a> <small><i>(click to call)</i></small></td></tr>')
+                	           .append('<tr><td><span><?php echo $this->translate('date') ?>:</span></td><td>' + date.toLocaleDateString() + '</td></tr>')
                 	           );
 
                 	   $('#delete').html(info._id);
@@ -457,6 +455,14 @@ $(document).ready(function(){
 	$("#priceTo, #priceFrom").on('change', function(){
 	    bindPrice();
 	});
+
+	$('#navbar').on('show.bs.collapse', function(){
+        $('.navbar-toggle').find('.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+    });
+
+    $('#navbar').on('hide.bs.collapse', function(){
+        $('.navbar-toggle').find('.glyphicon').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+    });
 
 	function bindPrice(){
 		var priceFrom = $("#priceFrom").val();

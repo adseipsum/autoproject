@@ -12,10 +12,15 @@ h3, .h3 {
     background-color: white;
     border: none;
     padding: 0px 10px;
+    margin-bottom: 10px;
 }
 
 .navbar-header{
     width: 100%;
+}
+
+.navbar-form {
+    padding-top: 0;
 }
 
 #counter{
@@ -48,16 +53,27 @@ h3, .h3 {
     padding: 0px 3px;
 }
 
-
-.navbar-default .navbar-toggle{
+.navbar-toggle {
+    position: absolute;
+    margin: 51px 0 0 -32px;
+    padding: 4px 10px 6px 10px;
+    width: 70px;
+    height: 34px;
+    border-radius: 0;
+    z-index: 99;
     color: white;
-    height: 39px;
-    background-color: #176BC4 !important;
+    border: none !important;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #1C1D30 !important;
+}
+
+.navbar-toggle:focus {
+    outline: 0;
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
     background-color: #1C1D30;
-    opacity: 0.8;
 }
 
 .navbar-default .navbar-toggle .icon-bar{
@@ -77,7 +93,7 @@ h3, .h3 {
     padding-right: 5px
 }
 
-.col-xs-12{
+.form-group{
     padding: 0px;
     margin: auto;
 }
@@ -91,12 +107,8 @@ h3, .h3 {
     padding: 8px 10px;
 }
 
-#advertisementBlock .list-group{
-    margin: 8px 3px;
-}
-
 .list-group .list-group-item{
-    padding: 2px 10px;
+    padding: 2px 5px;
 }
 
 .list-group .list-group-item > label{
@@ -119,14 +131,19 @@ h3, .h3 {
     font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
 }
 
+#post-block {
+    margin: 5px 0 20px 0;
+}
+
 h3{
     margin-top: 10px;
     margin-bottom: 5px;
 }
 
 .preview > img{
-    max-width:100%;
-    max-height:100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
 }
 
 .progress{
@@ -135,18 +152,44 @@ h3{
     margin-bottom: 5px;
 }
 
-.fileInfo .name{
-    margin-bottom: 5px;
+.fileInfo {
+    width: 100%;
+    height: 30px;
     line-height: 2;
-    width: 65%;
 }
 
-.fileInfo > div{
-    float: left;
+.fileInfo .name{
+    display: inline-block;
+    width: 85%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.fileInfo .name:after {
+    content: attr(data-filetype);
+    position: absolute;
+    left: 100%;
+    top: 0;
+}
+
+.delete-block {
+    vertical-align: top;
+    display: inline-block;
+    float: right;
+    width: 28px;
+    height: 100%;
+    text-align: center;
+}
+
+.delete-block a {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
 }
 
 .progress-bar-success{
-    background-image: linear-gradient(to bottom, #176BC4 0px, #176BC4 100%) !important;
+    background-image: linear-gradient(to bottom, #C41917 0px, #C41917 100%) !important;
     background-repeat: repeat-x;
 }
 
@@ -160,7 +203,7 @@ h3{
 .carousel{
     max-width: 640px;
     cursor: pointer;
-    padding: 0px 3px;
+    padding: 0px 0px;
     margin: auto;
 }
 
@@ -187,7 +230,7 @@ h3{
     text-align: center;
     font-family: Cooper Std;
     opacity: 0.8;
-    
+
 }
 
 .carousel .favorite > span{
@@ -361,9 +404,9 @@ h3{
     font-family: Ebrima;
     font-size: 0.9em !important;
     font-weight: bold !important;
-    line-height: 1.6;
+    line-height: 1.5;
     color: #E6EFED;
-    background-color: #176BC4 !important;
+    background-color: #C41917 !important;
     color: white;
     max-width: 400px;
 }
@@ -387,26 +430,46 @@ h3{
 }
 
 #navbar{
-    padding-left: 2px;
-    padding-right: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 10px;
 }
 
 #dynamic-content .row > div{
-    padding: 0px 5px;
+    padding: 0px 0px;
     
 }
 
 #previews > div{
-    padding: 10px;
+    padding: 0 10px;
     margin-top: 10px;
 }
 
-#actions > div{
-    margin-top: 15px;
+#photos-block .table{
+    margin-bottom: 5px;
 }
 
 .modal-content{
 	border-radius: 2px;
+}
+
+#features-list {
+    cursor: pointer;
+}
+
+#features-list-toggle {
+    height: 40px;
+    padding: 10px;
+}
+
+#features-list-toggle:first-child {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.help-inline {
+    text-align: center;
+    display: block;
 }
 
 .aliceblue {
@@ -424,11 +487,11 @@ h3{
     }
 }
 
-@media only screen and (min-width:992px){
-        /* styles for browsers larger than 960px; */
-        .navbar-form select.form-control {
-            width: 150px;
-        }
+@media only screen and (min-width:768px){
+    #dynamic-content .row > div{
+        padding: 0px 5px;
+
+    }
 }
 
 @media only screen and (min-width:1200px){
@@ -445,7 +508,16 @@ h3{
     }
 
     .navbar {
-        margin-bottom: 10px;
+        margin-bottom: 45px;
+    }
+
+    .list-group-item:first-child{
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+    }
+
+    #navbar {
+        margin-top: 25px;
     }
 }
 

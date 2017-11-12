@@ -26,7 +26,7 @@ class IndexController extends AbstractActionController
         $view = new ViewModel(array(
         		'make' => $make,
         ));
-        
+
         return $view;
     }
     
@@ -233,8 +233,10 @@ class IndexController extends AbstractActionController
     			$filePath = $uploadDir . '/' . $fileName . '.jpg';
 
     			$adapter->addFilter('Rename', array('target' => $filePath, 'overwrite' => true));
-    			$adapter->addValidator('filesize',  array('max' => 10000000, 'min' => 300000));
+    			$adapter->addValidator('Size', false, array('min' => '10kB', 'max' => '4MB'));
     			$adapter->addValidator('IsImage',  false, 'jpg, jpeg, png');
+                $adapter->addValidator('ImageSize', false,  array('minWidth' => 320, 'minHeight' => 200, 'maxWidth' => 3264, 'maxHeight' => 2448));
+
     			
     			if(!$adapter->receive()){
     				return new JsonModel($adapter->getMessages());

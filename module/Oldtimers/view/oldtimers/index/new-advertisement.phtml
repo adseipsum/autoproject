@@ -34,7 +34,7 @@
                         </div>
 
                     </div>
-                    <div class="help-block with-errors"></div>
+                    <div class="help-block with-errors dz-error-message"></div>
 
                     <div class="table table-striped files" id="previews">
                         <div id="template" class="file-row col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -104,7 +104,7 @@
                         <option value="diesel"><?php echo $this->translate('diesel') ?></option>
                         <option value="petrol"><?php echo $this->translate('petrol') ?></option>
                         <option value="gas"><?php echo $this->translate('gas') ?></option>
-                        <option value="petrolAndGas"><?php echo $this->translate('petrol_gas') ?></option>
+                        <option value="petrolAndGas"><?php echo $this->translate('petrolAndGas') ?></option>
                         <option value="hybrid"><?php echo $this->translate('hybrid') ?></option>
                         <option value="electric"><?php echo $this->translate('electric') ?></option>
                     </select>
@@ -212,7 +212,7 @@ var carDirectory = '<?= $carDirectory ?>';
 
 $(document).ready(function(){
     $('#carDirectory').val(carDirectory);
-    
+
     // Get the template HTML and remove it from the doument
     var previewNode = document.querySelector("#template");
     previewNode.id = "";
@@ -221,10 +221,10 @@ $(document).ready(function(){
 
     var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
       url: "/index/saveFile", // Set the url
-      params: { 
+      params: {
           carDirectory : $('#carDirectory').val()
           },
-      maxFilesize: '2000',
+      maxFilesize: 4,
       maxFiles: 15,
       thumbnailWidth: 350,
       thumbnailHeight: 220,
@@ -236,12 +236,14 @@ $(document).ready(function(){
       clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
       success: function(file, response){
           if(response){
-          	console.log(response);
           	if(response.fileId && response.carDirectory) {
 	            $('#carDirectory').val(response.carDirectory);
 	            $('#filesInputsContainer').append($('<input>').attr('type', 'hidden').attr('name', 'photos[]').attr('value', response.fileId));
             }else{
-	            $('body.dz-error-message').text(response);
+	            $.each(response, function(key, value) {
+		            $(file.previewElement).find('.error').append(value + '<br/>');
+	            });
+
             }
           }
       }
@@ -262,7 +264,7 @@ $(document).ready(function(){
       // Show the total progress bar when upload starts
       document.querySelector("#total-progress").style.display = "block";
       // And disable the start button
-      //file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+	    $('#post').attr('disabled', true);
     });
 
     // Hide the total progress bar when nothing's uploading anymore
@@ -280,7 +282,7 @@ $(document).ready(function(){
 //     document.querySelector("#actions .cancel").onclick = function() {
 //       myDropzone.removeAllFiles(true);
 //     };
-    
+
 	$('#make').change(function(){
 		$.ajax({
 		  url: "index/getModelByMakeIdJson",
@@ -296,11 +298,32 @@ $(document).ready(function(){
 	});
 
 	$('#advertisementForm').find('button[type=submit]').on('click', function(e) {
-        if ($('#advertisementForm').validator('validate').has('.has-error').length) {
-        } else {
-            $('#advertisementForm').submit();
+		if(!myDropzone.files.length) {
+			$('html, body').animate({
+				scrollTop: $(".fileinput-button").offset().top - 100
+			}, 100);
+
+			$('.fileinput-button').addClass('animate-button');
+
+			$('.fileinput-button').one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+
+            function (e) {
+                $('.fileinput-button').removeClass('animate-button');
+            });
+		} else if(myDropzone.getRejectedFiles().length > 0 || myDropzone.getQueuedFiles().length){
+			var rejected_files = myDropzone.getRejectedFiles();
+			$('html, body').animate({
+				scrollTop: $(rejected_files[0]['previewTemplate']).offset().top - 100
+			}, 100);
+			return false;
+        }else{
+			if (!$('#advertisementForm').validator('validate').has('.has-error').length) {
+				$('#advertisementForm').submit();
+			}
         }
-        return false;
+
+        e.preventDefault();
+		return false;
     });
 
 	$('#features-list').on('change', 'input', function(e){
@@ -321,6 +344,12 @@ $(document).ready(function(){
 		$(this).parent().find('.glyphicon').removeClass('glyphicon-hand-down').addClass('glyphicon-hand-left');
 	});
 
+	$('#year').yearselect({
+		start: 1950,
+		end: 2017,
+		order: 'desc'
+	});
+
 	$(window).bind('resize load', function() {
 		if ($(this).width() < 767) {
 			$('#features-list').addClass('collapse');
@@ -330,10 +359,10 @@ $(document).ready(function(){
 			$('#features-list').removeClass('collapse');
 		}
 	});
-	
+
 });
 </script>
 
-<?php 
+<?php
 	$this->headScript()->prependFile($this->basePath('js/validator.js'));
 ?>

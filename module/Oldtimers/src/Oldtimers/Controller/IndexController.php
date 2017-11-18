@@ -176,8 +176,8 @@ class IndexController extends AbstractActionController
             $car->driverSide = $this->params()->fromPost('driverSide');
             $car->wheelDrive = $this->params()->fromPost('wheelDrive');
             $car->fuelType = $this->params()->fromPost('fuelType');
-            $car->engineType = $this->params()->fromPost('engineType');
             $car->engineCapacity = $this->params()->fromPost('engineCapacity');
+            $car->enginePower = $this->params()->fromPost('enginePower');
             $car->color = $this->params()->fromPost('color');
             $car->mileage = $this->params()->fromPost('mileage');
             $car->description = $this->params()->fromPost('description');

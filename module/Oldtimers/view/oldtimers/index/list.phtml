@@ -133,7 +133,17 @@
         <div class="footer">
             <p>&copy; 2005 - <?php echo date('Y') ?> by Adseipsum <?php echo $this->translate('copyright') ?></p>
         </div>
-        
+
+<script id="info-template" type="text/html">
+            <div><?php echo $this->translate('select_fuel_type') ?>:</div><div data-content="fuelType"></div>
+            <div><?php echo $this->translate('select_transmission') ?>:</div><div data-content="transmission"></div>
+            <div><?php echo $this->translate('engine_capacity') ?>:</div><div data-content="engineCapacity"></div>
+            <div><?php echo $this->translate('engine_power') ?>:</div><div data-content="enginePower"></div>
+            <div><?php echo $this->translate('select_location') ?>:</div><div data-content="city"></div>
+            <div><?php echo $this->translate('phone_number') ?>:</div><div data-content="phoneNumber"></div>
+            <div><?php echo $this->translate('date') ?>:</div><div data-content="date"></div>
+</script>
+
 <script>
 $(document).ready(function(){ 
 	var container = $('#dynamic-content');
@@ -169,86 +179,19 @@ $(document).ready(function(){
 	});
            
     	   $('body').on('click', '.openInfo', function(e){
-        	   $.ajax({
-        		   url: "index/carInfoJson?id=" + $(this).attr('id'),
-       		   }).done(function(responce) {
-           		   if(responce.carInfo){
-               		   var info = responce.carInfo;
-              		   $('#carModal').find('.modal-title').html(info.make + ' ' + info.model);
-                	   $('#carModal').find('.carousel-inner').html('');
-                	   $('#generalInfo').html('');
-                	   $('#features').html('');
-                	   $('#description').html('');
-                	   $('#ownerInfo').html('');
-
-              		   $.each(info.photos, function( key, value ) {
-                  		   
-             			   var div = $('#carModal').find('.carousel-inner').append(
-                     			   		$('<div>').addClass('item').html(
-                             			   		$('<img>')
-                     			   				.attr('src', 'uploads/' +  value + '.jpg'))
-                     			   				.append($('<span>').addClass('price').html(info.price + '€')));
-             			   if(key == 0){
-                 			   $(div).find(':first').addClass('active');
-             			   }
-              		   });
-
-                       $('#carModal').find('.carousel-control.right, .carousel-control.left').css('opacity', 0.5);
-
-                       $('#generalInfo').append($('<table>').addClass('infoTable table')
-             		  	  .append('<tr><td width="120"><span>Proizvođač:</span></td><td>' + info.make + '</td></tr>')
-             		   	  .append('<tr><td><span><?php echo $this->translate('select_make') ?>:</span></td><td>' + info.model + '</td></tr>')
-	             		  .append('<tr><td><span><?php echo $this->translate('production_year') ?>:</span></td><td>' + info.year + '</td></tr>')
-	             		  .append('<tr><td><span><?php echo $this->translate('select_transmission') ?>:</span></td><td>' + info.transmission + '</td></tr>')
-	             		  .append('<tr><td><span><?php echo $this->translate('select_fuel_type') ?>:</span></td><td>' + info.fuelType + '</td></tr>')
-	             		  .append('<tr><td><span><?php echo $this->translate('engine_capacity') ?>:</span></td><td>' + info.engineCapacity + ' cm<sup>3</sup></td></tr>')
-	             		  .append('<tr><td><span><?php echo $this->translate('engine_power') ?>:</span></td><td>' + info.kW + ' kW</tr>')
-	             		  .append('<tr><td><span><?php echo $this->translate('mileage') ?>:</span></td><td>' + info.mileage + ' km</td></tr>'));
-
-                       $('#features').append(
-                        	  $('<div>')
-                        	  .addClass('panel list-group')
-                        	  .append(
-                            	      $('<a>')
-                            	      .attr('href', '#')
-                            	      .attr('data-toggle', 'collapse')
-                            	      .attr('data-target', '#sm')
-                            	      .attr('data-parent', '#menu')
-                            	      .addClass('list-group-item')
-                            	      .append($('<span>').html('<?php echo $this->translate('features_toggle') ?>'))
-                                      .append($('<span>').addClass('glyphicon glyphicon-hand-down pull-right'))
-                        	      )
-                        	  .append(
-                                	  $('<div>').attr('id', 'sm').addClass('sublinks collapse')
-                               )
-                       );
-                       $.each(info.features, function( key, value ) {
-                           $('#features .sublinks').append($('<a>').addClass('list-group-item small').html(value));
-                       });
-
-                	   $('#description').append($('<table>').attr('id', 'description').addClass('table').append('<tr><td colspan="2">' + info.description + '</td></tr>'));
-
-                	   var t = info.date.date.split(/[- :]/);
-                  	   var date = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
-
-                	   $('#ownerInfo').append(
-                        	   $('<table>').attr('id', 'ownerInfoTable').addClass('table')
-                        	   .append('<tr><td width="120"><span><?php echo $this->translate('select_location') ?>:</span></td><td>' + info.owner['city'] + '</td></tr>')
-                	   		   .append('<tr><td><span><?php echo $this->translate('phone_number') ?>:</span></td><td><a href="tel:' + info.owner['phoneNumber'] + '">' + info.owner['phoneNumber'] + '</a> <small><i>(click to call)</i></small></td></tr>')
-                	           .append('<tr><td><span><?php echo $this->translate('date') ?>:</span></td><td>' + date.toLocaleDateString() + '</td></tr>')
-                	           );
-
-                	   $('#delete').html(info._id);
-
-
-           		   }
-   		       });
+    	   	   var info = $(this).find('.info');
+    	   	   if(info.hasClass('collapsed')){
+		           info.removeClass('collapsed').find('div').show();
+               }else{
+		           info.addClass('collapsed').find('div').hide();
+		           $(this).find('.info div:nth-child(-n+6)').show();
+               }
 
                e.preventDefault();
+               return;
     	   });
 
     	   $('body').on('click', '#delete', function(e){
-			   console.log(1222);
     		   $.ajax({
         		   url: "index/remove-json?id=" + $(this).html(),
        		   }).done(function(responce) {
@@ -325,15 +268,17 @@ $(document).ready(function(){
            		    
           			$.each(responce.cars, function( key, car ) {
           				var colDiv = $('<div>').addClass('col-lg-4 col-md-6 col-sm-6 col-xs-12');
+
+			            colDiv.append($('<div>').addClass('car-title').append($('<a>').attr('href', '/advertisement/' + car._id).text(car.make + ' ' + car.model + ' (' + car.year + ')')));
           					
           				var slide = $('<div>').attr('id', car._id).addClass('carousel slide').attr('data-ride', 'carousel');
           				var carouselInner = $('<div>')
 						          				.addClass('carousel-inner')
 						          				.attr('role', 'listbox')
 						          				.attr('id', car._id)
-						      					.attr('data-toggle', 'modal')
-						      					.attr('data-target', '#carModal')
-						      					.addClass('openInfo');
+//						      					.attr('data-toggle', 'modal')
+//						      					.attr('data-target', '#carModal')
+						      					;
 
           				//photos
           				$.each(car.photos, function( photo_id, photo ) {
@@ -355,27 +300,40 @@ $(document).ready(function(){
             				//slide.append($('<div>').addClass('favorite').html('<span class="glyphicon glyphicon-star"></span>'));
           				}
 
-						//car info
-          				var info = $('<div>').addClass('data');
-          				info.append(
-                  				$('<div>').addClass('info').html(
-            						$('<a>').attr('href', '/advertisement/' + car._id)
-            							.html(
-                    							//<span style="color: #f63e3e;">&#8226;</span>
-                    							car.make + ' ' + 
-                    							car.model + ' (' +
-                    							car.year + ') <br/>' +
-							                    car.engineCapacity + ' <span class="cm">cm<sup>3</sup></span> ' +
-							                    car.fuelType+ ' &#183; ' +
-							                    car.transmission + ' ' +
-                    							addCommas(car.mileage) + '<span style="text-transform: lowercase; margin-left:2px;">km</span> ' + ''
+			            //car info
+			            var data = $('<div>').addClass('data').addClass('openInfo');
+			            slide.append($('<div>').addClass('price').html('€ ' + car.price + '</span>'));
+			            var info = $('<div>').addClass('info');
 
-                    							//getFuelTypeSymbol(car.fuelType)
-                    						)
-                          		)
-                        );
-          				info.append($('<div>').addClass('price').html('€ ' + car.price + '</span>'));
-          				slide.append(info);
+			            var t = car.date.date.split(/[- :]/);
+			            var date = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+
+			            info.loadTemplate($('#info-template'),
+				            {
+					            engineCapacity: car.engineCapacity + ' <span class="cm">cm<sup>3</sup></span>',
+					            enginePower: car.enginePower + ' <span>kW</span>',
+					            fuelType: car.fuelType,
+					            transmission: car.transmission,
+					            mileage: addCommas(car.mileage) + '<span style="text-transform: lowercase; margin-left:2px;">km</span>',
+					            city: car.owner['city'],
+                                phoneNumber: '<a href="tel:' + car.owner['phoneNumber'] + '">' + car.owner['phoneNumber'] + '</a> <small><i>(click to call)</i></small></td></tr>',
+                                date: date.toLocaleDateString()
+				            }
+			            );
+
+			            var features = $('<div class="features">');
+			            $.each(car.features, function( key, value ) {
+				            features.append($('<div style="width:100%;">').addClass(' small').html(value));
+			            });
+
+			            info.append(features);
+			            info.append($('<div class="description">').text(car.description));
+
+			            info.addClass('collapsed').find('div').hide();
+			            info.find('div:nth-child(-n+6)').show();
+
+			            data.append(info);
+			            slide.append(data);
 
           				//controls
           				var controls = $('<div>').addClass('controls');

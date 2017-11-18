@@ -197,6 +197,10 @@ h3{
   word-break: break-all;
 }
 
+.car-title{
+    font-weight: bold;
+    text-align: center;
+}
 
 .carousel{
     max-width: 640px;
@@ -255,14 +259,13 @@ h3{
 }
 
 .carousel .data{
-    max-height: 35px;
     text-overflow: ellipsis;
     font-family: Europa;
     font-weight: bold;
     display:inline-block;
     width:100%;
     text-shadow: none;
-    margin: 8px 0;
+    margin: 4px 0;
     /* Fallback for web browsers that don't support RGBa */
     /*background-color: rgb(0, 0, 0);*/
     /* RGBa with 0.6 opacity */
@@ -287,11 +290,20 @@ h3{
 }
 
 .carousel .info{
+    display: table;
     float: left;
     font-size: 0.9em;
-    padding-left: 5px;
+    padding: 5px;
     text-align: center;
-    width: 75%;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.carousel .info > div{
+    width: 50%;
+    display: table-cell;
+    float: left;
+    border: 1px solid lightgray;
 }
 
 .carousel .info a{

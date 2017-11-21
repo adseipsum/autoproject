@@ -15,6 +15,13 @@
             </div>
 
             <a href="/new" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><span class="glyphicon glyphicon-plus"></span></a>
+            <div class="language-group">
+              <select id="switchLanguage" class="pull-left">
+                <option value="sr_SP">CG</option>
+                <option value="en_US">EN</option>
+                <option value="ru_RU">RU</option>
+              </select>
+            </div>
 <!--             <a href="/new" id="newAdvertisement" class="btn btn-default navbar-btn pull-right">O nas</a> -->
 <!--            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" style="height: 42px;" alt=""/></a>-->
 
@@ -147,11 +154,31 @@
 <script>
 $(document).ready(function(){ 
 	var container = $('#dynamic-content');
-	var processing = false;
+	var processing = false
+  var $switcher = $('#switchLanguage');
 
 	$('#make').on('change', function(){
 		enrichModelSelect();
 	});
+
+  $switcher.val('<?= $language ?>');
+  $("#switchLanguage option[value='<?= $language ?>']").hide();
+
+  $switcher.on('change', function($e) {
+    $e.preventDefault();
+
+    $.ajax({
+      type: "POST",
+      url: "/index/language",
+      data: {'language' : $(this).val()}
+    }).done(function(responce) {
+      if(responce.success){
+        setTimeout(function () {
+          window.location.reload()
+        }, 50);
+      }
+    });
+  });
 
 	function enrichModelSelect(){
 	    $.ajax({
@@ -367,7 +394,7 @@ $(document).ready(function(){
            		    });
           			container.append(row);
 
-          			$('#counter').html($('<span>').html(responce.count + ' auto listed'));
+          			$('#counter').html($('<span>').html(responce.count + ' <?= $this->translate("auto_listed") ?>'));
 
           			$(".carousel").swiperight(function() {  
           				$(this).carousel('prev');  

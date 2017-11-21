@@ -1,0 +1,211 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sr-SP.php conversion\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-20 18:15+0000\n"
+"PO-Revision-Date: 2017-11-21 13:10+0100\n"
+"Language-Team: Serbian (SP)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: ru-RU\n"
+"X-Loco-Parser: loco_parse_po\n"
+"X-Generator: Poedit 2.0.4\n"
+"Last-Translator: \n"
+"Language: en_US\n"
+
+msgid "title"
+msgstr "Sell You Car"
+
+msgid "button_cars_listing"
+msgstr "Search"
+
+msgid "button_add_photos"
+msgstr "Add photos"
+
+msgid "loading"
+msgstr "Loading"
+
+msgid "copyright"
+msgstr "Copyright"
+
+msgid "date"
+msgstr "Date"
+
+msgid "close"
+msgstr "Close"
+
+msgid "form_title"
+msgstr "Sell Your Car"
+
+msgid "form_message_1"
+msgstr "Info"
+
+msgid "select_make"
+msgstr "Manufacturer"
+
+msgid "error_choose_maker"
+msgstr "Choose manufacturer"
+
+msgid "select_model"
+msgstr "Model"
+
+msgid "error_choose_model"
+msgstr "Choose model"
+
+msgid "specify_modification"
+msgstr "Specify modification"
+
+msgid "production_year"
+msgstr "Year of production"
+
+msgid "error_production_year"
+msgstr "Specify production year"
+
+msgid "select_transmission"
+msgstr "Select transmission type"
+
+msgid "manual"
+msgstr "Manual"
+
+msgid "half_automatic"
+msgstr "Semi-automatic"
+
+msgid "automatic"
+msgstr "Automatic"
+
+msgid "error_select_transmission"
+msgstr "Select transmission type"
+
+msgid "select_fuel_type"
+msgstr "Fuel"
+
+msgid "error_fuel_type"
+msgstr "Select file type"
+
+msgid "diesel"
+msgstr "Diesel"
+
+msgid "petrol"
+msgstr "Gasoline"
+
+msgid "gas"
+msgstr "Gas"
+
+msgid "petrolAndGas"
+msgstr "Gas and Gasoline"
+
+msgid "hybrid"
+msgstr "Hybrid"
+
+msgid "electric"
+msgstr "Electric"
+
+msgid "engine_capacity"
+msgstr "Engine capacity"
+
+msgid "error_engine_capacity"
+msgstr "Specify Engine capacity"
+
+msgid "engine_power"
+msgstr "Engine power"
+
+msgid "mileage"
+msgstr "Mileage (km)"
+
+msgid "error_mileage"
+msgstr "Select mileage"
+
+msgid "features_title"
+msgstr "test"
+
+msgid "features_toggle"
+msgstr "test"
+
+msgid "climatisation"
+msgstr "test"
+
+msgid "airConditioning"
+msgstr "test"
+
+msgid "powerAssistedSteering"
+msgstr "test"
+
+msgid "audio"
+msgstr "test"
+
+msgid "towHook"
+msgstr "test"
+
+msgid "electricWindows"
+msgstr "test"
+
+msgid "electricHeatedSeats"
+msgstr "test"
+
+msgid "centralLocking"
+msgstr "test"
+
+msgid "remoteLocking"
+msgstr "test"
+
+msgid "parkingSensors"
+msgstr "test"
+
+msgid "fogLamp"
+msgstr "test"
+
+msgid "immobilizer"
+msgstr "test"
+
+msgid "navigationSystem"
+msgstr "test"
+
+msgid "cruiseControl"
+msgstr "test"
+
+msgid "panoramicRoof"
+msgstr "test"
+
+msgid "xenonHeadlights"
+msgstr "test"
+
+msgid "car_description_title"
+msgstr "test"
+
+msgid "contact_information_title"
+msgstr "test"
+
+msgid "phone_number"
+msgstr "test"
+
+msgid "error_phone_number"
+msgstr "test"
+
+msgid "select_location"
+msgstr "test"
+
+msgid "error_location"
+msgstr "test"
+
+msgid "price"
+msgstr "test"
+
+msgid "error_price"
+msgstr "test"
+
+msgid "user_email"
+msgstr "test"
+
+msgid "user_email_error"
+msgstr "test"
+
+msgid "email_notification_label"
+msgstr "test"
+
+msgid "button_submit"
+msgstr "test"
+
+msgid "auto_listed"
+msgstr "test"

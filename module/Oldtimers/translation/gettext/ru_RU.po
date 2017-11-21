@@ -1,0 +1,212 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sr-SP.php conversion\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-20 18:15+0000\n"
+"PO-Revision-Date: 2017-11-21 15:40+0100\n"
+"Language-Team: Serbian (SP)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: ru-RU\n"
+"X-Loco-Parser: loco_parse_po\n"
+"X-Generator: Poedit 2.0.4\n"
+"Last-Translator: \n"
+"Language: ru_RU\n"
+
+msgid "title"
+msgstr "Продажа автомобилей"
+
+msgid "button_cars_listing"
+msgstr "Поиск"
+
+msgid "button_add_photos"
+msgstr "Добавить фото"
+
+msgid "loading"
+msgstr "Загрузка"
+
+msgid "copyright"
+msgstr "Copyright"
+
+msgid "date"
+msgstr "Дата"
+
+msgid "close"
+msgstr "Закрыть"
+
+msgid "form_title"
+msgstr "Продажа автомобилей"
+
+msgid "form_message_1"
+msgstr "Инфо"
+
+msgid "select_make"
+msgstr "Марка"
+
+msgid "error_choose_maker"
+msgstr "Выберите марку"
+
+msgid "select_model"
+msgstr "Модель"
+
+msgid "error_choose_model"
+msgstr "Укажите модель"
+
+#, fuzzy
+msgid "specify_modification"
+msgstr "ХЗ что это"
+
+msgid "production_year"
+msgstr "Год выпуска"
+
+msgid "error_production_year"
+msgstr "Укажите год выпуска"
+
+msgid "select_transmission"
+msgstr "КПП"
+
+msgid "manual"
+msgstr "Механика"
+
+msgid "half_automatic"
+msgstr "Полуавтомат"
+
+msgid "automatic"
+msgstr "Автомат"
+
+msgid "error_select_transmission"
+msgstr "Укажите тип КПП"
+
+msgid "select_fuel_type"
+msgstr "Топливо"
+
+msgid "error_fuel_type"
+msgstr "Укажите тип топлива"
+
+msgid "diesel"
+msgstr "Дизель"
+
+msgid "petrol"
+msgstr "Бензин"
+
+msgid "gas"
+msgstr "Газ"
+
+msgid "petrolAndGas"
+msgstr "Газ/Бензин"
+
+msgid "hybrid"
+msgstr "Гибрид"
+
+msgid "electric"
+msgstr "Электромобиль"
+
+msgid "engine_capacity"
+msgstr "Объем двигателя"
+
+msgid "error_engine_capacity"
+msgstr "Укажите объем двигателя"
+
+msgid "engine_power"
+msgstr "Мощность"
+
+msgid "mileage"
+msgstr "Пробег"
+
+msgid "error_mileage"
+msgstr "Укажите пробег"
+
+msgid "features_title"
+msgstr "Дополнительная информация"
+
+msgid "features_toggle"
+msgstr "Добавить инфо"
+
+msgid "climatisation"
+msgstr "Кондиционер"
+
+msgid "airConditioning"
+msgstr "Авто-кондиционер"
+
+msgid "powerAssistedSteering"
+msgstr "ГУР — усилитель руля"
+
+msgid "audio"
+msgstr "Аудиосистема"
+
+msgid "towHook"
+msgstr "Фаркоп"
+
+msgid "electricWindows"
+msgstr "Электрические стеклоподъемники"
+
+msgid "electricHeatedSeats"
+msgstr "Подогрев сидений"
+
+msgid "centralLocking"
+msgstr "ЦЗ — центральный замок"
+
+msgid "remoteLocking"
+msgstr "Блокировка авто с пульта"
+
+msgid "parkingSensors"
+msgstr "Сенсоры парковки"
+
+msgid "fogLamp"
+msgstr "Противотуманные фары"
+
+msgid "immobilizer"
+msgstr "Иммобилайзер"
+
+msgid "navigationSystem"
+msgstr "Система навигации"
+
+msgid "cruiseControl"
+msgstr "Круиз-контроль"
+
+msgid "panoramicRoof"
+msgstr "Панорамная крыша"
+
+msgid "xenonHeadlights"
+msgstr "Ксенон"
+
+msgid "car_description_title"
+msgstr "Текст объявления"
+
+msgid "contact_information_title"
+msgstr "Контакты"
+
+msgid "phone_number"
+msgstr "Номер телефона"
+
+msgid "error_phone_number"
+msgstr "Укажите норме телефона"
+
+msgid "select_location"
+msgstr "Местонахождение"
+
+msgid "error_location"
+msgstr "Укажите локацию"
+
+msgid "price"
+msgstr "Цена"
+
+msgid "error_price"
+msgstr "Задайте цену"
+
+msgid "user_email"
+msgstr "Email"
+
+msgid "user_email_error"
+msgstr "Укажите email"
+
+msgid "email_notification_label"
+msgstr "Отправить себе на email"
+
+msgid "button_submit"
+msgstr "Фото"
+
+msgid "auto_listed"
+msgstr "авто в списке"

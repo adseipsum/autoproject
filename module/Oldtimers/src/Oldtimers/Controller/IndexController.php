@@ -5,6 +5,7 @@ namespace Oldtimers\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
+use Zend\Session\Container;
 
 /**
  * Basic action controller which will return json responses instead of
@@ -22,9 +23,11 @@ class IndexController extends AbstractActionController
     {
         $entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
         $make = $entityManager->createQuery('SELECT m.make FROM Oldtimers\Entity\Models m GROUP BY m.make')->getResult();
+        $session = New Container('language');
 
         $view = new ViewModel(array(
         		'make' => $make,
+                'language' => $session->language,
         ));
 
         return $view;
@@ -571,6 +574,23 @@ class IndexController extends AbstractActionController
     public function searchTagAction(){
     	$tag = $this->params()->fromQuery('tag');
     	return new JsonModel(array($tag));
+    }
+
+    public function languageAction()
+    {
+        $session = new Container('language');
+        $language = $this->params()->fromPost('language');
+        $config = $this->serviceLocator->get('Config');
+        if (isset($config['translator']['locale']['available'][$language])) {
+            $session->language = $language;
+            $this->serviceLocator->get('MvcTranslator')->setLocale($session->language);
+        }
+
+        $result = new JsonModel(array(
+            'success' => true,
+        ));
+
+        return $result;
     }
 
 

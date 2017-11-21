@@ -3,6 +3,8 @@ namespace Oldtimers;
 use Oldtimers\Mapper\CarMapper;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Session\Container;
+
 class Module
 {
     public function getConfig()
@@ -23,6 +25,10 @@ class Module
     
     public function onBootstrap(MvcEvent $e)
     {
+        $serviceManager      = $e->getApplication()->getServiceManager();
+        $serviceManager->get('MvcTranslator');
+        $this->initTranslator($e);
+
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
@@ -47,5 +53,16 @@ class Module
                                 'OldtimersCar' => false
                         ),
         );
+    }
+
+    protected function initTranslator(MvcEvent $event)
+    {
+        $serviceManager = $event->getApplication()->getServiceManager();
+        $session = New Container('language');
+
+        $translator = $serviceManager->get('MvcTranslator');
+        $translator
+            ->setLocale($session->language)
+            ->setFallbackLocale('sr_SP');
     }
 }

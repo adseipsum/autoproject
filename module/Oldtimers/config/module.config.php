@@ -171,12 +171,19 @@ return array(
     ),
     'environment' => 'development',
     'translator' => [
-        'locale' => 'sr_SP',
+        'locale' => [
+            'default' => 'sr_SP',
+            'available'     => [
+                'sr_SP' => 'CG',
+                'en_US' => 'EN',
+                'ru_RU' => 'RU'
+            ],
+        ],
         'translation_file_patterns' => [
             [
-                'base_dir' => __DIR__ . '/../translation',
-                'type'     => 'phpArray',
-                'pattern'  => '%s.php',
+                'base_dir' => __DIR__ . '/../translation/gettext/',
+                'type'     => 'gettext',
+                'pattern'  => '%s.mo',
             ]
         ],
     ],

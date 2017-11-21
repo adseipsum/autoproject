@@ -1,0 +1,212 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sr-SP.php conversion\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-20 18:15+0000\n"
+"PO-Revision-Date: 2017-11-21 09:46+0100\n"
+"Last-Translator: \n"
+"Language-Team: Serbian (SP)\n"
+"Language: sr_SP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
+"%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"X-Loco-Source-Locale: ru-RU\n"
+"X-Loco-Parser: loco_parse_po\n"
+"X-Generator: Poedit 2.0.4\n"
+
+msgid "title"
+msgstr "Prodaj Auto"
+
+msgid "button_cars_listing"
+msgstr "Pretraga"
+
+msgid "button_add_photos"
+msgstr "Dodaj slike"
+
+msgid "loading"
+msgstr "Loading"
+
+msgid "copyright"
+msgstr "Copyright"
+
+msgid "date"
+msgstr "Datum"
+
+msgid "close"
+msgstr "Zatvoriti"
+
+msgid "form_title"
+msgstr "Prodaj auto"
+
+msgid "form_message_1"
+msgstr "Informacija"
+
+msgid "select_make"
+msgstr "Marka"
+
+msgid "error_choose_maker"
+msgstr "Izaberite proizvođača"
+
+msgid "select_model"
+msgstr "Model"
+
+msgid "error_choose_model"
+msgstr "Izaberite model"
+
+msgid "specify_modification"
+msgstr "Obleležje"
+
+msgid "production_year"
+msgstr "Godište"
+
+msgid "error_production_year"
+msgstr "Izaberite godište"
+
+msgid "select_transmission"
+msgstr "Menjač"
+
+msgid "manual"
+msgstr "Manuelni"
+
+msgid "half_automatic"
+msgstr "Poluautomatski"
+
+msgid "automatic"
+msgstr "Automatski"
+
+msgid "error_select_transmission"
+msgstr "Izaberite menjač"
+
+msgid "select_fuel_type"
+msgstr "Gorivo"
+
+msgid "error_fuel_type"
+msgstr "Izaberite vrste goriva"
+
+msgid "diesel"
+msgstr "Dizel"
+
+msgid "petrol"
+msgstr "Benzin"
+
+msgid "gas"
+msgstr "Metan CNG"
+
+msgid "petrolAndGas"
+msgstr "Benzin + Gas (TNG)"
+
+msgid "hybrid"
+msgstr "Hibridni pogon"
+
+msgid "electric"
+msgstr "Električni pogon"
+
+msgid "engine_capacity"
+msgstr "Kubikaža"
+
+msgid "error_engine_capacity"
+msgstr "Izaberite kubikažu"
+
+msgid "engine_power"
+msgstr "Snaga"
+
+msgid "mileage"
+msgstr "Kilometraža"
+
+msgid "error_mileage"
+msgstr "Izaberite kilometražu"
+
+msgid "features_title"
+msgstr "Dodatne informacije"
+
+msgid "features_toggle"
+msgstr "Dodaj informacije"
+
+msgid "climatisation"
+msgstr "Klima"
+
+msgid "airConditioning"
+msgstr "Automatska klima"
+
+msgid "powerAssistedSteering"
+msgstr "Servo"
+
+msgid "audio"
+msgstr "Radio/Kasetofon"
+
+msgid "towHook"
+msgstr "Kuka za vuču"
+
+msgid "electricWindows"
+msgstr "Električni podizači"
+
+msgid "electricHeatedSeats"
+msgstr "Grejanje sedišta"
+
+msgid "centralLocking"
+msgstr "Centralno zaključavanje"
+
+msgid "remoteLocking"
+msgstr "Daljinsko zaključavanje"
+
+msgid "parkingSensors"
+msgstr "Parking senzori"
+
+msgid "fogLamp"
+msgstr "Svetla za maglu"
+
+msgid "immobilizer"
+msgstr "Kodiran ključ"
+
+msgid "navigationSystem"
+msgstr "Navigacija"
+
+msgid "cruiseControl"
+msgstr "Tempomat"
+
+msgid "panoramicRoof"
+msgstr "Panorama krov"
+
+msgid "xenonHeadlights"
+msgstr " Xenon svetla"
+
+msgid "car_description_title"
+msgstr "Tekst oglasa"
+
+msgid "contact_information_title"
+msgstr "Kontakt podaci"
+
+msgid "phone_number"
+msgstr "Broj telefona"
+
+msgid "error_phone_number"
+msgstr "Dodaj broj telefona"
+
+msgid "select_location"
+msgstr "Mesto"
+
+msgid "error_location"
+msgstr "Izaberite mesto"
+
+msgid "price"
+msgstr "Cjena"
+
+msgid "error_price"
+msgstr "Izaberite cjenu"
+
+msgid "user_email"
+msgstr "E-mail"
+
+msgid "user_email_error"
+msgstr "Dodaj email"
+
+msgid "email_notification_label"
+msgstr "posalemo notifikaciju za vas"
+
+msgid "button_submit"
+msgstr "Snimi"
+
+msgid "auto_listed"
+msgstr "auto na listi"

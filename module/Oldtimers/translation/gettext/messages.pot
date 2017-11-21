@@ -1,0 +1,212 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: sr-SP.php conversion\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-20 18:15+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: Serbian (SP)\n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: ru-RU\n"
+"X-Loco-Parser: loco_parse_po\n"
+"X-Generator: Loco - https://localise.biz/"
+
+msgid "title"
+msgstr ""
+
+msgid "button_cars_listing"
+msgstr ""
+
+msgid "button_add_photos"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "copyright"
+msgstr ""
+
+msgid "date"
+msgstr ""
+
+msgid "close"
+msgstr ""
+
+msgid "form_title"
+msgstr ""
+
+msgid "form_message_1"
+msgstr ""
+
+msgid "select_make"
+msgstr ""
+
+msgid "error_choose_maker"
+msgstr ""
+
+msgid "select_model"
+msgstr ""
+
+msgid "error_choose_model"
+msgstr ""
+
+msgid "specify_modification"
+msgstr ""
+
+msgid "production_year"
+msgstr ""
+
+msgid "error_production_year"
+msgstr ""
+
+msgid "select_transmission"
+msgstr ""
+
+msgid "manual"
+msgstr ""
+
+msgid "half_automatic"
+msgstr ""
+
+msgid "automatic"
+msgstr ""
+
+msgid "error_select_transmission"
+msgstr ""
+
+msgid "select_fuel_type"
+msgstr ""
+
+msgid "error_fuel_type"
+msgstr ""
+
+msgid "diesel"
+msgstr ""
+
+msgid "petrol"
+msgstr ""
+
+msgid "gas"
+msgstr ""
+
+msgid "petrolAndGas"
+msgstr ""
+
+msgid "hybrid"
+msgstr ""
+
+msgid "electric"
+msgstr ""
+
+msgid "engine_capacity"
+msgstr ""
+
+msgid "error_engine_capacity"
+msgstr ""
+
+msgid "engine_power"
+msgstr ""
+
+msgid "mileage"
+msgstr ""
+
+msgid "error_mileage"
+msgstr ""
+
+msgid "features_title"
+msgstr ""
+
+msgid "features_toggle"
+msgstr ""
+
+msgid "climatisation"
+msgstr ""
+
+msgid "airConditioning"
+msgstr ""
+
+msgid "powerAssistedSteering"
+msgstr ""
+
+msgid "audio"
+msgstr ""
+
+msgid "towHook"
+msgstr ""
+
+msgid "electricWindows"
+msgstr ""
+
+msgid "electricHeatedSeats"
+msgstr ""
+
+msgid "centralLocking"
+msgstr ""
+
+msgid "remoteLocking"
+msgstr ""
+
+msgid "parkingSensors"
+msgstr ""
+
+msgid "fogLamp"
+msgstr ""
+
+msgid "immobilizer"
+msgstr ""
+
+msgid "navigationSystem"
+msgstr ""
+
+msgid "cruiseControl"
+msgstr ""
+
+msgid "panoramicRoof"
+msgstr ""
+
+msgid "xenonHeadlights"
+msgstr ""
+
+msgid "car_description_title"
+msgstr ""
+
+msgid "contact_information_title"
+msgstr ""
+
+msgid "phone_number"
+msgstr ""
+
+msgid "error_phone_number"
+msgstr ""
+
+msgid "select_location"
+msgstr ""
+
+msgid "error_location"
+msgstr ""
+
+msgid "price"
+msgstr ""
+
+msgid "error_price"
+msgstr ""
+
+msgid "user_email"
+msgstr ""
+
+msgid "user_email_error"
+msgstr ""
+
+msgid "email_notification_label"
+msgstr ""
+
+msgid "button_submit"
+msgstr ""
+
+msgid "auto_listed"
+msgstr "auto na listi"

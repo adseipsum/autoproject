@@ -193,8 +193,8 @@ h3{
 }
 
 .word-break {
-  -ms-word-break: break-all;
-  word-break: break-all;
+    -ms-word-break: break-all;
+    word-break: break-all;
 }
 
 .car-title{
@@ -281,8 +281,8 @@ h3{
     float: right;
     color: #a77217;
     font-size: 1.5em;
-	font-family: Europa;
-	font-weight: bold;
+    font-family: Europa;
+    font-weight: bold;
     text-align: center;
     padding-right: 5px;
     padding-top: 3px;
@@ -439,6 +439,48 @@ h3{
     opacity: 0.9;
 }
 
+.language-group {
+    margin-left: 20px;
+}
+
+.language-group > * {
+    max-width: 60px;
+    background-color: transparent;
+}
+
+.language-group select {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #7b7b7b;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    background: #e6e6e6;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.language-group .dropdown-toggle, .language-group .dropdown-toggle:hover {
+    background-color: #B65E41 !important;
+    color: #fff !important;
+}
+
+.language-group select::-ms-expand {
+    display: none;
+}
+
+.language-group select:hover ~ .select__arrow,
+.language-group select:focus ~ .select__arrow {
+    border-top-color: #000;
+}
+
+.language-group select:disabled ~ .select__arrow {
+    border-top-color: #ccc;
+}
+
 #navbar{
     margin-left: 2px;
     margin-right: 2px;
@@ -447,7 +489,7 @@ h3{
 
 #dynamic-content .row > div{
     padding: 0px 0px;
-    
+
 }
 
 #previews > div{
@@ -460,7 +502,7 @@ h3{
 }
 
 .modal-content{
-	border-radius: 2px;
+    border-radius: 2px;
 }
 
 #features-list {
@@ -505,10 +547,10 @@ h3{
 }
 
 @media only screen and (min-width:1200px){
-        /* styles for browsers larger than 960px; */
-        .navbar-form select.form-control {
-            width: 110px;
-        }
+    /* styles for browsers larger than 960px; */
+    .navbar-form select.form-control {
+        width: 110px;
+    }
 }
 
 @media only screen and (max-width:768px){
@@ -542,7 +584,7 @@ h3{
 }
 
 @media only screen and (min-width:960px){
-        /* styles for browsers larger than 960px; */
+    /* styles for browsers larger than 960px; */
     @media only screen and (min-width:1440px){
         /* styles for browsers larger than 1440px; */
     }
@@ -550,18 +592,18 @@ h3{
         /* for sumo sized (mac) screens */
     }
     @media only screen and (max-device-width:480px){
-       /* styles for mobile browsers smaller than 480px; (iPhone) */
+        /* styles for mobile browsers smaller than 480px; (iPhone) */
     }
     @media only screen and (device-width:768px){
-       /* default iPad screens */
+        /* default iPad screens */
     }
     /* different techniques for iPad screening */
     @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
-      /* For portrait layouts only */
+        /* For portrait layouts only */
     }
 
     @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
-      /* For landscape layouts only */
+        /* For landscape layouts only */
     }
 }
 

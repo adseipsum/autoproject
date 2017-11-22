@@ -1,95 +1,95 @@
 <style>
-    .carousel-control.right, .carousel-control.left {
-        opacity: 0;
-    }
+  .carousel-control.right, .carousel-control.left {
+    opacity: 0;
+  }
 </style>
 <div class="row">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
 
-            <div class="nav-justified text-center">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="glyphicon glyphicon-chevron-down"></span>
-              </button>
-            </div>
+        <div class="nav-justified text-center">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </button>
+        </div>
 
-            <a href="/new" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><span class="glyphicon glyphicon-plus"></span></a>
-            <div class="language-group">
-              <select id="switchLanguage" class="pull-left">
-                <option value="sr_SP">CG</option>
-                <option value="en_US">EN</option>
-                <option value="ru_RU">RU</option>
-              </select>
-            </div>
-<!--             <a href="/new" id="newAdvertisement" class="btn btn-default navbar-btn pull-right">O nas</a> -->
-<!--            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" style="height: 42px;" alt=""/></a>-->
+        <a href="/new" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><span class="glyphicon glyphicon-plus"></span></a>
+        <div class="language-group">
+          <select id="switchLanguage" class="pull-left">
+            <option value="sr_SP">CG</option>
+            <option value="en_US">EN</option>
+            <option value="ru_RU">RU</option>
+          </select>
+        </div>
+        <!--             <a href="/new" id="newAdvertisement" class="btn btn-default navbar-btn pull-right">O nas</a> -->
+        <!--            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" style="height: 42px;" alt=""/></a>-->
 
-            <h4 id="counter"></h4>
-          </div>
-        </div><!--/.container-fluid -->
-      </nav>
-      <div id="navbar" class="navbar-collapse collapse">
-      	<form id="searchForm" class="navbar-form" role="search">
-            <div id="searchBox">
-            		<div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
-		            	<select id="make" name="make" class="form-control" data-live-search="true">
-		                    <option value="0"><?php echo $this->translate('select_make') ?></option>
-		                    <?php foreach ($make as $maker): ?>
-	                        <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
-	                    	<?php endforeach;?>
-	                	</select>
-                	</div>
-                	<div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
-		                <select id="model" name="model" class="form-control" data-live-search="true">
-		                </select>
-	                </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
-                        <select id="fuelType" name="fuelType" class="form-control">
-                            <option value="0"><?php echo $this->translate('select_fuel_type') ?></option>
-                            <option value="diesel"><?php echo $this->translate('diesel') ?></option>
-                            <option value="Benzin"><?php echo $this->translate('petrol') ?></option>
-                            <option value="gas"><?php echo $this->translate('gas') ?></option>
-                            <option value="petrolAndGas"><?php echo $this->translate('petrolAndGas') ?></option>
-                            <option value="hybrid"><?php echo $this->translate('hybrid') ?></option>
-                            <option value="electric"><?php echo $this->translate('electric') ?></option>
-                        </select>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
-                        <select id="city" name="city" class="form-control" data-live-search="true">
-                            <option value="0"><?php echo $this->translate('select_location') ?></option>
-                            <?php foreach($cities as $city): ?>
-                                <option value="<?= $city['name']?>"><?= $city['name']?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-	                <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
-		                <select id="from" name="from" class="form-control" data-live-search="true">
-		                	<option value="1940">1940</option>
-		                	<?php for ($i = 1941; $i <= 2016; $i++):?>
-	                    	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-	                    	<?php endfor;?>
-	                	</select>
-                	</div>
-                	<div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
-	                	<select id="to" name="to" class="form-control" data-live-search="true">
-		                	<option value="2016">2016</option>
-		                	<?php for ($i = 2015; $i >= 1968; $i--):?>
-		                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-		                    <?php endfor;?>
-		                </select>
-	                </div>
-            		<div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
-		                <select id="priceFrom" name="priceFrom" class="form-control" data-live-search="true">
-		                </select>
-	                </div>
-	                <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
-		                <select id="priceTo" name="priceTo" class="form-control" data-live-search="true">
-		                </select>
-	                </div>
-           	  </div>
-		  </form>
-      </div><!--/.nav-collapse -->
+        <h4 id="counter"></h4>
+      </div>
+    </div><!--/.container-fluid -->
+  </nav>
+  <div id="navbar" class="navbar-collapse collapse">
+    <form id="searchForm" class="navbar-form" role="search">
+      <div id="searchBox">
+        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
+          <select id="make" name="make" class="form-control" data-live-search="true">
+            <option value="0"><?php echo $this->translate('select_make') ?></option>
+              <?php foreach ($make as $maker): ?>
+                <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
+              <?php endforeach; ?>
+          </select>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
+          <select id="model" name="model" class="form-control" data-live-search="true">
+          </select>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
+          <select id="fuelType" name="fuelType" class="form-control">
+            <option value="0"><?php echo $this->translate('select_fuel_type') ?></option>
+            <option value="diesel"><?php echo $this->translate('diesel') ?></option>
+            <option value="Benzin"><?php echo $this->translate('petrol') ?></option>
+            <option value="gas"><?php echo $this->translate('gas') ?></option>
+            <option value="petrolAndGas"><?php echo $this->translate('petrolAndGas') ?></option>
+            <option value="hybrid"><?php echo $this->translate('hybrid') ?></option>
+            <option value="electric"><?php echo $this->translate('electric') ?></option>
+          </select>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 form-group">
+          <select id="city" name="city" class="form-control" data-live-search="true">
+            <option value="0"><?php echo $this->translate('select_location') ?></option>
+              <?php foreach ($cities as $city): ?>
+                <option value="<?= $city['name'] ?>"><?= $city['name'] ?></option>
+              <?php endforeach; ?>
+          </select>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
+          <select id="from" name="from" class="form-control" data-live-search="true">
+            <option value="1940">1940</option>
+              <?php for ($i = 1941; $i <= 2016; $i++): ?>
+                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+              <?php endfor; ?>
+          </select>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
+          <select id="to" name="to" class="form-control" data-live-search="true">
+            <option value="2016">2016</option>
+              <?php for ($i = 2015; $i >= 1968; $i--): ?>
+                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+              <?php endfor; ?>
+          </select>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
+          <select id="priceFrom" name="priceFrom" class="form-control" data-live-search="true">
+          </select>
+        </div>
+        <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
+          <select id="priceTo" name="priceTo" class="form-control" data-live-search="true">
+          </select>
+        </div>
+      </div>
+    </form>
+  </div><!--/.nav-collapse -->
 </div>
 
 <div id="carModal" class="modal fade" role="dialog">
@@ -114,14 +114,14 @@
         </div>
         &nbsp; &nbsp; &nbsp;
         <div id="carInfo">
-            <div id="generalInfo">
-            </div>
-            <div id="features">
-            </div>
-            <div id="description">
-            </div>
-            <div id="ownerInfo">
-            </div>
+          <div id="generalInfo">
+          </div>
+          <div id="features">
+          </div>
+          <div id="description">
+          </div>
+          <div id="ownerInfo">
+          </div>
         </div>
       </div>
       <div class="modal-footer">
@@ -134,403 +134,406 @@
 </div>
 
 <div id="dynamic-content" data-skip="0">
-			
+
 </div>
 
-        <div class="footer">
-            <p>&copy; 2005 - <?php echo date('Y') ?> by Adseipsum <?php echo $this->translate('copyright') ?></p>
-        </div>
+<div class="footer">
+  <p>&copy; 2005 - <?php echo date('Y') ?> by Adseipsum <?php echo $this->translate('copyright') ?></p>
+</div>
 
 <script id="info-template" type="text/html">
-            <div><?php echo $this->translate('select_fuel_type') ?>:</div><div data-content="fuelType"></div>
-            <div><?php echo $this->translate('select_transmission') ?>:</div><div data-content="transmission"></div>
-            <div><?php echo $this->translate('engine_capacity') ?>:</div><div data-content="engineCapacity"></div>
-            <div><?php echo $this->translate('engine_power') ?>:</div><div data-content="enginePower"></div>
-            <div><?php echo $this->translate('select_location') ?>:</div><div data-content="city"></div>
-            <div><?php echo $this->translate('phone_number') ?>:</div><div data-content="phoneNumber"></div>
-            <div><?php echo $this->translate('date') ?>:</div><div data-content="date"></div>
+  <div><?php echo $this->translate('select_fuel_type') ?>:</div>
+  <div data-content="fuelType"></div>
+  <div><?php echo $this->translate('select_transmission') ?>:</div>
+  <div data-content="transmission"></div>
+  <div><?php echo $this->translate('engine_capacity') ?>:</div>
+  <div data-content="engineCapacity"></div>
+  <div><?php echo $this->translate('engine_power') ?>:</div>
+  <div data-content="enginePower"></div>
+  <div><?php echo $this->translate('select_location') ?>:</div>
+  <div data-content="city"></div>
+  <div><?php echo $this->translate('phone_number') ?>:</div>
+  <div data-content="phoneNumber"></div>
+  <div><?php echo $this->translate('date') ?>:</div>
+  <div data-content="date"></div>
 </script>
 
 <script>
-$(document).ready(function(){ 
-	var container = $('#dynamic-content');
-	var processing = false
-  var $switcher = $('#switchLanguage');
+  $(document).ready(function() {
+    var container = $('#dynamic-content');
+    var processing = false;
+    var $switcher = $('#switchLanguage');
 
-	$('#make').on('change', function(){
-		enrichModelSelect();
-	});
+    $('#make').on('change', function() {
+      enrichModelSelect();
+    });
 
-  $switcher.val('<?= $language ?>');
-  $("#switchLanguage option[value='<?= $language ?>']").hide();
+    $switcher.val('<?= $language ?>');
+    $("#switchLanguage option[value='<?= $language ?>']").hide();
 
-  $switcher.on('change', function($e) {
-    $e.preventDefault();
+    $switcher.on('change', function($e) {
+      $e.preventDefault();
 
-    $.ajax({
-      type: "POST",
-      url: "/index/language",
-      data: {'language' : $(this).val()}
-    }).done(function(responce) {
-      if(responce.success){
-        setTimeout(function () {
-          window.location.reload()
-        }, 50);
+      $.ajax({
+        type: 'POST',
+        url: '/index/language',
+        data: {'language': $(this).val()},
+      }).done(function(responce) {
+        if (responce.success) {
+          setTimeout(function() {
+            window.location.reload();
+          }, 50);
+        }
+      });
+    });
+
+    function enrichModelSelect() {
+      $.ajax({
+        url: 'index/getModelByMakeIdJson',
+        data: {'make': $('#make').val()},
+      }).done(function(responce) {
+        if (responce.success) {
+          var model = $('#model').empty();
+          model.append($('<option />').val(0).text('<?php echo $this->translate('select_model') ?>'));
+          $.each(responce.models, function() {
+            model.append($('<option />').val(this.model).text(this.model));
+          });
+          model.selectpicker('refresh');
+        }
+        container.attr('data-skip', 0).empty();
+        if (!processing) { loadPage(container); }
+        ;
+      });
+    }
+
+    enrichModelSelect();
+
+    $('body').on('change', '#model, #from, #to, #priceFrom, #priceTo, #fuelType, #city', function() {
+      container.attr('data-skip', 0).empty();
+      if (!processing) { loadPage(container); }
+      ;
+    });
+
+    $('body').on('click', '.openInfo', function(e) {
+      var info = $(this).find('.info');
+      if (info.hasClass('collapsed')) {
+        info.removeClass('collapsed').find('div').show();
+      }
+      else {
+        info.addClass('collapsed').find('div').hide();
+        $(this).find('.info div:nth-child(-n+6)').show();
+      }
+
+      e.preventDefault();
+      return;
+    });
+
+    $('body').on('click', '#delete', function(e) {
+      $.ajax({
+        url: 'index/remove-json?id=' + $(this).html(),
+      }).done(function(responce) {
+
+      });
+    });
+
+    $('body').on('keydown', '#search', function(e) {
+      $.ajax({
+        url: 'index/searchTag?tag=' + $(this).val(),
+      }).done(function(responce) {
+        console.log(responce);
+      });
+    });
+
+    //solve this using preloadPhotos
+    $('body').bind('slide.bs.carousel', '.carousel', function(e) {
+      if (e.direction == 'left') {
+        var url = $(e.target).find('.item.active').next().find('img').attr('alt');
+        $(e.target).find('.item.active').next().find('img').attr('src', url);
+      }
+      else {
+        var url = $(e.target).find('.item.active').prev().find('img').attr('alt');
+        if (url != undefined) {
+          $(e.target).find('.item.active').prev().find('img').attr('src', url);
+        }
+        else {
+          url = $(e.target).find(':last-child').find('img').attr('alt');
+          $(e.target).find(':last-child').find('img').attr('src', url);
+        }
       }
     });
-  });
 
-	function enrichModelSelect(){
-	    $.ajax({
-			  url: "index/getModelByMakeIdJson",
-			  data: {'make' : $('#make').val()}
-			}).done(function(responce) {
-				if(responce.success){
-					var model = $("#model").empty();
-					model.append($("<option />").val(0).text('<?php echo $this->translate('select_model') ?>'));
-					$.each(responce.models, function() {
-						model.append($("<option />").val(this.model).text(this.model));
-					});
-					model.selectpicker('refresh');
-				}
-				container.attr('data-skip', 0).empty();
-				if(!processing){ loadPage(container) };
-			});
-	}
+    if (!processing) { loadPage(container); }
+    ;
 
-	enrichModelSelect();
+    function preloadPhotos(id) {
+      var target = '#' + id;
+      var nextURL = $(target).find('.item.active').next().find('img').attr('alt');
+      if (nextURL != undefined) {
+        $(target).find('.item.active').next().find('img').attr('src', nextURL);
+      }
 
-	$('body').on('change', '#model, #from, #to, #priceFrom, #priceTo, #fuelType, #city', function(){
-	    container.attr('data-skip', 0).empty();
-	    if(!processing){ loadPage(container) };
-	});
-           
-    	   $('body').on('click', '.openInfo', function(e){
-    	   	   var info = $(this).find('.info');
-    	   	   if(info.hasClass('collapsed')){
-		           info.removeClass('collapsed').find('div').show();
-               }else{
-		           info.addClass('collapsed').find('div').hide();
-		           $(this).find('.info div:nth-child(-n+6)').show();
-               }
+      var previousURL = $(target).find('.item.active').prev().find('img').attr('alt');
+      if (previousURL != undefined) {
+        $(target).find('.item.active').prev().find('img').attr('src', previousURL);
+      }
+      else {
+        previousURL = $(target).find(':last-child').find('img').attr('alt');
+        $(target).find(':last-child').find('img').attr('src', previousURL);
+      }
+    }
 
-               e.preventDefault();
-               return;
-    	   });
+    function loadPage(container) {
 
-    	   $('body').on('click', '#delete', function(e){
-    		   $.ajax({
-        		   url: "index/remove-json?id=" + $(this).html(),
-       		   }).done(function(responce) {
-           		   
-       		   });
-    	   });
+      processing = true;
+      $.ajax({
+        url: 'index/getPage',
+        data: {
+          'skip': container.attr('data-skip'),
+          'make': $('#make').val(),
+          'model': $('#model').val(),
+          'from': $('#from').val(),
+          'to': $('#to').val(),
+          'priceFrom': $('#priceFrom').val(),
+          'priceTo': $('#priceTo').val(),
+          'fuelType': $('#fuelType').val(),
+          'city': $('#city').val(),
+        },
+      }).done(function(responce) {
 
-    	   $('body').on('keydown', '#search', function(e){
-    		   $.ajax({
-        		   url: "index/searchTag?tag=" + $(this).val(),
-       		   }).done(function(responce) {
-           		   console.log(responce);
-       		   });
-    	   });
+        if (Object.keys(responce.cars).length == 0) {
+          return false;
+        }
+        var firstFlag = true;
+        var row = $('<div>').addClass('row');
 
-    	   //solve this using preloadPhotos
-    	   $('body').bind('slide.bs.carousel', '.carousel', function (e) {
-   		       if(e.direction == 'left'){
-	               var url = $(e.target).find('.item.active').next().find("img").attr('alt'); 
-	               $(e.target).find('.item.active').next().find("img").attr("src", url);
-   		       }else{
-      		       var url = $(e.target).find('.item.active').prev().find("img").attr('alt'); 
-        		   if(url != undefined){
- 	               	   $(e.target).find('.item.active').prev().find("img").attr("src", url);
-        		   }else{
-        			   url = $(e.target).find(':last-child').find("img").attr('alt');
-        			   $(e.target).find(':last-child').find("img").attr("src", url);
-        		   }
-   		       }
-           });
+        $.each(responce.cars, function(key, car) {
+          var colDiv = $('<div>').addClass('col-lg-4 col-md-6 col-sm-6 col-xs-12');
 
-    	   if(!processing){ loadPage(container) };
+          colDiv.append($('<div>').addClass('car-title').append($('<a>').attr('href', '/advertisement/' + car._id).text(car.make + ' ' + car.model + ' (' + car.year + ')')));
 
-    	   function preloadPhotos(id){
-    	   	var target = '#' + id;
-               var nextURL = $(target).find('.item.active').next().find("img").attr('alt');
-		       if(nextURL != undefined) {
-			       $(target).find('.item.active').next().find("img").attr("src", nextURL);
-		       }
-
-               var previousURL = $(target).find('.item.active').prev().find("img").attr('alt');
-               if(previousURL != undefined){
-                   $(target).find('.item.active').prev().find("img").attr("src", previousURL);
-               }else{
-	               previousURL = $(target).find(':last-child').find("img").attr('alt');
-                    $(target).find(':last-child').find("img").attr("src", previousURL);
-                }
-           }
-
-    	   
-    	   function loadPage(container){
-
-    	       processing = true;
-        	   $.ajax({
-        		   url: "index/getPage",
-        		   data: {
-            		   'skip' : container.attr('data-skip'),
-            		   'make' : $('#make').val(),
-            		   'model' : $('#model').val(),
-            		   'from' : $('#from').val(),
-				       'to' : $('#to').val(),
-				       'priceFrom' : $('#priceFrom').val(),
-				       'priceTo' : $('#priceTo').val(),
-				       'fuelType' : $('#fuelType').val(),
-				       'city' : $('#city').val()
-            		   }
-       		   }).done(function(responce) {
-           		   
-       			    if(Object.keys(responce.cars).length == 0){
-						return false;
-					}
-          			var firstFlag = true;
-           		    var row = $('<div>').addClass('row');
-           		    
-          			$.each(responce.cars, function( key, car ) {
-          				var colDiv = $('<div>').addClass('col-lg-4 col-md-6 col-sm-6 col-xs-12');
-
-			            colDiv.append($('<div>').addClass('car-title').append($('<a>').attr('href', '/advertisement/' + car._id).text(car.make + ' ' + car.model + ' (' + car.year + ')')));
-          					
-          				var slide = $('<div>').attr('id', car._id).addClass('carousel slide').attr('data-ride', 'carousel');
-          				var carouselInner = $('<div>')
-						          				.addClass('carousel-inner')
-						          				.attr('role', 'listbox')
-						          				.attr('id', car._id)
+          var slide = $('<div>').attr('id', car._id).addClass('carousel slide').attr('data-ride', 'carousel');
+          var carouselInner = $('<div>').addClass('carousel-inner').attr('role', 'listbox').attr('id', car._id)
 //						      					.attr('data-toggle', 'modal')
 //						      					.attr('data-target', '#carModal')
-						      					;
+          ;
 
-          				//photos
-          				$.each(car.photos, function( photo_id, photo ) {
-              				
-          					var item = $('<div>').addClass('item');
-              				var path = 'uploads/' + photo + '.jpg';
-          					if(photo_id == 0){
-          						item.addClass('active');
-          						item.append($('<img>').attr('src', path).attr('draggable', false));
-          					}else{
-          						item.append($('<img>').attr('alt', path).attr('draggable', false));
-          					}
-          					
-          					carouselInner.append(item);
-          				});
-          				slide.append(carouselInner);
+          //photos
+          $.each(car.photos, function(photo_id, photo) {
 
-          				if(firstFlag){
-            				//slide.append($('<div>').addClass('favorite').html('<span class="glyphicon glyphicon-star"></span>'));
-          				}
+            var item = $('<div>').addClass('item');
+            var path = 'uploads/' + photo + '.jpg';
+            if (photo_id == 0) {
+              item.addClass('active');
+              item.append($('<img>').attr('src', path).attr('draggable', false));
+            }
+            else {
+              item.append($('<img>').attr('alt', path).attr('draggable', false));
+            }
 
-			            //car info
-			            var data = $('<div>').addClass('data').addClass('openInfo');
-			            slide.append($('<div>').addClass('price').html('€ ' + car.price + '</span>'));
-			            var info = $('<div>').addClass('info');
+            carouselInner.append(item);
+          });
+          slide.append(carouselInner);
 
-			            var t = car.date.date.split(/[- :]/);
-			            var date = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+          if (firstFlag) {
+            //slide.append($('<div>').addClass('favorite').html('<span class="glyphicon glyphicon-star"></span>'));
+          }
 
-			            info.loadTemplate($('#info-template'),
-				            {
-					            engineCapacity: car.engineCapacity + ' <span class="cm">cm<sup>3</sup></span>',
-					            enginePower: car.enginePower + ' <span>kW</span>',
-					            fuelType: car.fuelType,
-					            transmission: car.transmission,
-					            mileage: addCommas(car.mileage) + '<span style="text-transform: lowercase; margin-left:2px;">km</span>',
-					            city: car.owner['city'],
-                                phoneNumber: '<a href="tel:' + car.owner['phoneNumber'] + '">' + car.owner['phoneNumber'] + '</a> <small><i>(click to call)</i></small></td></tr>',
-                                date: date.toLocaleDateString()
-				            }
-			            );
+          //car info
+          var data = $('<div>').addClass('data').addClass('openInfo');
+          slide.append($('<div>').addClass('price').html('€ ' + car.price + '</span>'));
+          var info = $('<div>').addClass('info');
 
-			            var features = $('<div class="features">');
-			            $.each(car.features, function( key, value ) {
-				            features.append($('<div style="width:100%;">').addClass(' small').html(value));
-			            });
+          var t = car.date.date.split(/[- :]/);
+          var date = new Date(t[0], t[1] - 1, t[2], t[3], t[4], t[5]);
 
-			            info.append(features);
-			            info.append($('<div class="description">').text(car.description));
+          info.loadTemplate($('#info-template'),
+              {
+                engineCapacity: car.engineCapacity + ' <span class="cm">cm<sup>3</sup></span>',
+                enginePower: car.enginePower + ' <span>kW</span>',
+                fuelType: car.fuelType,
+                transmission: car.transmission,
+                mileage: addCommas(car.mileage) + '<span style="text-transform: lowercase; margin-left:2px;">km</span>',
+                city: car.owner['city'],
+                phoneNumber: '<a href="tel:' + car.owner['phoneNumber'] + '">' + car.owner['phoneNumber'] + '</a> <small><i>(click to call)</i></small></td></tr>',
+                date: date.toLocaleDateString(),
+              }
+          );
 
-			            info.addClass('collapsed').find('div').hide();
-			            info.find('div:nth-child(-n+6)').show();
+          var features = $('<div class="features">');
+          $.each(car.features, function(key, value) {
+            features.append($('<div style="width:100%;">').addClass(' small').html(value));
+          });
 
-			            data.append(info);
-			            slide.append(data);
+          info.append(features);
+          info.append($('<div class="description">').text(car.description));
 
-          				//controls
-          				var controls = $('<div>').addClass('controls');
-          				var leftControl = $('<a>')
-				          				.addClass('left carousel-control')
-				          				.attr('href', '#' + car._id)
-				          				.attr('role', 'button')
-				          				.attr('data-slide', 'prev')
-				          				.append($('<span>').addClass('glyphicon chevron-left').attr('aria-hidden', 'true'))
-				        controls.append(leftControl);
-          				
-          				var rightControl = $('<a>')
-				          				.addClass('right carousel-control')
-				          				.attr('href', '#' + car._id)
-				          				.attr('role', 'button')
-				          				.attr('data-slide', 'next')
-				          				.append($('<span>').addClass('glyphicon chevron-right').attr('aria-hidden', 'true'))
-				        controls.append(rightControl);
-								        
-				        slide.append($('<div>').append(controls));
-				        
-          				row.append(colDiv.append(slide));
-          				
-              			//set skip
-          				if(firstFlag){ 
-                      	   	container.attr('data-skip',  parseInt(container.attr('data-skip')) + Object.keys(responce.cars).length); 
-                  	   	}
-          				firstFlag = false;
+          info.addClass('collapsed').find('div').hide();
+          info.find('div:nth-child(-n+6)').show();
 
-			            preloadPhotos(car._id);
-           		    });
-          			container.append(row);
+          data.append(info);
+          slide.append(data);
 
-          			$('#counter').html($('<span>').html(responce.count + ' <?= $this->translate("auto_listed") ?>'));
+          //Hide useless carousel arrows
+          if ($(carouselInner).children('div').length > 1) {
+            //controls
+            var controls = $('<div>').addClass('controls');
+            var leftControl = $('<a>').addClass('left carousel-control').attr('href', '#' + car._id).attr('role', 'button').attr('data-slide', 'prev').append($('<span>').addClass('glyphicon chevron-left').attr('aria-hidden', 'true'));
+            controls.append(leftControl);
 
-          			$(".carousel").swiperight(function() {  
-          				$(this).carousel('prev');  
-          			});  
-          			            	
-          			$(".carousel").swipeleft(function() {  
-          				$(this).carousel('next');  
-          			}); 
+            var rightControl = $('<a>').addClass('right carousel-control').attr('href', '#' + car._id).attr('role', 'button').attr('data-slide', 'next').append($('<span>').addClass('glyphicon chevron-right').attr('aria-hidden', 'true'));
+            controls.append(rightControl);
 
-       		   }).always(function() {
-          		    processing = false;
-        	   });
-        	   
-           }
+            slide.append($('<div>').append(controls));
+          }
 
-	$(window).scroll(function() {
-		if (  document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight )
-		{ 
-		    if(!processing){ loadPage(container) };
-		}
-	});
+          row.append(colDiv.append(slide));
 
-	$('.carousel').carousel({
-		interval: false
-	});
-	
-	$(".carousel").swiperight(function() {  
-		$(this).carousel('prev');  
-	});  
-	            	
-	$(".carousel").swipeleft(function() {  
-		$(this).carousel('next');  
-	});
+          //set skip
+          if (firstFlag) {
+            container.attr('data-skip', parseInt(container.attr('data-skip')) + Object.keys(responce.cars).length);
+          }
+          firstFlag = false;
 
-	$('#dynamic-content').on('mouseenter', '.carousel', function(){
-		$(this).find('.carousel-control.right, .carousel-control.left').css('opacity', 0.5);
-	});
-	
-	$('#dynamic-content').on('mouseleave', '.carousel', function(){
-		$(this).find('.carousel-control.right, .carousel-control.left').css('opacity', 0);
-	});
+          preloadPhotos(car._id);
+        });
+        container.append(row);
 
-	$("#priceTo, #priceFrom").on('change', function(){
-	    bindPrice();
-	});
+        $('#counter').html($('<span>').html(responce.count + ' <?= $this->translate("auto_listed") ?>'));
 
-	$('#navbar').on('show.bs.collapse', function(){
-        $('.navbar-toggle').find('.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+        $('.carousel').swiperight(function() {
+          $(this).carousel('prev');
+        });
+
+        $('.carousel').swipeleft(function() {
+          $(this).carousel('next');
+        });
+
+      }).always(function() {
+        processing = false;
+      });
+
+    }
+
+    $(window).scroll(function() {
+      if (document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight) {
+        if (!processing) { loadPage(container); }
+        ;
+      }
+    });
+
+    $('.carousel').carousel({
+      interval: false,
+    });
+
+    $('.carousel').swiperight(function() {
+      $(this).carousel('prev');
+    });
+
+    $('.carousel').swipeleft(function() {
+      $(this).carousel('next');
+    });
+
+    $('#dynamic-content').on('mouseenter', '.carousel', function() {
+      $(this).find('.carousel-control.right, .carousel-control.left').css('opacity', 0.5);
+    });
+
+    $('#dynamic-content').on('mouseleave', '.carousel', function() {
+      $(this).find('.carousel-control.right, .carousel-control.left').css('opacity', 0);
+    });
+
+    $('#priceTo, #priceFrom').on('change', function() {
+      bindPrice();
+    });
+
+    $('#navbar').on('show.bs.collapse', function() {
+      $('.navbar-toggle').find('.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
     });
 
     $('#navbar').on('hide.bs.collapse', function(){
-        $('.navbar-toggle').find('.glyphicon').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+      $('.navbar-toggle').find('.glyphicon').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
     });
 
-	function bindPrice(){
-		var priceFrom = $("#priceFrom").val();
-		var priceTo = $("#priceTo").val();
-	    if(parseInt(priceFrom) > parseInt(priceTo)){
-	        $("#priceTo").val(priceFrom);
-	    }
+    function bindPrice() {
+      var priceFrom = $('#priceFrom').val();
+      var priceTo = $('#priceTo').val();
+      if (parseInt(priceFrom) > parseInt(priceTo)) {
+        $('#priceTo').val(priceFrom);
+      }
 
-	    if(parseInt(priceTo) < parseInt(priceFrom)){
-	        $("#priceFrom").val(priceTo);
-	    }
-	}
+      if (parseInt(priceTo) < parseInt(priceFrom)) {
+        $('#priceFrom').val(priceTo);
+      }
+    }
 
-	function addCommas(nStr)
-	{
-		nStr += '';
-		x = nStr.split('.');
-		x1 = x[0];
-		x2 = x.length > 1 ? '.' + x[1] : '';
-		var rgx = /(\d+)(\d{3})/;
-		while (rgx.test(x1)) {
-			x1 = x1.replace(rgx, '$1' + ',' + '$2');
-		}
-		return x1 + x2;
-	}
+    function addCommas(nStr) {
+      nStr += '';
+      x = nStr.split('.');
+      x1 = x[0];
+      x2 = x.length > 1 ? '.' + x[1] : '';
+      var rgx = /(\d+)(\d{3})/;
+      while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+      }
+      return x1 + x2;
+    }
 
-	function getFuelTypeSymbol(fuelType){
-		switch(fuelType){
-			case 'petrol':
-				return 'P';
-				break;
-			case 'disel':
-				return 'D';
-				break;
-			case 'gas':
-				return 'G';
-				break;
-			case 'petrolAndGas':
-				return 'P&G';
-				break;
-			case 'hybrid':
-				return 'H';
-				break;
-			case 'electric':
-				return 'E';
-				break;
-			default:
-				break;
-		}
-	}
+    function getFuelTypeSymbol(fuelType) {
+      switch (fuelType) {
+        case 'petrol':
+          return 'P';
+          break;
+        case 'disel':
+          return 'D';
+          break;
+        case 'gas':
+          return 'G';
+          break;
+        case 'petrolAndGas':
+          return 'P&G';
+          break;
+        case 'hybrid':
+          return 'H';
+          break;
+        case 'electric':
+          return 'E';
+          break;
+        default:
+          break;
+      }
+    }
 
-	generatePriceSelects();
-	
-	function generatePriceSelects(){
-		
-	    $("#priceFrom").append($('<option>').attr('value', 0).text('€ From'));
-	    for(i = 100; i < 5000; i = i + 500){
-	        $("#priceFrom").append($('<option>').attr('value', i).text(i + '€'));
-	    }
+    generatePriceSelects();
 
-	    for(i = 5000; i < 10000; i = i + 1000){
-	        $("#priceFrom").append($('<option>').attr('value', i).text(i + '€'));
-	    }
+    function generatePriceSelects() {
 
-	    for(i = 10000; i < 100000; i = i + 10000){
-	        $("#priceFrom").append($('<option>').attr('value', i).text(i + '€'));
-	    }
+      $('#priceFrom').append($('<option>').attr('value', 0).text('€ From'));
+      for (i = 100; i < 5000; i = i + 500) {
+        $('#priceFrom').append($('<option>').attr('value', i).text(i + '€'));
+      }
 
-	    $("#priceTo").append($('<option>').attr('value', 0).text('€ To'));
-	    for(i = 100000; i > 10000; i = i - 10000){
-	        $("#priceTo").append($('<option>').attr('value', i).text(i + '€'));
-	    }
+      for (i = 5000; i < 10000; i = i + 1000) {
+        $('#priceFrom').append($('<option>').attr('value', i).text(i + '€'));
+      }
 
-	    for(i = 10000; i > 5000; i = i - 1000){
-	        $("#priceTo").append($('<option>').attr('value', i).text(i + '€'));
-	    }
+      for (i = 10000; i < 100000; i = i + 10000) {
+        $('#priceFrom').append($('<option>').attr('value', i).text(i + '€'));
+      }
 
-	    for(i = 5000; i > 500; i = i - 500){
-	        $("#priceTo").append($('<option>').attr('value', i).text(i + '€'));
-	    }
+      $('#priceTo').append($('<option>').attr('value', 0).text('€ To'));
+      for (i = 100000; i > 10000; i = i - 10000) {
+        $('#priceTo').append($('<option>').attr('value', i).text(i + '€'));
+      }
 
-	    $('select').selectpicker();
-	}
-	
-});
+      for (i = 10000; i > 5000; i = i - 1000) {
+        $('#priceTo').append($('<option>').attr('value', i).text(i + '€'));
+      }
+
+      for (i = 5000; i > 500; i = i - 500) {
+        $('#priceTo').append($('<option>').attr('value', i).text(i + '€'));
+      }
+
+      $('select').selectpicker();
+    }
+
+  });
 </script>

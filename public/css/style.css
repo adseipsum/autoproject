@@ -3,6 +3,10 @@ body{
     scroll-behavior: smooth;
 }
 
+a{
+    color: #254E70;
+}
+
 h3, .h3 {
     font-size: 20px;
 }
@@ -23,6 +27,7 @@ h3, .h3 {
 }
 
 #counter{
+    bottom: 0;
     font-family: Ebrima;
 }
 
@@ -43,12 +48,15 @@ h3, .h3 {
 }
 
 .navbar-default{
-    background-color: #6C8787 !important;
+    background-color: #405067 !important;
     background-image: none;
     color: white;
     box-shadow: none;
     border: none;
-    border-radius: 2px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     padding: 0px 3px;
 }
 
@@ -64,7 +72,7 @@ h3, .h3 {
     border: none !important;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    background-color: #6C8787 !important;
+    background-color: #405067 !important;
 }
 
 .navbar-toggle:focus {
@@ -72,7 +80,7 @@ h3, .h3 {
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
-    background-color: #6C8787;
+    background-color: #405067;
 }
 
 .navbar-default .navbar-toggle .icon-bar{
@@ -80,10 +88,11 @@ h3, .h3 {
 }
 
 .navbar-brand{
-    width: 120px;
-    height: 30px;
-    padding:0;
-    padding-left:14px;
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+    padding: 0;
+    padding-top: 12px;
 }
 
 #searchBox > div{
@@ -124,7 +133,7 @@ h3, .h3 {
 }
 
 #post{
-    background-color: #a77217 !important;
+    background-color: #6DA34D !important;
     color: white;
     font-size: 1.1em;
     font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
@@ -188,7 +197,7 @@ h3{
 }
 
 .progress-bar-success{
-    background-image: linear-gradient(to bottom, #B65E41 0px, #B65E41 100%) !important;
+    background-image: linear-gradient(to bottom, #eea51b 0px, #eea51b 100%) !important;
     background-repeat: repeat-x;
 }
 
@@ -199,7 +208,15 @@ h3{
 
 .car-title{
     font-weight: bold;
-    text-align: center;
+    text-align: left;
+    padding: 0 10px;
+    font-size: 1.2em;
+    font-family: Ebrima;
+}
+
+.car-title a{
+    line-height: 2;
+    color: #254E70;
 }
 
 .carousel{
@@ -258,6 +275,10 @@ h3{
     float: left;
 }
 
+.carousel-inner{
+    border-radius: 3px;
+}
+
 .carousel .data{
     text-overflow: ellipsis;
     font-family: Europa;
@@ -265,7 +286,6 @@ h3{
     display:inline-block;
     width:100%;
     text-shadow: none;
-    margin: 4px 0;
     /* Fallback for web browsers that don't support RGBa */
     /*background-color: rgb(0, 0, 0);*/
     /* RGBa with 0.6 opacity */
@@ -277,26 +297,27 @@ h3{
 }
 
 .carousel .price{
-    display: block;
     float: right;
-    color: #a77217;
-    font-size: 1.5em;
-    font-family: Europa;
+    color: #6DA34D;
     font-weight: bold;
     text-align: center;
-    padding-right: 5px;
-    padding-top: 3px;
-
+    line-height: 2;
 }
 
 .carousel .info{
-    display: table;
+    position: absolute;
+    background: white;
+    z-index: 999;
+    display: inline-block;
     float: left;
-    font-size: 0.9em;
+    font-size: 0.95em;
     padding: 5px;
+    padding-bottom: 15px;
     text-align: center;
     width: 100%;
     border-collapse: collapse;
+    border-spacing: 0px;
+    margin-top: -15px;
 }
 
 .carousel .info > div{
@@ -304,10 +325,12 @@ h3{
     display: table-cell;
     float: left;
     border: 1px solid lightgray;
+    margin:-1px 0 0 -1px;
 }
 
-.carousel .info a{
-    color: darkgray;
+.carousel .info .features, .carousel .info .description, .carousel .info .date{
+    padding: 5px;
+    width: 100%;
 }
 
 .carousel .info .cm{
@@ -361,7 +384,6 @@ h3{
     background-repeat: no-repeat;
 }*/
 
-
 @font-face {
     font-family: LilienthalGrotesk;
     src: url("../fonts/LilienthalGrotesk.otf") format("opentype");
@@ -401,13 +423,19 @@ h3{
 }
 
 .btn{
-    border-radius: 1px;
+    border-radius: 3px;
     font-family: Ebrima;
 }
+
+#searchBox .btn-default{
+    border: 1px solid lightgray;
+}
+
 
 .btn-default{
     background-image: none;
     font-size: 1em;
+    border: none;
 }
 
 .btn-operational{
@@ -415,8 +443,8 @@ h3{
     font-size: 0.9em !important;
     font-weight: bold !important;
     line-height: 1.5;
-    color: #6C8787;
-    background-color: #B65E41 !important;
+    color: #405067;
+    background-color: #eea51b !important;
     color: white;
     max-width: 400px;
 }
@@ -464,7 +492,7 @@ h3{
 }
 
 .language-group .dropdown-toggle, .language-group .dropdown-toggle:hover {
-    background-color: #B65E41 !important;
+    background-color: #eea51b !important;
     color: #fff !important;
 }
 
@@ -488,7 +516,7 @@ h3{
 }
 
 #dynamic-content .row > div{
-    padding: 0px 0px;
+    padding: 5px 0 0 0;
 
 }
 
@@ -541,7 +569,7 @@ h3{
 
 @media only screen and (min-width:768px){
     #dynamic-content .row > div{
-        padding: 0px 5px;
+        padding: 0 5px 55px 5px;
 
     }
 }
@@ -578,8 +606,9 @@ h3{
         display: none;
     }
 
-    .price {
-        font-size: small !important;
+    .carousel .info {
+        margin-top: 10px;
+        position: relative !important;
     }
 }
 
@@ -609,7 +638,7 @@ h3{
 
 @keyframes highlight {
     0% {
-        box-shadow: 1px 1px 30px #B65E41;
+        box-shadow: 1px 1px 30px #eea51b;
     }
     100% {
         box-shadow: none;

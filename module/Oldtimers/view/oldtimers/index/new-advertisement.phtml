@@ -4,7 +4,7 @@
           <div class="navbar-header">
             <a href="/" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><?php echo $this->translate('button_cars_listing') ?></a>
 <!--             <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a> -->
-            <h4><?php echo $this->translate('form_title') ?></h4>
+              <a class="navbar-brand" href="/"><img src="/img/logo.png" style="height: 30px;" alt="makina.plus"/></a>
           </div>
         </div><!--/.container-fluid -->
       </nav>
@@ -133,7 +133,7 @@
                     <label for="description" class="control-label"><?php echo $this->translate('features_title') ?></label>
                     <div class="white">
                         <div id="features-list-toggle" data-toggle="collapse" data-target="#features-list" class="collapsed">
-                            <span><?php echo $this->translate('features_toggle') ?></span>
+                            <span><?php echo $this->translate('Toggle features list') ?></span>
                             <span class="glyphicon glyphicon-hand-left pull-right"></span>
                         </div>
                         <ul id="features-list" class="list-group text-center collapse">
@@ -224,11 +224,11 @@ $(document).ready(function(){
       params: {
           carDirectory : $('#carDirectory').val()
           },
-      maxFilesize: 4,
+      maxFilesize: 8,
       maxFiles: 15,
       thumbnailWidth: 350,
       thumbnailHeight: 220,
-      parallelUploads: 15,
+      parallelUploads: 5,
       previewTemplate: previewTemplate,
       acceptedFiles: 'image/jpeg, image/png, image/gif',
       autoQueue: true, // Make sure the files aren't queued until manually added

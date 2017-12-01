@@ -17,7 +17,7 @@ class IndexController extends AbstractActionController
 {
 
     private $carMapper = null;
-    const PAGE_SIZE = 6;
+    const PAGE_SIZE = 12;
 
     public function listAction()
     {
@@ -65,8 +65,6 @@ class IndexController extends AbstractActionController
 
     	$result = $this->getCarMapper()->getCarList($search, self::PAGE_SIZE, $skip);
 
-
-        
     	$count = $result->count();
     	$resultArray = $result->toArray();
     	//var_dump(array_keys($resultArray));
@@ -236,7 +234,7 @@ class IndexController extends AbstractActionController
     			$filePath = $uploadDir . '/' . $fileName . '.jpg';
 
     			$adapter->addFilter('Rename', array('target' => $filePath, 'overwrite' => true));
-    			$adapter->addValidator('Size', false, array('min' => '10kB', 'max' => '4MB'));
+    			$adapter->addValidator('Size', false, array('min' => '10kB', 'max' => '8MB'));
     			$adapter->addValidator('IsImage',  false, 'jpg, jpeg, png');
                 $adapter->addValidator('ImageSize', false,  array('minWidth' => 320, 'minHeight' => 200, 'maxWidth' => 3264, 'maxHeight' => 2448));
 
@@ -328,7 +326,7 @@ class IndexController extends AbstractActionController
 				return false;
 		}
 	
-		//$image = $this->addWatermark($image);
+		$image = $this->addWatermark($image);
 	
 		# This is the resizing/resampling/transparency-preserving magic
 		$image_resized = imagecreatetruecolor( $final_width, $final_height );
@@ -415,6 +413,7 @@ class IndexController extends AbstractActionController
 	}
   
     public function importAction(){
+
         include_once PUBLIC_PATH . '/simple_html_dom.php';
         
         $from = $this->getEvent()->getRouteMatch()->getParam('from');
@@ -535,22 +534,24 @@ class IndexController extends AbstractActionController
                 $car->owner = $array['owner'];
                 $car->autodealerId = $advertisementId;
                 $this->getCarMapper()->save($car);
+
+                $carDirectory = uniqid("car-directory-");
         
                 if($car->_id){
-                    $uploadDir = PUBLIC_PATH . '/uploads/' . $car->garageId . '/' . $car->_id;
-        
+                    $uploadDir = PUBLIC_PATH . '/uploads/' . $carDirectory;
+
                     if (!file_exists($uploadDir)){
                         mkdir($uploadDir, 0777, 1);
                     }
         
                     for($i = 0; $i <= 12; $i++){
                         $filePath = $uploadDir . "/$i.jpg";
-                        $file = @file_get_contents("http://www.autodiler.me/images/oglasi/$advertisementId//$i.jpg");
+                        $file = @file_get_contents("http://www.autodiler.me/images/oglasi/$advertisementId/$i.jpg");
         
                         if($file){
                             file_put_contents($filePath, $file);
                             if($this->resizeImage($filePath)){
-                            	$car->photos[] = $i;
+                            	$car->photos[] = $carDirectory . '/' . $i;
                             }else{
                             	unlink($filePath);
                             }

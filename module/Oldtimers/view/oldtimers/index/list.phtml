@@ -15,6 +15,7 @@
         </div>
 
         <a href="/new" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><span class="glyphicon glyphicon-plus"></span></a>
+
         <div class="language-group">
           <select id="switchLanguage" class="pull-left">
             <option value="sr_SP">CG</option>
@@ -23,9 +24,8 @@
           </select>
         </div>
         <!--             <a href="/new" id="newAdvertisement" class="btn btn-default navbar-btn pull-right">O nas</a> -->
-        <!--            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" style="height: 42px;" alt=""/></a>-->
-
-        <h4 id="counter"></h4>
+        <a class="navbar-brand" href="/"><img src="/img/logo.png" style="height: 30px;" alt="makina.plus"/></a>
+<!--          <span id="counter"></span>-->
       </div>
     </div><!--/.container-fluid -->
   </nav>
@@ -64,19 +64,13 @@
           </select>
         </div>
         <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
-          <select id="from" name="from" class="form-control" data-live-search="true">
-            <option value="1940">1940</option>
-              <?php for ($i = 1941; $i <= 2016; $i++): ?>
-                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-              <?php endfor; ?>
+          <select id="from" name="from" class="form-control year" data-live-search="true">
+
           </select>
         </div>
         <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
-          <select id="to" name="to" class="form-control" data-live-search="true">
-            <option value="2016">2016</option>
-              <?php for ($i = 2015; $i >= 1968; $i--): ?>
-                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-              <?php endfor; ?>
+          <select id="to" name="to" class="form-control year" data-live-search="true">
+
           </select>
         </div>
         <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6 form-group">
@@ -142,20 +136,15 @@
 </div>
 
 <script id="info-template" type="text/html">
-  <div><?php echo $this->translate('select_fuel_type') ?>:</div>
   <div data-content="fuelType"></div>
-  <div><?php echo $this->translate('select_transmission') ?>:</div>
-  <div data-content="transmission"></div>
-  <div><?php echo $this->translate('engine_capacity') ?>:</div>
   <div data-content="engineCapacity"></div>
-  <div><?php echo $this->translate('engine_power') ?>:</div>
-  <div data-content="enginePower"></div>
-  <div><?php echo $this->translate('select_location') ?>:</div>
+  <div data-content="year"></div>
+  <div data-content="transmission"></div>
   <div data-content="city"></div>
-  <div><?php echo $this->translate('phone_number') ?>:</div>
   <div data-content="phoneNumber"></div>
-  <div><?php echo $this->translate('date') ?>:</div>
-  <div data-content="date"></div>
+  <div class="features" data-content="features"></div>
+  <div class="description" data-content="description"></div>
+  <div class="date" data-content="date"></div>
 </script>
 
 <script>
@@ -309,8 +298,6 @@
         $.each(responce.cars, function(key, car) {
           var colDiv = $('<div>').addClass('col-lg-4 col-md-6 col-sm-6 col-xs-12');
 
-          colDiv.append($('<div>').addClass('car-title').append($('<a>').attr('href', '/advertisement/' + car._id).text(car.make + ' ' + car.model + ' (' + car.year + ')')));
-
           var slide = $('<div>').attr('id', car._id).addClass('carousel slide').attr('data-ride', 'carousel');
           var carouselInner = $('<div>').addClass('carousel-inner').attr('role', 'listbox').attr('id', car._id)
 //						      					.attr('data-toggle', 'modal')
@@ -340,32 +327,39 @@
 
           //car info
           var data = $('<div>').addClass('data').addClass('openInfo');
-          slide.append($('<div>').addClass('price').html('€ ' + car.price + '</span>'));
+          slide.append(
+          	$('<div>').addClass('car-title')
+                .append($('<a>').attr('href', '/advertisement/' + car._id).text(car.make + ' ' + car.model))
+                .append($('<span>').addClass('price').html('€ ' + car.price + '</span>')));
+
           var info = $('<div>').addClass('info');
 
           var t = car.date.date.split(/[- :]/);
           var date = new Date(t[0], t[1] - 1, t[2], t[3], t[4], t[5]);
 
+        var features = $('<span>');
+        var features_length = car.features.length;
+        $.each(car.features, function(key, value) {
+            features.append(value);
+	        if (key != (features_length - 1)) {
+		        features.append(', ');
+	        }
+        });
+
           info.loadTemplate($('#info-template'),
               {
                 engineCapacity: car.engineCapacity + ' <span class="cm">cm<sup>3</sup></span>',
-                enginePower: car.enginePower + ' <span>kW</span>',
+                year: car.year,
                 fuelType: car.fuelType,
                 transmission: car.transmission,
                 mileage: addCommas(car.mileage) + '<span style="text-transform: lowercase; margin-left:2px;">km</span>',
                 city: car.owner['city'],
-                phoneNumber: '<a href="tel:' + car.owner['phoneNumber'] + '">' + car.owner['phoneNumber'] + '</a> <small><i>(click to call)</i></small></td></tr>',
+                phoneNumber: '<a href="tel:' + car.owner['phoneNumber'] + '">' + car.owner['phoneNumber'] + '</a></td></tr>',
                 date: date.toLocaleDateString(),
+                features: features,
+                description: car.description
               }
           );
-
-          var features = $('<div class="features">');
-          $.each(car.features, function(key, value) {
-            features.append($('<div style="width:100%;">').addClass(' small').html(value));
-          });
-
-          info.append(features);
-          info.append($('<div class="description">').text(car.description));
 
           info.addClass('collapsed').find('div').hide();
           info.find('div:nth-child(-n+6)').show();
@@ -415,9 +409,10 @@
     }
 
     $(window).scroll(function() {
-      if (document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight) {
-        if (!processing) { loadPage(container); }
-        ;
+      if (document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight - 100) {
+        if (!processing) {
+        	loadPage(container);
+        }
       }
     });
 
@@ -451,6 +446,18 @@
 
     $('#navbar').on('hide.bs.collapse', function(){
       $('.navbar-toggle').find('.glyphicon').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+    });
+
+    $('#from').yearselect({
+      start: 1950,
+      end: 2017,
+      order: 'asc'
+    });
+
+    $('#to').yearselect({
+      start: 1950,
+      end: 2017,
+      order: 'desc'
     });
 
     function bindPrice() {

@@ -3,7 +3,7 @@
         <div class="container-fluid">
 			<div class="navbar-header">
 	            <a href="/" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right">All cars</a>
-	            <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a>
+                <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="makina.plus"/></a>
 	            <h4><?=$advertisement->make?> <?=$advertisement->model?> <?=$advertisement->year?></h4>
           </div>
 		</div>
@@ -66,11 +66,11 @@
 		</div>
 		<div>
 			<table class="table">
-				<tr><td width="120"><span>City:</span></td><td><?=$advertisement->owner[2]?></td></tr>
-				<?php if($advertisement->owner[1]): ?>
-                <tr><td><span>Phone:</span></td><td><a href="tel:<?=$advertisement->owner[0]?>"><?=$advertisement->owner[0]?></a> <small><i>(click to call)</i></small></td></tr>
+				<tr><td width="120"><span>City:</span></td><td><?=$advertisement->owner['city']?></td></tr>
+				<?php if($advertisement->owner['phoneNumber']): ?>
+                <tr><td><span>Phone:</span></td><td><a href="tel:<?=$advertisement->owner['phoneNumber']?>"><?=$advertisement->owner['phoneNumber']?></a> <small><i>(click to call)</i></small></td></tr>
                 <?php endif;?>
-                <tr><td><span>Seller:</span></td><td><?=$advertisement->owner[1]?></td></tr>
+                <tr><td><span>Seller:</span></td><td><?=$advertisement->owner['name']?></td></tr>
                 <tr><td><span>Date:</span></td><td><?=$advertisement->date->format('d.m.Y')?></td></tr>
                 <tr style="color: white;"><td colspan="2"><?=$advertisement->autodealerId?></td></tr>
 			</table>

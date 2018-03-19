@@ -668,3 +668,7 @@ h3{
     overflow: hidden;
     white-space: nowrap;
 }
+
+#description{
+    margin-top: 15px;
+}

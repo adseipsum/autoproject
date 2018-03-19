@@ -17,16 +17,19 @@ class IndexController extends AbstractActionController
 {
 
     private $carMapper = null;
-    const PAGE_SIZE = 12;
+    const PAGE_SIZE = 6;
 
     public function listAction()
     {
         $entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
         $make = $entityManager->createQuery('SELECT m.make FROM Oldtimers\Entity\Models m GROUP BY m.make')->getResult();
+        $cities = $entityManager->createQuery('SELECT c.name FROM Oldtimers\Entity\Cities c')->getResult();
+
         $session = New Container('language');
 
         $view = new ViewModel(array(
         		'make' => $make,
+                'cities' => $cities,
                 'language' => $session->language,
         ));
 
@@ -57,10 +60,10 @@ class IndexController extends AbstractActionController
     		$search['priceTo'] = $this->params()->fromQuery('priceTo');
     	}
     	if($this->params()->fromQuery('fuelType')){
-    		$search['fuelType'] = new \MongoRegex('/^' . $this->params()->fromQuery('fuelType') . '$/i');
+    		$search['fuelType'] = $this->params()->fromQuery('fuelType');
     	}
     	if($this->params()->fromQuery('city')){
-    		$search['city'] = new \MongoRegex('/^' . $this->params()->fromQuery('city') . '$/i');
+    		$search['city'] = $this->params()->fromQuery('city');
     	}
 
     	$result = $this->getCarMapper()->getCarList($search, self::PAGE_SIZE, $skip);
@@ -147,6 +150,7 @@ class IndexController extends AbstractActionController
     {
     	
         $id = $this->params()->fromQuery('id');
+        var_dump($id);
         $result = [];
         if($id != null){
             $car = $this->getCarMapper()->find($id);
@@ -236,7 +240,7 @@ class IndexController extends AbstractActionController
     			$adapter->addFilter('Rename', array('target' => $filePath, 'overwrite' => true));
     			$adapter->addValidator('Size', false, array('min' => '10kB', 'max' => '8MB'));
     			$adapter->addValidator('IsImage',  false, 'jpg, jpeg, png');
-                $adapter->addValidator('ImageSize', false,  array('minWidth' => 320, 'minHeight' => 200, 'maxWidth' => 3264, 'maxHeight' => 2448));
+                $adapter->addValidator('ImageSize', false,  array('minWidth' => 320, 'minHeight' => 200, 'maxWidth' => 6000, 'maxHeight' => 4000));
 
     			
     			if(!$adapter->receive()){
@@ -398,9 +402,9 @@ class IndexController extends AbstractActionController
    * returns image
    */
 	public function addWatermark($image, $bigWatermark = false){
-		$stamp = imagecreatefrompng(PUBLIC_PATH . '/img/stamp.png'); //Input the location of your Watermark Here
+		$stamp = imagecreatefrompng(PUBLIC_PATH . '/img/watermark.png'); //Input the location of your Watermark Here
 		if($bigWatermark){
-			$stamp = imagecreatefrompng(PUBLIC_PATH . '/img/big-stamp.png');
+			$stamp = imagecreatefrompng(PUBLIC_PATH . '/img/watermark.png');
 		}
 		$sx = imagesx($stamp);
 		$sy = imagesy($stamp);
@@ -496,6 +500,11 @@ class IndexController extends AbstractActionController
                 $markModel = explode(' - ', str_replace('Prodajem: ', '', $element->children(0)->innertext));
             $array['make'] = $markModel[0];
             $array['model'] = $markModel[1];
+
+//            if($array['make'] != 'Mercedes Benz'){
+//                $html->clear();
+//                continue;
+//            }
         
             foreach($html->find('div[class=rgt_auto_desc]') as $element)
                 $array['owner']['name'] = $element->children(1)->innertext;

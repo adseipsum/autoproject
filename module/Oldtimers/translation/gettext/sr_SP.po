@@ -17,7 +17,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.4\n"
 
 msgid "title"
-msgstr "Prodaj Auto"
+msgstr "Makina Plus"
 
 msgid "button_cars_listing"
 msgstr "Pretraga"
@@ -203,7 +203,7 @@ msgid "user_email_error"
 msgstr "Dodaj email"
 
 msgid "email_notification_label"
-msgstr "posalemo notifikaciju za vas"
+msgstr "link oglasa cemo vam poslati na ovaj email"
 
 msgid "button_submit"
 msgstr "Snimi"

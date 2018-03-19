@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a href="/" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><?php echo $this->translate('button_cars_listing') ?></a>
+            <a href="/" class="btn btn-operational navbar-btn pull-right"><?php echo $this->translate('button_cars_listing') ?></a>
 <!--             <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a> -->
               <a class="navbar-brand" href="/"><img src="/img/logo.png" style="height: 30px;" alt="makina.plus"/></a>
           </div>
@@ -71,7 +71,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                    <select id="make" name="make" class="form-control" data-error="<?php echo $this->translate('error_choose_maker') ?>" required>
+                    <select id="make" name="make" class="form-control input-lg" data-error="<?php echo $this->translate('error_choose_maker') ?>" required>
                         <option value="" selected disabled><?php echo $this->translate('select_make') ?></option>
                         <?php foreach ($make as $maker): ?>
                             <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
@@ -80,17 +80,17 @@
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                    <select id="model" name="model" class="form-control" data-error="<?php echo $this->translate('error_choose_model') ?>" required>
+                    <select id="model" name="model" class="form-control input-lg" data-error="<?php echo $this->translate('error_choose_model') ?>" required>
                         <option value="" selected disabled><?php echo $this->translate('select_model') ?></option>
                     </select>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                    <input type="text" name="modification" class="form-control" placeholder="<?php echo $this->translate('specify_modification') ?>"/>
+                    <input type="text" name="modification" class="form-control input-lg" placeholder="<?php echo $this->translate('specify_modification') ?>"/>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <select id="transmission" name="transmission" class="form-control" data-error="<?php echo $this->translate('error_select_transmission') ?>" required>
+                    <select id="transmission" name="transmission" class="form-control input-lg" data-error="<?php echo $this->translate('error_select_transmission') ?>" required>
                         <option value=""><?php echo $this->translate('select_transmission') ?></option>
                         <option value="manual"><?php echo $this->translate('manual') ?></option>
                         <option value="half_automatic"><?php echo $this->translate('half_automatic') ?></option>
@@ -99,7 +99,7 @@
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <select id="fuelType" name="fuelType" class="form-control" data-error="<?php echo $this->translate('error_fuel_type') ?>" required>
+                    <select id="fuelType" name="fuelType" class="form-control input-lg" data-error="<?php echo $this->translate('error_fuel_type') ?>" required>
                         <option value=""><?php echo $this->translate('select_fuel_type') ?></option>
                         <option value="diesel"><?php echo $this->translate('diesel') ?></option>
                         <option value="petrol"><?php echo $this->translate('petrol') ?></option>
@@ -111,30 +111,32 @@
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <input type="text" name="engineCapacity" class="form-control" data-minlength="3" placeholder="<?php echo $this->translate('engine_capacity') ?> (cm3)" data-error="<?php echo $this->translate('error_engine_capacity') ?>" required/>
+                    <input type="text" name="engineCapacity" class="form-control input-lg" data-minlength="3" placeholder="<?php echo $this->translate('engine_capacity') ?> (cm3)" data-error="<?php echo $this->translate('error_engine_capacity') ?>" required/>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <input type="text" name="enginePower" class="form-control" placeholder="<?php echo $this->translate('engine_power') ?> (kW)"/>
+                    <input type="text" name="enginePower" class="form-control input-lg" placeholder="<?php echo $this->translate('engine_power') ?> (kW)"/>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <input type="number" name="year" id="year" class="form-control" data-minlength="4" placeholder="<?php echo $this->translate('production_year') ?>" data-error="<?php echo $this->translate('error_production_year') ?>" required/>
+                    <input type="number" name="year" id="year" class="form-control input-lg" data-minlength="4" placeholder="<?php echo $this->translate('production_year') ?>" data-error="<?php echo $this->translate('error_production_year') ?>" required/>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <input type="text" name="mileage" class="form-control" placeholder="<?php echo $this->translate('mileage') ?> (km)" data-error="<?php echo $this->translate('error_mileage') ?>" required/>
+                    <input type="text" name="mileage" class="form-control input-lg" placeholder="<?php echo $this->translate('mileage') ?> (km)" data-error="<?php echo $this->translate('error_mileage') ?>" required/>
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 form-group">
+                <div class="col-lg-6 col-md-6 col-sm-6 form-group text-center">
                     <label for="description" class="control-label"><?php echo $this->translate('features_title') ?></label>
-                    <div class="white">
-                        <div id="features-list-toggle" data-toggle="collapse" data-target="#features-list" class="collapsed">
-                            <span><?php echo $this->translate('Toggle features list') ?></span>
-                            <span class="glyphicon glyphicon-hand-left pull-right"></span>
+                    <div class="white row">
+                        <div id="features-list-toggle" data-toggle="collapse" data-target="#features-list" class="col-lg-12 collapsed visible-xs">
+                            <div class="btn btn-lg btn-operational btn-block center-block">
+                                <?php echo $this->translate('Pokaži!&nbsp;') ?></span>
+                                <span class="glyphicon glyphicon-hand-left"></span>
+                            </div>
                         </div>
                         <ul id="features-list" class="list-group text-center collapse">
                             <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="climatisation" name="features[climatisation]"/><?php echo $this->translate('climatisation') ?></label></li>
@@ -157,20 +159,20 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group text-center">
                     <label for="description" class="control-label"><?php echo $this->translate('car_description_title') ?></label>
-                    <textarea name="description" class="form-control" rows="6"></textarea>
+                    <textarea name="description" class="form-control input-lg" rows="6"></textarea>
                     <div class="help-block with-errors"></div>
                 </div>
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group"><h3 class="text-center"><?php echo $this->translate('contact_information_title') ?></h3></div>
 
                 <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
-                    <input type="text" name="owner[phoneNumber]" class="form-control" placeholder="<?php echo $this->translate('phone_number') ?>" data-error="<?php echo $this->translate('error_phone_number') ?>" required/>
+                    <input type="text" name="owner[phoneNumber]" class="form-control input-lg" placeholder="<?php echo $this->translate('phone_number') ?>" data-error="<?php echo $this->translate('error_phone_number') ?>" required/>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
-                    <select id="city" name="owner[city]" class="form-control" data-error="<?php echo $this->translate('error_location') ?>" required>
+                    <select id="city" name="owner[city]" class="form-control input-lg" data-error="<?php echo $this->translate('error_location') ?>" required>
                         <option value=""><?php echo $this->translate('select_location') ?></option>
                         <?php foreach($cities as $city): ?>
                             <option value="<?= $city['name']?>"><?= $city['name']?></option>
@@ -182,14 +184,14 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
                     <div class="input-group">
                         <span class="input-group-addon">€</span>
-                        <input type="text" name="price" id="price" class="form-control" placeholder="<?php echo $this->translate('price') ?>" data-error="<?php echo $this->translate('error_price') ?>" required/>
+                        <input type="text" name="price" id="price" class="form-control input-lg" placeholder="<?php echo $this->translate('price') ?>" data-error="<?php echo $this->translate('error_price') ?>" required/>
                     </div>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
                     <div class="input-group">
                         <span class="input-group-addon">@</span>
-                        <input type="email" name="owner[email]" class="form-control" placeholder="<?php echo $this->translate('user_email') ?>" data-error="<?php echo $this->translate('user_email_error') ?>" />
+                        <input type="email" name="owner[email]" class="form-control input-lg" placeholder="<?php echo $this->translate('user_email') ?>" data-error="<?php echo $this->translate('user_email_error') ?>" />
                     </div>
                     <span class="help-inline"><?php echo $this->translate('email_notification_label') ?></span>
                     <div class="help-block with-errors"></div>
@@ -199,7 +201,10 @@
             </div>
             <div class="row">
                 <div id="post-block" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                    <button type="submit" id="post" class="btn btn-operational btn-block center-block"><?php echo $this->translate('button_submit') ?></button>
+                    <button type="submit" id="post" class="btn btn-lg btn-operational btn-block center-block">
+                        <?php echo $this->translate('button_submit') ?>
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
                     <div class="help-block with-errors"></div>
                 </div>
             </div>

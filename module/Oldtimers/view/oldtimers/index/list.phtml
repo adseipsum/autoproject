@@ -1,8 +1,3 @@
-<style>
-  .carousel-control.right, .carousel-control.left {
-    opacity: 0;
-  }
-</style>
 <div class="row">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -136,15 +131,15 @@
 </div>
 
 <script id="info-template" type="text/html">
-  <div data-content="fuelType"></div>
-  <div data-content="engineCapacity"></div>
-  <div data-content="year"></div>
-  <div data-content="transmission"></div>
-  <div data-content="city"></div>
-  <div data-content="phoneNumber"></div>
-  <div class="features" data-content="features"></div>
-  <div class="description" data-content="description"></div>
-  <div class="date" data-content="date"></div>
+    <div data-content="year"></div>
+    <div data-content="fuelType"></div>
+    <div data-content="transmission"></div>
+    <div data-content="engineCapacity"></div>
+    <div data-content="city"></div>
+    <div class="phoneNumber" data-content="phoneNumber"></div>
+    <div class="features" data-content="features"></div>
+    <div class="description" data-content="description"></div>
+    <div class="date" data-content="date"></div>
 </script>
 
 <script>
@@ -234,22 +229,24 @@
     });
 
     //solve this using preloadPhotos
-    $('body').bind('slide.bs.carousel', '.carousel', function(e) {
+  $('body').bind('slide.bs.carousel', '.carousel', function(e) {
       if (e.direction == 'left') {
-        var url = $(e.target).find('.item.active').next().find('img').attr('alt');
-        $(e.target).find('.item.active').next().find('img').attr('src', url);
+          var url = $(e.target).find('.item.active').next().find('img').attr('alt');
+          $(e.target).find('.item.active').next().find('img').attr('src', url);
       }
       else {
-        var url = $(e.target).find('.item.active').prev().find('img').attr('alt');
-        if (url != undefined) {
-          $(e.target).find('.item.active').prev().find('img').attr('src', url);
-        }
-        else {
-          url = $(e.target).find(':last-child').find('img').attr('alt');
-          $(e.target).find(':last-child').find('img').attr('src', url);
-        }
+          var url = $(e.target).find('.item.active').prev().find('img').attr('alt');
+          if (url != undefined) {
+              $(e.target).find('.item.active').prev().find('img').attr('src', url);
+          }
+          else {
+              url = $(e.target).find(':last-child').find('img').attr('alt');
+              $(e.target).find(':last-child').find('img').attr('src', url);
+          }
       }
-    });
+
+	  preloadImage(url);
+  });
 
     if (!processing) { loadPage(container); }
     ;
@@ -259,17 +256,28 @@
       var nextURL = $(target).find('.item.active').next().find('img').attr('alt');
       if (nextURL != undefined) {
         $(target).find('.item.active').next().find('img').attr('src', nextURL);
+        preloadImage(nextURL);
       }
 
       var previousURL = $(target).find('.item.active').prev().find('img').attr('alt');
       if (previousURL != undefined) {
         $(target).find('.item.active').prev().find('img').attr('src', previousURL);
+        preloadImage(previousURL);
       }
       else {
         previousURL = $(target).find(':last-child').find('img').attr('alt');
         $(target).find(':last-child').find('img').attr('src', previousURL);
+        preloadImage(previousURL);
       }
     }
+
+	  function preloadImage(url)
+	  {
+		  var img = new Image();
+		  img.src = url;
+
+		  return img;
+	  }
 
     function loadPage(container) {
 
@@ -377,7 +385,7 @@
             var rightControl = $('<a>').addClass('right carousel-control').attr('href', '#' + car._id).attr('role', 'button').attr('data-slide', 'next').append($('<span>').addClass('glyphicon chevron-right').attr('aria-hidden', 'true'));
             controls.append(rightControl);
 
-            slide.append($('<div>').append(controls));
+	          carouselInner.parent().append(controls);
           }
 
           row.append(colDiv.append(slide));
@@ -387,10 +395,12 @@
             container.attr('data-skip', parseInt(container.attr('data-skip')) + Object.keys(responce.cars).length);
           }
           firstFlag = false;
-
-          preloadPhotos(car._id);
         });
         container.append(row);
+
+        $.each(responce.cars, function(key, car) {
+          preloadPhotos(car._id);
+        });
 
         $('#counter').html($('<span>').html(responce.count + ' <?= $this->translate("auto_listed") ?>'));
 

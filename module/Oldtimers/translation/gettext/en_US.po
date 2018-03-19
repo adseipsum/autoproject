@@ -202,7 +202,7 @@ msgid "user_email_error"
 msgstr "test"
 
 msgid "email_notification_label"
-msgstr "test"
+msgstr "advertisement link will be sent to this email"
 
 msgid "button_submit"
 msgstr "test"

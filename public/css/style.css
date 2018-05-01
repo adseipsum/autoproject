@@ -133,6 +133,12 @@ h3, .h3 {
     display: none;
 }
 
+#add_photo{
+    background-color: #6DA34D !important;
+    color: white;
+    font-family: Montserrat,Arial,Helvetica,"Lucida Grande","Lucida Sans",Tahoma,Verdana,sans-serif;
+}
+
 #post{
     background-color: #6DA34D !important;
     color: white;

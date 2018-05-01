@@ -20,7 +20,10 @@ msgid "title"
 msgstr "Makina Plus"
 
 msgid "button_cars_listing"
-msgstr "Pretraga"
+msgstr "Pretraži"
+
+msgid "newAdvertisement"
+msgstr "Dodaj"
 
 msgid "button_add_photos"
 msgstr "Dodaj slike"
@@ -169,8 +172,11 @@ msgstr "Tempomat"
 msgid "panoramicRoof"
 msgstr "Panorama krov"
 
+msgid "fourWeelDrive"
+msgstr "4x4"
+
 msgid "xenonHeadlights"
-msgstr " Xenon svetla"
+msgstr "Xenon svetla"
 
 msgid "car_description_title"
 msgstr "Tekst oglasa"
@@ -210,3 +216,9 @@ msgstr "Snimi"
 
 msgid "auto_listed"
 msgstr "auto na listi"
+
+msgid "price_from"
+msgstr "Od"
+
+msgid "price_to"
+msgstr "Do"

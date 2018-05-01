@@ -21,6 +21,9 @@ msgstr "Продажа автомобилей"
 msgid "button_cars_listing"
 msgstr "Поиск"
 
+msgid "newAdvertisement"
+msgstr "Добавить"
+
 msgid "button_add_photos"
 msgstr "Добавить фото"
 
@@ -56,7 +59,7 @@ msgstr "Укажите модель"
 
 #, fuzzy
 msgid "specify_modification"
-msgstr "ХЗ что это"
+msgstr "Укажите модификацию"
 
 msgid "production_year"
 msgstr "Год выпуска"
@@ -169,6 +172,9 @@ msgstr "Круиз-контроль"
 msgid "panoramicRoof"
 msgstr "Панорамная крыша"
 
+msgid "fourWeelDrive"
+msgstr "4x4"
+
 msgid "xenonHeadlights"
 msgstr "Ксенон"
 
@@ -203,10 +209,16 @@ msgid "user_email_error"
 msgstr "Укажите email"
 
 msgid "email_notification_label"
-msgstr "Отправить себе на email"
+msgstr "Ссылка придёт вам на email"
 
 msgid "button_submit"
-msgstr "Фото"
+msgstr "Сохранить"
 
 msgid "auto_listed"
 msgstr "авто в списке"
+
+msgid "price_from"
+msgstr "От"
+
+msgid "price_to"
+msgstr "До"

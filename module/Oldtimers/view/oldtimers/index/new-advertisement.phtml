@@ -3,8 +3,16 @@
         <div class="container-fluid">
           <div class="navbar-header">
             <a href="/" class="btn btn-operational navbar-btn pull-right"><?php echo $this->translate('button_cars_listing') ?></a>
-<!--             <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a> -->
-              <a class="navbar-brand" href="/"><img src="/img/logo.png" style="height: 30px;" alt="makina.plus"/></a>
+            <!--             <a class="navbar-brand navbar-btn" href="/"><img src="/img/logo.png" alt="vozila.me"/></a> -->
+            <a class="navbar-brand" href="/"><img src="/img/logo.png" style="height: 30px;" alt="makina.plus"/></a>
+
+            <div class="language-group">
+              <select id="switchLanguage" class="pull-left">
+                  <option value="sr_SP">CG</option>
+                  <option value="en_US">EN</option>
+                  <option value="ru_RU">RU</option>
+              </select>
+            </div>
           </div>
         </div><!--/.container-fluid -->
       </nav>
@@ -18,8 +26,8 @@
                     <div id="actions" class="row">
                         <div class="col-lg-12">
                             <!-- The fileinput-button span is used to style the file input field as button -->
-                            <span class="btn btn-lg btn-operational fileinput-button btn-block center-block">
-                            <i class="glyphicon glyphicon-plus"></i>
+                            <span id="add_photo" class="btn btn-lg btn-operational fileinput-button btn-block center-block">
+                            <i class="glyphicon glyphicon-picture"></i>
                             <span><?php echo $this->translate('button_add_photos') ?></span>
                         </span>
                         </div>
@@ -134,11 +142,12 @@
                     <div class="white row">
                         <div id="features-list-toggle" data-toggle="collapse" data-target="#features-list" class="col-lg-12 collapsed visible-xs">
                             <div class="btn btn-lg btn-operational btn-block center-block">
-                                <?php echo $this->translate('Pokaži!&nbsp;') ?></span>
+                                <?php echo $this->translate('features_toggle') ?>&nbsp;</span>
                                 <span class="glyphicon glyphicon-hand-left"></span>
                             </div>
                         </div>
                         <ul id="features-list" class="list-group text-center collapse">
+                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="fourWeelDrive" name="features[fourWeelDrive]"><?php echo $this->translate('fourWeelDrive') ?></label></li>
                             <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="climatisation" name="features[climatisation]"/><?php echo $this->translate('climatisation') ?></label></li>
                             <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="airConditioning" name="features[airConditioning]"><?php echo $this->translate('airConditioning') ?></label></li>
                             <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="powerAssistedSteering" name="features[powerAssistedSteering]"><?php echo $this->translate('powerAssistedSteering') ?></label></li>
@@ -203,7 +212,7 @@
                 <div id="post-block" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
                     <button type="submit" id="post" class="btn btn-lg btn-operational btn-block center-block">
                         <?php echo $this->translate('button_submit') ?>
-                        <span class="glyphicon glyphicon-ok"></span>
+                        <span class="glyphicon glyphicon-plus"></span>
                     </button>
                     <div class="help-block with-errors"></div>
                 </div>
@@ -223,6 +232,29 @@ $(document).ready(function(){
     previewNode.id = "";
     var previewTemplate = previewNode.parentNode.innerHTML;
     previewNode.parentNode.removeChild(previewNode);
+
+    var $switcher = $('#switchLanguage');
+
+    $switcher.val('<?= $language ?>');
+    $("#switchLanguage option[value='<?= $language ?>']").hide();
+
+    $switcher.selectpicker();
+
+    $switcher.on('change', function($e) {
+        $e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '/index/language',
+            data: {'language': $(this).val()},
+        }).done(function(responce) {
+            if (responce.success) {
+                setTimeout(function() {
+                    window.location.reload();
+                }, 50);
+            }
+        });
+    });
 
     var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
       url: "/index/saveFile", // Set the url

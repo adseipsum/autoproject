@@ -9,7 +9,7 @@
           </button>
         </div>
 
-        <a href="/new" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><span class="glyphicon glyphicon-plus"></span></a>
+        <a href="/new" id="newAdvertisement" class="btn btn-operational navbar-btn pull-right"><?php echo $this->translate('newAdvertisement') ?></a>
 
         <div class="language-group">
           <select id="switchLanguage" class="pull-left">
@@ -523,7 +523,7 @@
 
     function generatePriceSelects() {
 
-      $('#priceFrom').append($('<option>').attr('value', 0).text('€ From'));
+      $('#priceFrom').append($('<option>').attr('value', 0).text('€ <?= $this->translate("price_from") ?>'));
       for (i = 100; i < 5000; i = i + 500) {
         $('#priceFrom').append($('<option>').attr('value', i).text(i + '€'));
       }
@@ -536,7 +536,7 @@
         $('#priceFrom').append($('<option>').attr('value', i).text(i + '€'));
       }
 
-      $('#priceTo').append($('<option>').attr('value', 0).text('€ To'));
+      $('#priceTo').append($('<option>').attr('value', 0).text('€ <?= $this->translate("price_to") ?>'));
       for (i = 100000; i > 10000; i = i - 10000) {
         $('#priceTo').append($('<option>').attr('value', i).text(i + '€'));
       }

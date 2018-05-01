@@ -102,8 +102,24 @@ class IndexController extends AbstractActionController
     public function advertisementAction()
     {
     	$advertisement = $this->getCarMapper()->find($this->getEvent()->getRouteMatch()->getParam('id'));
+
+        $translate = $this->getServiceLocator()->get('ViewHelperManager')->get('translate');
+
+        $advertisement->transmission = $translate($advertisement->transmission);
+        $advertisement->fuelType = $translate($advertisement->fuelType);
+
+        foreach($advertisement->features as $key => $feature){
+            $advertisement->features[$key] = $translate($feature);
+        }
+
+        $session = New Container('language');
+
     	if(!$advertisement){ $this->redirect()->toUrl('/'); }
-    	$result = new ViewModel(array('advertisement' => $advertisement));
+
+    	$result = new ViewModel(array(
+    	    'advertisement' => $advertisement,
+            'language' => $session->language
+        ));
     	return $result;
     }
     
@@ -207,11 +223,14 @@ class IndexController extends AbstractActionController
 
         $cities = $entityManager->createQuery('SELECT c.name FROM Oldtimers\Entity\Cities c')->getResult();
         $make = $entityManager->createQuery('SELECT m.make FROM Oldtimers\Entity\Models m GROUP BY m.make')->getResult();
-        
+
+        $session = New Container('language');
+
         $view = new ViewModel(array(
                 'make' => $make,
         		'cities' => $cities,
-        		'carDirectory' => uniqid("car-directory-")
+        		'carDirectory' => uniqid("car-directory-"),
+                'language' => $session->language
         ));
         
         return $view;

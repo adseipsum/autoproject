@@ -43,21 +43,19 @@
 <div class="row">
 	<div class="col-lg-8 col-lg-offset-2">
 		<table class="table" style="margin-top:30px;">
-			<tr><td width="120">Make</td><td><?=$advertisement->make?></td></tr>
-			<tr><td>Model</td><td><?=$advertisement->model?></td></tr>
-			<tr><td>Year</td><td><?=$advertisement->year?></td></tr>
-			<tr><td>Transmission</td><td><?=$advertisement->transmission?></td></tr>
-			<tr><td>Driver Side</td><td><?=$advertisement->driverSide?></td></tr>
-			<tr><td>Wheel Drive</td><td><?=$advertisement->wheelDrive?></td></tr>
-			<tr><td>Fuel Type</td><td><?=$advertisement->fuelType?></td></tr>
-			<tr><td>Engine Capacity</td><td><?=$advertisement->engineCapacity?>cm<sup>3</sup></td></tr>
-			<tr><td>Power</td><td><?=$advertisement->kW?> kW</td></tr>
-			<tr><td>Mileage</td><td><?=$advertisement->mileage?></td></tr>
+			<tr><td width="20%"><?php echo $this->translate('select_make') ?></td><td><?=$advertisement->make?></td></tr>
+			<tr><td><?php echo $this->translate('select_model') ?></td><td><?=$advertisement->model?></td></tr>
+			<tr><td><?php echo $this->translate('production_year') ?></td><td><?=$advertisement->year?></td></tr>
+			<tr><td><?php echo $this->translate('select_transmission') ?></td><td><?=$advertisement->transmission?></td></tr>
+			<tr><td><?php echo $this->translate('select_fuel_type') ?></td><td><?=$advertisement->fuelType?></td></tr>
+			<tr><td><?php echo $this->translate('engine_capacity') ?></td><td><?=$advertisement->engineCapacity?>cm<sup>3</sup></td></tr>
+			<tr><td><?php echo $this->translate('engine_power') ?></td><td><?=$advertisement->kW?> kW</td></tr>
+			<tr><td><?php echo $this->translate('mileage') ?></td><td><?=$advertisement->mileage?></td></tr>
 		</table>
 		<div id="features">
 			<div class="panel list-group">
 				<a href="javascript:void(0);" class="list-group-item" data-toggle="collapse" data-target="#sm" data-parent="#features">
-					<span>Features</span>
+					<span><?php echo $this->translate('features_title') ?></span>
 					<span class="glyphicon glyphicon-hand-down pull-right"></span>
 				</a>
 				<div id="sm" class="sublinks collapse">
@@ -67,14 +65,17 @@
 				</div>
 			</div>
 		</div>
+        <div>
+
+        </div>
 		<div>
 			<table class="table">
-				<tr><td width="120"><span>City:</span></td><td><?=$advertisement->owner['city']?></td></tr>
+                <tr><td width="120"><span><?php echo $this->translate('car_description_title') ?>:</span></td><td><?=$advertisement->description?></td></tr>
+				<tr><td width="120"><span><?php echo $this->translate('select_location') ?>:</span></td><td><?=$advertisement->owner['city']?></td></tr>
 				<?php if($advertisement->owner['phoneNumber']): ?>
-                <tr><td><span>Phone:</span></td><td><a href="tel:<?=$advertisement->owner['phoneNumber']?>"><?=$advertisement->owner['phoneNumber']?></a> <small><i>(click to call)</i></small></td></tr>
+                <tr><td><span><?php echo $this->translate('phone_number') ?>:</span></td><td><a href="tel:<?=$advertisement->owner['phoneNumber']?>"><?=$advertisement->owner['phoneNumber']?></a></td></tr>
                 <?php endif;?>
-                <tr><td><span>Seller:</span></td><td><?=$advertisement->owner['name']?></td></tr>
-                <tr><td><span>Date:</span></td><td><?=$advertisement->date->format('d.m.Y')?></td></tr>
+                <tr><td><span><?php echo $this->translate('date') ?>:</span></td><td><?=$advertisement->date->format('d.m.Y')?></td></tr>
                 <tr style="color: white;"><td colspan="2"><?=$advertisement->autodealerId?></td></tr>
 			</table>
 		</div>

@@ -21,6 +21,9 @@ msgstr "Sell You Car"
 msgid "button_cars_listing"
 msgstr "Search"
 
+msgid "newAdvertisement"
+msgstr "Add New"
+
 msgid "button_add_photos"
 msgstr "Add photos"
 
@@ -64,7 +67,7 @@ msgid "error_production_year"
 msgstr "Specify production year"
 
 msgid "select_transmission"
-msgstr "Select transmission type"
+msgstr "Transmission type"
 
 msgid "manual"
 msgstr "Manual"
@@ -118,94 +121,103 @@ msgid "error_mileage"
 msgstr "Select mileage"
 
 msgid "features_title"
-msgstr "test"
+msgstr "Features"
 
 msgid "features_toggle"
-msgstr "test"
+msgstr "Add Features"
 
 msgid "climatisation"
-msgstr "test"
+msgstr "Air climatization"
 
 msgid "airConditioning"
-msgstr "test"
+msgstr "Air conditioning"
 
 msgid "powerAssistedSteering"
-msgstr "test"
+msgstr "Power assisted steering"
 
 msgid "audio"
-msgstr "test"
+msgstr "Audio system"
 
 msgid "towHook"
-msgstr "test"
+msgstr "Tow hook"
 
 msgid "electricWindows"
-msgstr "test"
+msgstr "Electric windows"
 
 msgid "electricHeatedSeats"
-msgstr "test"
+msgstr "Electric heated seats"
 
 msgid "centralLocking"
-msgstr "test"
+msgstr "Central locking"
 
 msgid "remoteLocking"
-msgstr "test"
+msgstr "Remote locking"
 
 msgid "parkingSensors"
-msgstr "test"
+msgstr "Parking sensors"
 
 msgid "fogLamp"
-msgstr "test"
+msgstr "Fog lamp"
 
 msgid "immobilizer"
-msgstr "test"
+msgstr "Immobilizer"
 
 msgid "navigationSystem"
-msgstr "test"
+msgstr "Navigation system"
 
 msgid "cruiseControl"
-msgstr "test"
+msgstr "Cruise control"
 
 msgid "panoramicRoof"
-msgstr "test"
+msgstr "Panoramic roof"
+
+msgid "fourWeelDrive"
+msgstr "4x4"
 
 msgid "xenonHeadlights"
-msgstr "test"
+msgstr "Xenon headlights"
 
 msgid "car_description_title"
-msgstr "test"
+msgstr "Description"
 
 msgid "contact_information_title"
-msgstr "test"
+msgstr "Contact information"
 
 msgid "phone_number"
-msgstr "test"
+msgstr "Phone number"
 
 msgid "error_phone_number"
-msgstr "test"
+msgstr "Add phone number"
 
 msgid "select_location"
-msgstr "test"
+msgstr "Location"
 
 msgid "error_location"
-msgstr "test"
+msgstr "Select location"
 
 msgid "price"
-msgstr "test"
+msgstr "Price"
 
 msgid "error_price"
-msgstr "test"
+msgstr "Set price"
 
 msgid "user_email"
-msgstr "test"
+msgstr "Email"
 
 msgid "user_email_error"
-msgstr "test"
+msgstr "Add email"
 
 msgid "email_notification_label"
 msgstr "advertisement link will be sent to this email"
 
 msgid "button_submit"
-msgstr "test"
+msgstr "Save"
 
 msgid "auto_listed"
-msgstr "test"
+msgstr "Car is listed"
+
+msgid "price_from"
+msgstr "From"
+
+msgid "price_to"
+msgstr "To"

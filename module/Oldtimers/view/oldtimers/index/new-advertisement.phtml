@@ -8,7 +8,7 @@
 
             <div class="language-group">
               <select id="switchLanguage" class="pull-left">
-                  <option value="sr_SP">CG</option>
+                  <option value="sr_SP">MN</option>
                   <option value="en_US">EN</option>
                   <option value="ru_RU">RU</option>
               </select>
@@ -18,8 +18,167 @@
       </nav>
 </div>
 <div class="row">
-    <div id="advertisementBlock" class="col-lg-12">
-        <form id="advertisementForm" action="/new" method="post" role="form" class="form" enctype="multipart/form-data">
+    <form id="advertisementForm" action="/new" method="post" role="form" class="form" enctype="multipart/form-data">
+        <div id="advertisementBlock" class="col-lg-10 col-md-12 col-sm-12 col-xs-12 col-lg-offset-1">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center"><?php echo $this->translate('form_message_1') ?></h3></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
+                    <select id="make" name="make" class="form-control input-lg" data-error="<?php echo $this->translate('error_choose_maker') ?>" required>
+                        <option value="" selected disabled><?php echo $this->translate('select_make') ?></option>
+                        <?php foreach ($make as $maker): ?>
+                            <option value="<?php echo $maker['make']; ?>" data-thumbnail="img/circle.png"><?php echo $maker['make']; ?></option>
+                        <?php endforeach;?>
+                    </select>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
+                    <select id="model" name="model" class="form-control input-lg" data-error="<?php echo $this->translate('error_choose_model') ?>" required>
+                        <option value="" selected disabled><?php echo $this->translate('select_model') ?></option>
+                    </select>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 form-group">
+                    <input type="text" name="modification" class="form-control input-lg" placeholder="<?php echo $this->translate('specify_modification') ?>"/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 form-group">
+                    <input type="number" name="year" id="year" class="form-control input-lg" data-minlength="4" placeholder="<?php echo $this->translate('production_year') ?>" data-error="<?php echo $this->translate('error_production_year') ?>" required/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group text-center">
+                    <h3><?php echo $this->translate('select_transmission') ?></h3>
+                    <ul id="transmissionRadioBlock" class="form-group" data-error="<?php echo $this->translate('error_select_transmission') ?>">
+                        <label>
+                            <input type="radio" name="transmission" value="manual">
+                            <span><?php echo $this->translate('manual') ?></span>
+                        </label>
+                        <label>
+                            <input type="radio" name="transmission" value="half_automatic">
+                            <span><?php echo $this->translate('half_automatic') ?></span>
+                        </label>
+                        <label>
+                            <input type="radio" name="transmission" value="automatic">
+                            <span><?php echo $this->translate('automatic') ?></span>
+                        </label>
+                    </ul>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group text-center">
+                    <h3><?php echo $this->translate('select_fuel_type') ?></h3>
+                    <ul id="fuelTypeRadioBlock" class="form-group" data-error="<?php echo $this->translate('error_select_transmission') ?>">
+                        <label>
+                            <input type="radio" name="fuelType" value="diesel">
+                            <span><?php echo $this->translate('diesel') ?></span>
+                        </label>
+                        <label>
+                            <input type="radio" name="fuelType" value="petrolAndGas">
+                            <span><?php echo $this->translate('petrolAndGas') ?></span>
+                        </label>
+                        <label>
+                            <input type="radio" name="fuelType" value="petrol">
+                            <span><?php echo $this->translate('petrol') ?></span>
+                        </label>
+                        <label>
+                            <input type="radio" name="fuelType" value="hybrid">
+                            <span><?php echo $this->translate('hybrid') ?></span>
+                        </label>
+                        <label>
+                            <input type="radio" name="fuelType" value="electric">
+                            <span><?php echo $this->translate('electric') ?></span>
+                        </label>
+                    </ul>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group text-center">
+                    <h3><?php echo $this->translate('engine_capacity') ?></h3>
+                    <div class="input-group col-lg-4 col-md-6 col-sm-6 col-xs-6 col-lg-offset-4 col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
+                        <input name="engineCapacity" id="engineCapacityValue" class="form-control input-lg" data-error="<?php echo $this->translate('error_engine_capacity') ?>" value="2000"/>
+                        <span class="input-group-addon">cm3</span>
+                    </div>
+                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <input id="engineCapacity" class="form-control" data-slider-id='engineCapacitySlider' type="text" data-slider-min="100" data-slider-max="6000" data-slider-step="1" data-slider-value="2000"/>
+                    </div>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group text-center">
+                    <h3><?php echo $this->translate('mileage') ?></h3>
+                    <div class="input-group col-lg-4 col-md-6 col-sm-6 col-xs-6 col-lg-offset-4 col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
+                        <input name="mileage" id="mileageValue" class="form-control input-lg" data-error="<?php echo $this->translate('error_mileage') ?>" value="50000"/>
+                        <span class="input-group-addon">km</span>
+                    </div>
+                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <input id="mileage" class="form-control" data-slider-id='mileageSlider' type="text" data-slider-min="0" data-slider-max="600000" data-slider-step="1000" data-slider-value="50000"/>
+                    </div>
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 form-group text-center">
+                    <h3><?php echo $this->translate('features_title') ?></h3>
+                    <div id="features-list">
+                        <label><input type="checkbox" value="fourWeelDrive" name="features[fourWeelDrive]"><span><?php echo $this->translate('fourWeelDrive') ?></span></label>
+                        <label><input type="checkbox" value="climatisation" name="features[climatisation]"/><span><?php echo $this->translate('climatisation') ?></span></label>
+                        <label><input type="checkbox" value="airConditioning" name="features[airConditioning]"><span><?php echo $this->translate('airConditioning') ?></span></label>
+                        <label><input type="checkbox" value="powerAssistedSteering" name="features[powerAssistedSteering]"><span><?php echo $this->translate('powerAssistedSteering') ?></span></label>
+                        <label><input type="checkbox" value="audio" name="features[audio]"><span><?php echo $this->translate('audio') ?></span></label>
+                        <label><input type="checkbox" value="towHook" name="features[towHook]"><span><?php echo $this->translate('towHook') ?></span></label>
+                        <label><input type="checkbox" value="electricWindows" name="features[electricWindows]"><span><?php echo $this->translate('electricWindows') ?></span></label>
+                        <label><input type="checkbox" value="electricHeatedSeats" name="features[electricHeatedSeats]"><span><?php echo $this->translate('electricHeatedSeats') ?></span></label>
+                        <label><input type="checkbox" value="xenonHeadlights" name="features[xenonHeadlights]"><span><?php echo $this->translate('xenonHeadlights') ?></span></label>
+                        <label><input type="checkbox" value="centralLocking" name="features[centralLocking]"><span><?php echo $this->translate('centralLocking') ?></span></label>
+                        <label><input type="checkbox" value="remoteLocking" name="features[remoteLocking]"><span><?php echo $this->translate('remoteLocking') ?></span></label>
+                        <label><input type="checkbox" value="parkingSensors" name="features[parkingSensors]"><span><?php echo $this->translate('parkingSensors') ?></span></label>
+                        <label><input type="checkbox" value="fogLamp" name="features[fogLamp]"><span><?php echo $this->translate('fogLamp') ?></span></label>
+                        <label><input type="checkbox" value="immobilizer" name="features[immobilizer]"><span><?php echo $this->translate('immobilizer') ?></span></label>
+                        <label><input type="checkbox" value="navigationSystem" name="features[navigationSystem]"><span><?php echo $this->translate('navigationSystem') ?></span></label>
+                        <label><input type="checkbox" value="cruiseControl" name="features[cruiseControl]"><span><?php echo $this->translate('cruiseControl') ?></span></label>
+                        <label><input type="checkbox" value="panoramicRoof" name="features[panoramicRoof]"><span><?php echo $this->translate('panoramicRoof') ?></span></label>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group text-center">
+                    <label for="description" class="control-label"><?php echo $this->translate('car_description_title') ?></label>
+                    <textarea id="description" name="description" class="form-control input-lg" rows="7"></textarea>
+                    <div class="help-block with-errors"></div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group"><h3 class="text-center"><?php echo $this->translate('contact_information_title') ?></h3></div>
+
+                <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                    <input type="text" name="owner[phoneNumber]" class="form-control input-lg" placeholder="<?php echo $this->translate('phone_number') ?>" data-error="<?php echo $this->translate('error_phone_number') ?>" required/>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                    <select id="city" name="owner[city]" class="form-control input-lg" data-error="<?php echo $this->translate('error_location') ?>" required>
+                        <option value=""><?php echo $this->translate('select_location') ?></option>
+                        <?php foreach($cities as $city): ?>
+                            <option value="<?= $city['name']?>"><?= $city['name']?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <div class="help-block with-errors"></div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">€</span>
+                        <input type="text" name="price" id="price" class="form-control input-lg" placeholder="<?php echo $this->translate('price') ?>" data-error="<?php echo $this->translate('error_price') ?>" required/>
+                    </div>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input type="email" name="owner[email]" class="form-control input-lg" placeholder="<?php echo $this->translate('user_email') ?>" data-error="<?php echo $this->translate('user_email_error') ?>" />
+                    </div>
+                    <span class="help-inline"><?php echo $this->translate('email_notification_label') ?></span>
+                    <div class="help-block with-errors"></div>
+                </div>
+
+
+            </div>
             <div class="row">
                 <div id="photos-block" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
 
@@ -75,140 +234,6 @@
 
             </div>
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group"><h3 class="text-center"><?php echo $this->translate('form_message_1') ?></h3></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                    <select id="make" name="make" class="form-control input-lg" data-error="<?php echo $this->translate('error_choose_maker') ?>" required>
-                        <option value="" selected disabled><?php echo $this->translate('select_make') ?></option>
-                        <?php foreach ($make as $maker): ?>
-                            <option value="<?php echo $maker['make']; ?>"><?php echo $maker['make']; ?></option>
-                        <?php endforeach;?>
-                    </select>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                    <select id="model" name="model" class="form-control input-lg" data-error="<?php echo $this->translate('error_choose_model') ?>" required>
-                        <option value="" selected disabled><?php echo $this->translate('select_model') ?></option>
-                    </select>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                    <input type="text" name="modification" class="form-control input-lg" placeholder="<?php echo $this->translate('specify_modification') ?>"/>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <select id="transmission" name="transmission" class="form-control input-lg" data-error="<?php echo $this->translate('error_select_transmission') ?>" required>
-                        <option value=""><?php echo $this->translate('select_transmission') ?></option>
-                        <option value="manual"><?php echo $this->translate('manual') ?></option>
-                        <option value="half_automatic"><?php echo $this->translate('half_automatic') ?></option>
-                        <option value="automatic"><?php echo $this->translate('automatic') ?></option>
-                    </select>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <select id="fuelType" name="fuelType" class="form-control input-lg" data-error="<?php echo $this->translate('error_fuel_type') ?>" required>
-                        <option value=""><?php echo $this->translate('select_fuel_type') ?></option>
-                        <option value="diesel"><?php echo $this->translate('diesel') ?></option>
-                        <option value="petrol"><?php echo $this->translate('petrol') ?></option>
-                        <option value="gas"><?php echo $this->translate('gas') ?></option>
-                        <option value="petrolAndGas"><?php echo $this->translate('petrolAndGas') ?></option>
-                        <option value="hybrid"><?php echo $this->translate('hybrid') ?></option>
-                        <option value="electric"><?php echo $this->translate('electric') ?></option>
-                    </select>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <input type="text" name="engineCapacity" class="form-control input-lg" data-minlength="3" placeholder="<?php echo $this->translate('engine_capacity') ?> (cm3)" data-error="<?php echo $this->translate('error_engine_capacity') ?>" required/>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <input type="text" name="enginePower" class="form-control input-lg" placeholder="<?php echo $this->translate('engine_power') ?> (kW)"/>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <input type="number" name="year" id="year" class="form-control input-lg" data-minlength="4" placeholder="<?php echo $this->translate('production_year') ?>" data-error="<?php echo $this->translate('error_production_year') ?>" required/>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 form-group">
-                    <input type="text" name="mileage" class="form-control input-lg" placeholder="<?php echo $this->translate('mileage') ?> (km)" data-error="<?php echo $this->translate('error_mileage') ?>" required/>
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 form-group text-center">
-                    <label for="description" class="control-label"><?php echo $this->translate('features_title') ?></label>
-                    <div class="white row">
-                        <div id="features-list-toggle" data-toggle="collapse" data-target="#features-list" class="col-lg-12 collapsed visible-xs">
-                            <div class="btn btn-lg btn-operational btn-block center-block">
-                                <?php echo $this->translate('features_toggle') ?>&nbsp;</span>
-                                <span class="glyphicon glyphicon-hand-left"></span>
-                            </div>
-                        </div>
-                        <ul id="features-list" class="list-group text-center collapse">
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="fourWeelDrive" name="features[fourWeelDrive]"><?php echo $this->translate('fourWeelDrive') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="climatisation" name="features[climatisation]"/><?php echo $this->translate('climatisation') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="airConditioning" name="features[airConditioning]"><?php echo $this->translate('airConditioning') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="powerAssistedSteering" name="features[powerAssistedSteering]"><?php echo $this->translate('powerAssistedSteering') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="audio" name="features[audio]"><?php echo $this->translate('audio') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="towHook" name="features[towHook]"><?php echo $this->translate('towHook') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="electricWindows" name="features[electricWindows]"><?php echo $this->translate('electricWindows') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="electricHeatedSeats" name="features[electricHeatedSeats]"><?php echo $this->translate('electricHeatedSeats') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="centralLocking" name="features[centralLocking]"><?php echo $this->translate('centralLocking') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="remoteLocking" name="features[remoteLocking]"><?php echo $this->translate('remoteLocking') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="parkingSensors" name="features[parkingSensors]"><?php echo $this->translate('parkingSensors') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="fogLamp" name="features[fogLamp]"><?php echo $this->translate('fogLamp') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="immobilizer" name="features[immobilizer]"><?php echo $this->translate('immobilizer') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="navigationSystem" name="features[navigationSystem]"><?php echo $this->translate('navigationSystem') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="cruiseControl" name="features[cruiseControl]"><?php echo $this->translate('cruiseControl') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="panoramicRoof" name="features[panoramicRoof]"><?php echo $this->translate('panoramicRoof') ?></label></li>
-                            <li class="list-group-item"><label class="checkbox"><input type="checkbox" value="xenonHeadlights" name="features[xenonHeadlights]"><?php echo $this->translate('xenonHeadlights') ?></label></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group text-center">
-                    <label for="description" class="control-label"><?php echo $this->translate('car_description_title') ?></label>
-                    <textarea id="description" name="description" class="form-control input-lg" rows="6"></textarea>
-                    <div class="help-block with-errors"></div>
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group"><h3 class="text-center"><?php echo $this->translate('contact_information_title') ?></h3></div>
-
-                <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
-                    <input type="text" name="owner[phoneNumber]" class="form-control input-lg" placeholder="<?php echo $this->translate('phone_number') ?>" data-error="<?php echo $this->translate('error_phone_number') ?>" required/>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
-                    <select id="city" name="owner[city]" class="form-control input-lg" data-error="<?php echo $this->translate('error_location') ?>" required>
-                        <option value=""><?php echo $this->translate('select_location') ?></option>
-                        <?php foreach($cities as $city): ?>
-                            <option value="<?= $city['name']?>"><?= $city['name']?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <div class="help-block with-errors"></div>
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon">€</span>
-                        <input type="text" name="price" id="price" class="form-control input-lg" placeholder="<?php echo $this->translate('price') ?>" data-error="<?php echo $this->translate('error_price') ?>" required/>
-                    </div>
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon">@</span>
-                        <input type="email" name="owner[email]" class="form-control input-lg" placeholder="<?php echo $this->translate('user_email') ?>" data-error="<?php echo $this->translate('user_email_error') ?>" />
-                    </div>
-                    <span class="help-inline"><?php echo $this->translate('email_notification_label') ?></span>
-                    <div class="help-block with-errors"></div>
-                </div>
-
-
-            </div>
-            <div class="row">
                 <div id="post-block" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
                     <button type="submit" id="post" class="btn btn-lg btn-operational btn-block center-block">
                         <?php echo $this->translate('button_submit') ?>
@@ -217,8 +242,8 @@
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 
 <script>
@@ -232,6 +257,30 @@ $(document).ready(function(){
     previewNode.id = "";
     var previewTemplate = previewNode.parentNode.innerHTML;
     previewNode.parentNode.removeChild(previewNode);
+
+    $('#transmissionRadioBlock input').iCheck({
+        radioClass: 'iradio_flat'
+    });
+
+    $('#fuelTypeRadioBlock input').iCheck({
+        radioClass: 'iradio_flat'
+    });
+
+    $('#features-list input').iCheck({
+        checkboxClass: 'icheckbox_flat'
+    });
+
+    $('#engineCapacity, #mileage').slider();
+
+    $("#engineCapacity").on("slide", function(slideEvt) {
+        $("#engineCapacityValue").val(slideEvt.value);
+    });
+
+    $("#mileage").on("slide", function(slideEvt) {
+        $("#mileageValue").val(slideEvt.value);
+    });
+
+    ////$('select').selectpicker({caretIcon: 'glyphicon glyphicon-menu-down'});
 
     var $switcher = $('#switchLanguage');
 
@@ -387,15 +436,15 @@ $(document).ready(function(){
 		order: 'desc'
 	});
 
-	$(window).bind('resize load', function() {
-		if ($(this).width() < 767) {
-			$('#features-list').addClass('collapse');
-			$('#features-list-toggle').show();
-		} else {
-			$('#features-list-toggle').hide();
-			$('#features-list').removeClass('collapse');
-		}
-	});
+	// $(window).bind('resize load', function() {
+	// 	if ($(this).width() < 767) {
+	// 		$('#features-list').addClass('collapse');
+	// 		$('#features-list-toggle').show();
+	// 	} else {
+	// 		$('#features-list-toggle').hide();
+	// 		$('#features-list').removeClass('collapse');
+	// 	}
+	// });
 
 });
 </script>

@@ -540,17 +540,6 @@ h3{
     padding: 15px;
 }
 
-#features-list-toggle {
-    height: 40px;
-    padding: 10px;
-    margin-bottom: 40px;
-}
-
-#features-list-toggle:first-child {
-    font-size: 14px;
-    font-weight: bold;
-}
-
 .help-inline {
     text-align: center;
     display: block;
@@ -658,16 +647,16 @@ h3{
 
 @keyframes highlight {
     0% {
-        box-shadow: 1px 1px 30px #eea51b;
+        color: #eea51b;
     }
     100% {
-        box-shadow: none;
+        color: white;
     }
 }
 
 .animate-button{
     animation: highlight 1s;
-    animation-iteration-count: 3;
+    animation-iteration-count: 10;
 }
 
 .phoneNumber{
@@ -677,4 +666,18 @@ h3{
 
 #description{
     margin-top: 15px;
+}
+
+#advertisementForm{
+    padding-right: 15px;
+    padding-left: 15px;
+    overflow: hidden;
+}
+
+select.input-lg {
+    height: 44px !important;
+}
+
+input.input-lg {
+    height: 44px !important;
 }

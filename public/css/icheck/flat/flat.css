@@ -1,0 +1,58 @@
+/* iCheck plugin flat skin, black
+----------------------------------- */
+    .iradio_flat {
+        display: inline-block;
+        *display: inline;
+        vertical-align: middle;
+        margin: 8px;
+        padding: 0;
+        border: none;
+        cursor: pointer;
+    }
+
+    .icheckbox_flat{
+        display: inline-block;
+        *display: inline;
+        vertical-align: middle;
+        margin: 8px;
+        padding: 0;
+        border: none;
+        cursor: pointer;
+    }
+
+    .icheckbox_flat + span {
+        display: inline-block;
+        line-height: 44px;
+        padding: 0 20px;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 5px;
+        background-color: #eee;
+        cursor: pointer;
+    }
+    .icheckbox_flat.checked + span{
+        color: white;
+        background-color: #eea51b;
+    }
+
+    .iradio_flat + span {
+        display: inline-block;
+        line-height: 44px;
+        padding: 0 20px;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 5px;
+        background-color: #eee;
+        cursor: pointer;
+    }
+
+    .iradio_flat + span{
+        cursor: pointer;
+    }
+
+    .iradio_flat.checked + span{
+        color: white;
+        background-color: #eea51b;
+    }

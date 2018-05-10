@@ -537,7 +537,7 @@ h3{
 
 #features-list {
     cursor: pointer;
-    padding: 15px;
+    /*padding: 15px;*/
 }
 
 .help-inline {

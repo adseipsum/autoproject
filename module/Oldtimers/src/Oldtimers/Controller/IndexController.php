@@ -35,7 +35,7 @@ class IndexController extends AbstractActionController
 
         return $view;
     }
-    
+
     public function getPageAction()
     {
     	$skip = $this->params()->fromQuery('skip');
@@ -82,7 +82,7 @@ class IndexController extends AbstractActionController
         }
     	return new JsonModel(array('cars' => $resultArray, 'count' => $count));
     }
-    
+
     public function carInfoJsonAction()
     {
         $car = $this->getCarMapper()->find($this->params()->fromQuery('id'));
@@ -98,7 +98,7 @@ class IndexController extends AbstractActionController
         $result = new JsonModel(array('carInfo' => $car));
         return $result;
     }
-    
+
     public function advertisementAction()
     {
     	$advertisement = $this->getCarMapper()->find($this->getEvent()->getRouteMatch()->getParam('id'));
@@ -122,7 +122,7 @@ class IndexController extends AbstractActionController
         ));
     	return $result;
     }
-    
+
     public function testAction()
     {
     	$i = 0;
@@ -235,7 +235,10 @@ class IndexController extends AbstractActionController
         
         return $view;
     }
-    
+
+    /**
+     * @return bool|JsonModel
+     */
     public function saveFileAction(){
     	
     	$entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
@@ -277,7 +280,10 @@ class IndexController extends AbstractActionController
     	
     	return false;
     }
-    
+
+    /**
+     * @return JsonModel
+     */
     public function getModelByMakeIdJsonAction()
     {
         $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
@@ -290,7 +296,11 @@ class IndexController extends AbstractActionController
 
         return $result;
     }
-    
+
+    /**
+     * @param $file
+     * @return bool
+     */
 	protected function resizeImage($file) {
 	      
 		$string             = null;
@@ -434,7 +444,10 @@ class IndexController extends AbstractActionController
 		
 		return $image;
 	}
-  
+
+    /**
+     * @return bool
+     */
     public function importAction(){
 
         include_once PUBLIC_PATH . '/simple_html_dom.php';
@@ -599,12 +612,18 @@ class IndexController extends AbstractActionController
         }
         return true;
     }
-    
+
+    /**
+     * @return JsonModel
+     */
     public function searchTagAction(){
     	$tag = $this->params()->fromQuery('tag');
     	return new JsonModel(array($tag));
     }
 
+    /**
+     * @return JsonModel
+     */
     public function languageAction()
     {
         $session = new Container('language');
@@ -621,8 +640,7 @@ class IndexController extends AbstractActionController
 
         return $result;
     }
-
-
+    
     /**
      * @return CarMapper
      */
@@ -633,6 +651,9 @@ class IndexController extends AbstractActionController
         return $this->carMapper;
     }
 
+    /**
+     * @return ViewModel
+     */
     public function formAction()
     {
         return new ViewModel();

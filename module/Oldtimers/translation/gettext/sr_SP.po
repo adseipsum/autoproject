@@ -127,6 +127,12 @@ msgstr "Dodatne informacije"
 msgid "features_toggle"
 msgstr "Dodaj informacije"
 
+msgid "exchange"
+msgstr "Može zamjena"
+
+msgid "registered"
+msgstr "Registrovan"
+
 msgid "climatisation"
 msgstr "Klima"
 
@@ -138,6 +144,9 @@ msgstr "Servo"
 
 msgid "audio"
 msgstr "Radio/Kasetofon"
+
+msgid "audioUSB"
+msgstr "USB Plejer"
 
 msgid "towHook"
 msgstr "Kuka za vuču"

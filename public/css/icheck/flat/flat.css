@@ -22,7 +22,7 @@
 
     .icheckbox_flat + span {
         display: inline-block;
-        line-height: 44px;
+        line-height: 34px;
         padding: 0 20px;
         width: 100%;
         height: 100%;
@@ -38,7 +38,7 @@
 
     .iradio_flat + span {
         display: inline-block;
-        line-height: 44px;
+        line-height: 34px;
         padding: 0 20px;
         width: 100%;
         height: 100%;

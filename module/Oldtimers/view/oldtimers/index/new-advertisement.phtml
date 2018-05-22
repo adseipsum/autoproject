@@ -119,11 +119,14 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 form-group text-center">
                     <h3><?php echo $this->translate('features_title') ?></h3>
                     <div id="features-list">
+                        <label><input type="checkbox" value="exchange" name="features[exchange]"><span><?php echo $this->translate('exchange') ?></span></label>
+                        <label><input type="checkbox" value="registered" name="features[registered]"><span><?php echo $this->translate('registered') ?></span></label>
                         <label><input type="checkbox" value="fourWeelDrive" name="features[fourWeelDrive]"><span><?php echo $this->translate('fourWeelDrive') ?></span></label>
                         <label><input type="checkbox" value="climatisation" name="features[climatisation]"/><span><?php echo $this->translate('climatisation') ?></span></label>
                         <label><input type="checkbox" value="airConditioning" name="features[airConditioning]"><span><?php echo $this->translate('airConditioning') ?></span></label>
                         <label><input type="checkbox" value="powerAssistedSteering" name="features[powerAssistedSteering]"><span><?php echo $this->translate('powerAssistedSteering') ?></span></label>
                         <label><input type="checkbox" value="audio" name="features[audio]"><span><?php echo $this->translate('audio') ?></span></label>
+                        <label><input type="checkbox" value="audioUSB" name="features[audioUSB]"><span><?php echo $this->translate('audioUSB') ?></span></label>
                         <label><input type="checkbox" value="towHook" name="features[towHook]"><span><?php echo $this->translate('towHook') ?></span></label>
                         <label><input type="checkbox" value="electricWindows" name="features[electricWindows]"><span><?php echo $this->translate('electricWindows') ?></span></label>
                         <label><input type="checkbox" value="electricHeatedSeats" name="features[electricHeatedSeats]"><span><?php echo $this->translate('electricHeatedSeats') ?></span></label>
@@ -337,6 +340,9 @@ $(document).ready(function(){
 
     myDropzone.on("addedfile", function(file) {
       $('#post').attr('disabled', true);
+        $('html, body').animate({
+            scrollTop: $("#post-block").offset().top
+        }, 2000);
       // Hookup the start button
       //file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
     });

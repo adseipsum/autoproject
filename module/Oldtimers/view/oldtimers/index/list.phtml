@@ -202,10 +202,12 @@
       var info = $(this).find('.info');
       if (info.hasClass('collapsed')) {
         info.removeClass('collapsed').find('div').show();
+        $('.openInfoButton').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
       }
       else {
         info.addClass('collapsed').find('div').hide();
         $(this).find('.info div:nth-child(-n+6)').show();
+          $('.openInfoButton').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
       }
 
       e.preventDefault();
@@ -337,7 +339,7 @@
           var data = $('<div>').addClass('data').addClass('openInfo');
           slide.append(
           	$('<div>').addClass('car-title')
-                .append($('<a>').attr('href', '/advertisement/' + car._id).text(car.make + ' ' + car.model))
+                .append($('<a>').attr('href', '/advertisement/' + car._id).attr('target', '_blank').text(car.make + ' ' + car.model).append('  <small><span class="glyphicon glyphicon-new-window blue"></span></small>'))
                 .append($('<span>').addClass('price').html('€ ' + car.price + '</span>')));
 
           var info = $('<div>').addClass('info');
@@ -371,7 +373,8 @@
 
           info.addClass('collapsed').find('div').hide();
           info.find('div:nth-child(-n+6)').show();
-
+          info.find('div:nth-child(-n+6)').last().css('margin-bottom', '20px');
+          info.append('<small><span class="openInfoButton glyphicon glyphicon-chevron-down blue"></span></small><small><span class="openInfoButton glyphicon glyphicon-chevron-down blue" style="float:left; left:42%;"></span></small><small><span class="openInfoButton glyphicon glyphicon glyphicon-chevron-down blue" style="float:right; right:42%;"></span></small>');
           data.append(info);
           slide.append(data);
 

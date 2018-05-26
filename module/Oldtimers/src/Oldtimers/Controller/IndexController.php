@@ -359,7 +359,7 @@ class IndexController extends AbstractActionController
 				return false;
 		}
 	
-		$image = $this->addWatermark($image);
+		//$image = $this->addWatermark($image);
 	
 		# This is the resizing/resampling/transparency-preserving magic
 		$image_resized = imagecreatetruecolor( $final_width, $final_height );

@@ -339,7 +339,7 @@ $(document).ready(function(){
     });
 
     myDropzone.on("addedfile", function(file) {
-      $('#post').attr('disabled', true);
+      $('#post').text('Photos Uploaded').attr('disabled', true);
         $('html, body').animate({
             scrollTop: $("#post-block").offset().top
         }, 2000);
@@ -356,12 +356,12 @@ $(document).ready(function(){
       // Show the total progress bar when upload starts
       document.querySelector("#total-progress").style.display = "block";
       // And disable the start button
-	    $('#post').attr('disabled', true);
+	    $('#post').html('<div class="loader"></div>').attr('disabled', true);
     });
 
     // Hide the total progress bar when nothing's uploading anymore
     myDropzone.on("queuecomplete", function(progress) {
-        $('#post').attr('disabled', false);
+        $('#post').text('<?php echo $this->translate('button_submit') ?>').append(' <span class="glyphicon glyphicon-plus"></span>').attr('disabled', false);
     	document.querySelector("#total-progress").style.display = "none";
     });
 

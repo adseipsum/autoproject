@@ -125,7 +125,9 @@ class IndexController extends AbstractActionController
 
     public function testAction()
     {
+        var_dump(2222); die;
     	$i = 0;
+
     	$result = $this->getCarMapper()->findAll();
     	foreach($result as $record){
     		
@@ -137,12 +139,19 @@ class IndexController extends AbstractActionController
     				'price' => $record->price
     		));
 
+    		var_dump($doc); die;
+    		if($doc->popularity){
+    		    continue;
+            }
+
     		if(count($doc) > 1){
     			$i++;
     			$car = $this->getCarMapper()->find($doc[1]->_id);
-    				if($car->photos) foreach($car->photos as $photo){
-    					unlink(PUBLIC_PATH . '/uploads/' . $car->garageId . '/' . $car->_id . '/' . $photo . '.jpg');
-    				}
+                $files = glob(PUBLIC_PATH . '/uploads/' . array_shift($car->photos) . '/*'); // get all file names
+                foreach($files as $file){ // iterate files
+                    if(is_file($file))
+                        unlink($file); // delete file
+                }
     			$this->getCarMapper()->remove($car);
     		}
     	}
@@ -171,8 +180,10 @@ class IndexController extends AbstractActionController
         if($id != null){
             $car = $this->getCarMapper()->find($id);
             if($car != null){
-                if($car->photos) foreach($car->photos as $photo){
-                    unlink(PUBLIC_PATH . '/uploads/' . $car->garageId . '/' . $car->_id . '/' . $photo . '.jpg');
+                $files = glob(PUBLIC_PATH . '/uploads/' . array_shift($car->photos) . '/*'); // get all file names
+                foreach($files as $file){ // iterate files
+                    if(is_file($file))
+                        unlink($file); // delete file
                 }
                 $this->getCarMapper()->remove($car);
                 $result = [$car];
